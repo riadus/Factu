@@ -19,6 +19,7 @@ class CalendarView: UIScrollView, UICollectionViewDelegate {
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     
     var bindingContext : CalendarViewModel!
+    var isEditingMode = false
     
     required init?(coder aDecoder: NSCoder) {
             super.init(coder: aDecoder)
@@ -90,10 +91,38 @@ class CalendarView: UIScrollView, UICollectionViewDelegate {
             cell.bindingContext = day
             day.day.map{ String($0) }.bind(to: cell.dayLabel)
             cell.updateStyle()
+            let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.dayLongPressed))
+            let tapRecognizer = UITapGestureRecognizer(target : self, action: #selector(self.dayTapped))
+            cell.addGestureRecognizer(longPressRecognizer)
+            cell.addGestureRecognizer(tapRecognizer)
+           
             return cell
           }
         
         daysCollectionView.reactive.delegate.forwardTo = self
+    }
+    
+    @objc func dayLongPressed(sender: UILongPressGestureRecognizer) {
+        if(sender.state == UIGestureRecognizer.State.began){
+            let tapLocation = sender.location(in: self.daysCollectionView)
+            let indexPath = self.daysCollectionView.indexPathForItem(at: tapLocation)
+            let cell = self.daysCollectionView.cellForItem(at: indexPath!)
+            guard let dayCell = cell as? DayViewCell else { return }
+            dayCell.bindingContext!.longPressed()
+            dayCell.updateStyle()
+        }
+    }
+    
+    @objc func dayTapped(sender: UITapGestureRecognizer) {
+        if(self.isEditingMode) {
+            return
+        }
+       let tapLocation = sender.location(in: self.daysCollectionView)
+        let indexPath = self.daysCollectionView.indexPathForItem(at: tapLocation)
+        let cell = self.daysCollectionView.cellForItem(at: indexPath!)
+        guard let dayCell = cell as? DayViewCell else { return }
+        dayCell.bindingContext!.tapped()
+        dayCell.updateStyle()
     }
     
     @objc func selectMonth(_ sender: UITapGestureRecognizer) {
@@ -113,7 +142,13 @@ class CalendarView: UIScrollView, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
+        self.isEditingMode = true
         return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let dayCell = cell as? DayViewCell else { return }
+        dayCell.isSelected = dayCell.bindingContext!.isSelected
     }
 }
 
@@ -126,7 +161,7 @@ class CalendarLayout : UICollectionViewFlowLayout{
             super.init()
 
             self.minimumInteritemSpacing = 0
-            self.minimumLineSpacing = 0
+            self.minimumLineSpacing = 1
             self.sectionInset = .zero
         }
 
@@ -138,8 +173,8 @@ class CalendarLayout : UICollectionViewFlowLayout{
             super.prepare()
 
             guard let collectionView = collectionView else { return }
-            let marginsAndInsets = sectionInset.left + sectionInset.right + collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-            let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow)).rounded(.down)
+        
+            let itemWidth = (collectionView.bounds.size.width / CGFloat(cellsPerRow)).rounded(.down)
             itemSize = CGSize(width: itemWidth, height: itemWidth)
         }
 

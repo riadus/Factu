@@ -15,6 +15,7 @@ class DayViewModel : ObservableObject, Identifiable {
     var isEmpty : Bool
     var isWeekend : Bool
     var isSelectable : Bool
+    var isHalfDay : Bool = false
     
     init(day : Int, isWeekend : Bool){
         self.day = Observable(String(day))
@@ -41,5 +42,25 @@ class DayViewModel : ObservableObject, Identifiable {
         self.isEmpty = true
         self.isWeekend = false
         self.isSelectable = false
+    }
+    
+    func longPressed() -> Void {
+        self.isHalfDay = !self.isHalfDay
+    }
+    
+    func tapped() -> Void {
+        if(self.isHalfDay){
+            setIsSelected(true)
+        }
+        else {
+            setIsSelected(!self.isSelected)
+        }
+    }
+    
+    func setIsSelected(_ isSelected : Bool) -> Void {
+        self.isSelected = isSelected
+        if(self.isSelected){
+            self.isHalfDay = false
+        }
     }
 }

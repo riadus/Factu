@@ -57,6 +57,7 @@
 		91F3637726CCF56000E48622 /* MonthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F3637626CCF56000E48622 /* MonthViewModel.swift */; };
 		91F3637C26CE6F4900E48622 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F3637B26CE6F4900E48622 /* CalendarView.swift */; };
 		91F3637E26CE6F8C00E48622 /* CalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F3637D26CE6F8C00E48622 /* CalendarView.xib */; };
+		91F3638026CE9CF800E48622 /* AssignmentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F3637F26CE9CF800E48622 /* AssignmentView.xib */; };
 		CEC72A59162F8DCF47E43FBF /* Pods_Factu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C1D5B8EA359B9D94F168D1 /* Pods_Factu.framework */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,7 @@
 		91F3637626CCF56000E48622 /* MonthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewModel.swift; sourceTree = "<group>"; };
 		91F3637B26CE6F4900E48622 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		91F3637D26CE6F8C00E48622 /* CalendarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarView.xib; sourceTree = "<group>"; };
+		91F3637F26CE9CF800E48622 /* AssignmentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssignmentView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +300,7 @@
 				91BFE83826C5A3B90006A22A /* DayViewCell.xib */,
 				91F3637B26CE6F4900E48622 /* CalendarView.swift */,
 				91F3637D26CE6F8C00E48622 /* CalendarView.xib */,
+				91F3637F26CE9CF800E48622 /* AssignmentView.xib */,
 			);
 			path = Timesheet;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				91F3637E26CE6F8C00E48622 /* CalendarView.xib in Resources */,
 				910FE18026A770E20043A099 /* HomeView.xib in Resources */,
 				91BFE83626C3C4760006A22A /* MonthViewCell.xib in Resources */,
+				91F3638026CE9CF800E48622 /* AssignmentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

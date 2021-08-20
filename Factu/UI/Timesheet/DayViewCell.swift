@@ -17,6 +17,7 @@ class DayViewCell: UICollectionViewCell {
     
     func updateStyle() -> Void {
         self.dayLabel.isHidden = false
+        
         if(bindingContext!.isEmpty){
             StyleEmpty()
         }
@@ -43,13 +44,19 @@ class DayViewCell: UICollectionViewCell {
     
     func StyleWeekend() -> Void {
         self.dayLabel.textColor = UIColor.white
-        self.backgroundColor = UIColor(named: "DarkGray")
+        self.backgroundColor = UIColor(named: "LightGray")
     }
     
     func StyleNormal() -> Void {
-        if(self.isSelected){
+        if(self.bindingContext!.isHalfDay)
+        {
             self.dayLabel.textColor = UIColor.white
             self.backgroundColor = UIColor(named: "Orange")
+        }
+        else if(self.bindingContext!.isSelected)
+        {
+            self.dayLabel.textColor = UIColor.white
+            self.backgroundColor = UIColor(named: "Green")
         }
         else{
             StyleWeekDay()
@@ -59,8 +66,8 @@ class DayViewCell: UICollectionViewCell {
     override var isSelected: Bool{
         didSet{
             if(self.bindingContext!.isSelectable){
+                self.bindingContext?.setIsSelected(self.isSelected)
                 self.updateStyle()
-                self.bindingContext?.isSelected = self.isSelected
             }
         }
     }

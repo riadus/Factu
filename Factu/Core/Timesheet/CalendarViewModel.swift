@@ -32,8 +32,7 @@ class CalendarViewModel : ObservableObject {
         self.nextYear = Observable<String>("2")
         var monthIndex = Date().getMonth()
         monthIndex = monthIndex > 0 ? monthIndex : 12
-        self.month = Observable(nil)
-        self.month.value = months[ monthIndex - 1 ]
+        self.month = Observable(months[ monthIndex - 1 ])
         self.days = MutableObservableArray<DayViewModel>()
         self.nextYearCommand = Command()
         self.previousYearCommand = Command()
