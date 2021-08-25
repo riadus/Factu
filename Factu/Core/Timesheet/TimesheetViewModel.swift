@@ -16,14 +16,20 @@ class TimesheetViewModel : IBaseViewModel{
     let saveText = Observable<String>("Save")
     let generateInvoiceText = Observable<String>("Generate Invoice")
     let calendarViewModel : CalendarViewModel = CalendarViewModel()
-    var generateInvoiceCommand : ICommand = Command()
+    let saveCommand : ICommand = Command()
+    
+    @Inject var timesheetService : TimesheetServiceProtocol
+    @Inject var assignmentProvider : AssignmentProviderProtocol
     
     required init(){
-        generateInvoiceCommand.setAction(generateInvoice)
+        saveCommand.setAction(saveTimesheet)
     }
     
-    func generateInvoice() -> Void {
-        _ = calendarViewModel.getSelectedDays()
+    func saveTimesheet() -> Void {
+        let currentAssignment = assignmentProvider.getAllAssignments()[0]
+        let dayViewModels = calendarViewModel.getSelectedDays()
+        let days = dayViewModels.map( {vm in vm.getDay() })
+        timesheetService.createTimesheet(assignment: currentAssignment, days: days, month: calendarViewModel.month.value!.monthIndex, year: Int(calendarViewModel.year.value!) ?? 0)
     }
 }
 

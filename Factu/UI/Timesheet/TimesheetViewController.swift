@@ -75,7 +75,7 @@ class TimesheetViewController : BaseViewController<TimesheetViewModel> {
         bindingContext.calendarText.bind(to: calendarLabel.reactive.text)
         bindingContext.saveText.bind(to: saveButton.reactive.title)
         bindingContext.generateInvoiceText.bind(to : generateInvoiceButton.reactive.title)
-        generateInvoiceButton.reactive.Command(bindingContext.generateInvoiceCommand)
+        saveButton.reactive.Command(bindingContext.saveCommand)
     }
     
     func closeAssignment() -> Void {

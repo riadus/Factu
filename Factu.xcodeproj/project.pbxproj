@@ -50,6 +50,7 @@
 		91D37EA626AB688200835836 /* IBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D37EA526AB688200835836 /* IBaseViewModel.swift */; };
 		91D37EA826AB68A100835836 /* TimesheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D37EA726AB68A100835836 /* TimesheetViewModel.swift */; };
 		91D37EAB26AC666100835836 /* ICommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D37EAA26AC666100835836 /* ICommand.swift */; };
+		91E38A0426D57BF6004076C7 /* DomainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E38A0326D57BF6004076C7 /* DomainAssembly.swift */; };
 		91F3636E26CCF44800E48622 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F3636D26CCF44800E48622 /* CalendarViewModel.swift */; };
 		91F3637126CCF48000E48622 /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F3637026CCF48000E48622 /* DayViewModel.swift */; };
 		91F3637326CCF49700E48622 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F3637226CCF49700E48622 /* DateExtensions.swift */; };
@@ -65,6 +66,7 @@
 		91F3639B26D4077D00E48622 /* AssignmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F3639A26D4077D00E48622 /* AssignmentProvider.swift */; };
 		91F3639D26D407B000E48622 /* AssignmentQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F3639C26D407B000E48622 /* AssignmentQuery.swift */; };
 		91F3639F26D407D100E48622 /* QueryableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F3639E26D407D100E48622 /* QueryableType.swift */; };
+		91F363A126D4230800E48622 /* TimesheetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F363A026D4230800E48622 /* TimesheetService.swift */; };
 		CEC72A59162F8DCF47E43FBF /* Pods_Factu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C1D5B8EA359B9D94F168D1 /* Pods_Factu.framework */; };
 /* End PBXBuildFile section */
 
@@ -127,6 +129,7 @@
 		91D37EA526AB688200835836 /* IBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBaseViewModel.swift; sourceTree = "<group>"; };
 		91D37EA726AB68A100835836 /* TimesheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetViewModel.swift; sourceTree = "<group>"; };
 		91D37EAA26AC666100835836 /* ICommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICommand.swift; sourceTree = "<group>"; };
+		91E38A0326D57BF6004076C7 /* DomainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainAssembly.swift; sourceTree = "<group>"; };
 		91F3636D26CCF44800E48622 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		91F3637026CCF48000E48622 /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
 		91F3637226CCF49700E48622 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -144,6 +147,7 @@
 		91F3639A26D4077D00E48622 /* AssignmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentProvider.swift; sourceTree = "<group>"; };
 		91F3639C26D407B000E48622 /* AssignmentQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentQuery.swift; sourceTree = "<group>"; };
 		91F3639E26D407D100E48622 /* QueryableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryableType.swift; sourceTree = "<group>"; };
+		91F363A026D4230800E48622 /* TimesheetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,9 +281,9 @@
 		918BA7D326A61F6100DF5F84 /* Factu */ = {
 			isa = PBXGroup;
 			children = (
-				91F3638626CFEF3900E48622 /* Domain */,
 				91D37EA926AC664B00835836 /* Binding */,
 				9184EF7626AB13C1005B4988 /* DependencyInjection */,
+				91F3638626CFEF3900E48622 /* Domain */,
 				918B411226A870000084C6B5 /* Core */,
 				91F3638226CFEB7000E48622 /* Data */,
 				918BA7E826A72A7800DF5F84 /* UI */,
@@ -312,6 +316,14 @@
 				91D37EAA26AC666100835836 /* ICommand.swift */,
 			);
 			path = Binding;
+			sourceTree = "<group>";
+		};
+		91E38A0226D57BE7004076C7 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				91E38A0326D57BF6004076C7 /* DomainAssembly.swift */,
+			);
+			path = DI;
 			sourceTree = "<group>";
 		};
 		91F3636F26CCF46C00E48622 /* Timesheet */ = {
@@ -353,6 +365,7 @@
 		91F3638626CFEF3900E48622 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				91E38A0226D57BE7004076C7 /* DI */,
 				91F3638726CFEF3E00E48622 /* Implentation */,
 				91F3638826CFEFF300E48622 /* AssignmentProtocol.swift */,
 				91F3639826D4076700E48622 /* AssignmentQueryProtocol.swift */,
@@ -366,6 +379,7 @@
 			children = (
 				91F3639A26D4077D00E48622 /* AssignmentProvider.swift */,
 				91F3639C26D407B000E48622 /* AssignmentQuery.swift */,
+				91F363A026D4230800E48622 /* TimesheetService.swift */,
 			);
 			path = Implentation;
 			sourceTree = "<group>";
@@ -558,6 +572,7 @@
 				9184EF8726AB1C20005B4988 /* Utils.swift in Sources */,
 				9169FF6E26B059210024C6B4 /* ViewExtensions.swift in Sources */,
 				9184EF8E26AB1CC8005B4988 /* DIPart.swift in Sources */,
+				91E38A0426D57BF6004076C7 /* DomainAssembly.swift in Sources */,
 				918BA7D526A61F6100DF5F84 /* AppDelegate.swift in Sources */,
 				91BFE83926C5A3B90006A22A /* DayViewCell.swift in Sources */,
 				91F3639B26D4077D00E48622 /* AssignmentProvider.swift in Sources */,
@@ -591,6 +606,7 @@
 				9184EF9D26AB1E26005B4988 /* DIRegister.swift in Sources */,
 				91F3637726CCF56000E48622 /* MonthViewModel.swift in Sources */,
 				9184EF8026AB1BA7005B4988 /* DIComponentManager.swift in Sources */,
+				91F363A126D4230800E48622 /* TimesheetService.swift in Sources */,
 				9184EF9B26AB1E0D005B4988 /* DIPartBuildable.swift in Sources */,
 				91F3637C26CE6F4900E48622 /* CalendarView.swift in Sources */,
 				91D37EA626AB688200835836 /* IBaseViewModel.swift in Sources */,

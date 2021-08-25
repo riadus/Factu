@@ -19,6 +19,7 @@ class CalendarViewModel : ObservableObject {
     var days : MutableObservableArray<DayViewModel>
     var nextYearCommand : ICommand
     var previousYearCommand : ICommand
+    @Inject var timesheetService: TimesheetServiceProtocol
     
     init(){
         self.months = MutableObservableArray<MonthViewModel>()
@@ -64,10 +65,19 @@ class CalendarViewModel : ObservableObject {
         var fillEmptyDays = 7
         var startedRepeating = false
         var actualDays = 0
+        
+        let currentTimesheet = timesheetService.getTimesheet(month: month.value?.monthIndex ?? 0, year: Int(year.value!) ?? 0)
+        
         for i in 0...dates.count - 1 {
             let date = dates[i]
             let isWeekend = NSCalendar.current.isDateInWeekend(date)
             let vm =  DayViewModel(day: i+1, isWeekend: isWeekend)
+            if(currentTimesheet != nil){
+                let day = currentTimesheet?.dates.first(where: { d in d.date == i + 1})
+                if(day != nil){
+                    vm.loadDay(day!)
+                }
+            }
             if(startedRepeating || (dates.count - 1 - i < numberOfEmptyDays && calendar.component(.weekday, from: date) == 2))
             {
                 self.days[fillEmptyDays] = vm
@@ -118,7 +128,7 @@ class CalendarViewModel : ObservableObject {
         var selectedDays :[DayViewModel] = []
         for i in 0...self.days.count - 1{
             let dayViewModel = self.days[i]
-            if(dayViewModel.isSelected){
+            if(dayViewModel.isSelected || dayViewModel.isHalfDay){
                 selectedDays.append(dayViewModel)
             }
         }
