@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		9101960126A775780079A4A8 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9101960026A775780079A4A8 /* Launch Screen.storyboard */; };
 		910FE18026A770E20043A099 /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 910FE17F26A770E20043A099 /* HomeView.xib */; };
+		913BA80C26D6C5CB009E6C09 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913BA80B26D6C5CB009E6C09 /* RepositoryProtocol.swift */; };
+		913BA80E26D6C5DE009E6C09 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913BA80D26D6C5DE009E6C09 /* Repository.swift */; };
+		913BA81026D6C6BA009E6C09 /* RepositoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913BA80F26D6C6BA009E6C09 /* RepositoryAssembly.swift */; };
 		9169FF6E26B059210024C6B4 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9169FF6D26B059210024C6B4 /* ViewExtensions.swift */; };
 		917760C126AD81F200DA200E /* TimesheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917760C026AD81F200DA200E /* TimesheetView.xib */; };
 		9184EF7526AB0722005B4988 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9184EF7426AB0722005B4988 /* Coordinator.swift */; };
@@ -86,6 +89,9 @@
 		7F77E53C4C05BAEDF2547330 /* Pods-Factu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Factu.release.xcconfig"; path = "Target Support Files/Pods-Factu/Pods-Factu.release.xcconfig"; sourceTree = "<group>"; };
 		9101960026A775780079A4A8 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		910FE17F26A770E20043A099 /* HomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeView.xib; sourceTree = "<group>"; };
+		913BA80B26D6C5CB009E6C09 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
+		913BA80D26D6C5DE009E6C09 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		913BA80F26D6C6BA009E6C09 /* RepositoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryAssembly.swift; sourceTree = "<group>"; };
 		9169FF6D26B059210024C6B4 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		917760C026AD81F200DA200E /* TimesheetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimesheetView.xib; sourceTree = "<group>"; };
 		9184EF7426AB0722005B4988 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -169,6 +175,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		913BA80A26D6C5A3009E6C09 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				913BA80B26D6C5CB009E6C09 /* RepositoryProtocol.swift */,
+				913BA80D26D6C5DE009E6C09 /* Repository.swift */,
+				913BA80F26D6C6BA009E6C09 /* RepositoryAssembly.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		9169FF6C26B0590E0024C6B4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,9 +299,10 @@
 			children = (
 				91D37EA926AC664B00835836 /* Binding */,
 				9184EF7626AB13C1005B4988 /* DependencyInjection */,
+				913BA80A26D6C5A3009E6C09 /* Repositories */,
+				91F3638226CFEB7000E48622 /* Data */,
 				91F3638626CFEF3900E48622 /* Domain */,
 				918B411226A870000084C6B5 /* Core */,
-				91F3638226CFEB7000E48622 /* Data */,
 				918BA7E826A72A7800DF5F84 /* UI */,
 			);
 			path = Factu;
@@ -560,10 +577,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9184EF8526AB1BF6005B4988 /* SwiftDI.swift in Sources */,
+				913BA81026D6C6BA009E6C09 /* RepositoryAssembly.swift in Sources */,
 				91D37EAB26AC666100835836 /* ICommand.swift in Sources */,
 				91F3637126CCF48000E48622 /* DayViewModel.swift in Sources */,
 				9184EFA626AB2041005B4988 /* UIAssembly.swift in Sources */,
 				9184EF7826AB1AFC005B4988 /* Inject.swift in Sources */,
+				913BA80C26D6C5CB009E6C09 /* RepositoryProtocol.swift in Sources */,
 				918BA7D926A61F6100DF5F84 /* HomeViewController.swift in Sources */,
 				9184EF9226AB1D56005B4988 /* DIBuilder.swift in Sources */,
 				91D37EA226AB57C800835836 /* BaseViewController.swift in Sources */,
@@ -585,6 +604,7 @@
 				91D37EA826AB68A100835836 /* TimesheetViewModel.swift in Sources */,
 				9184EF9426AB1D8E005B4988 /* DIGroup.swift in Sources */,
 				918BA7D726A61F6100DF5F84 /* SceneDelegate.swift in Sources */,
+				913BA80E26D6C5DE009E6C09 /* Repository.swift in Sources */,
 				91F3637326CCF49700E48622 /* DateExtensions.swift in Sources */,
 				91BFE83526C3C4760006A22A /* MonthViewCell.swift in Sources */,
 				9184EFA326AB1E8A005B4988 /* Never.swift in Sources */,

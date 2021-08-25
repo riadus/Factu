@@ -6,66 +6,69 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Day {
-    var date : Int!
-    var isHalfDay : Bool!
+class Day : Object {
+    @Persisted var id : String = ""
+    @Persisted var date : Int
+    @Persisted var isHalfDay : Bool
 }
 
-class Timesheet {
-    var month : Int!
-    var year : Int!
-    var dates : [Day]!
-    var assignment : Assignment!
+class Timesheet : Object{
+    @Persisted var id : String = ""
+    @Persisted var month : Int
+    @Persisted var year : Int
+    @Persisted var dates : List<Day>
+    @Persisted var assignment : Optional<Assignment>
 }
 
 class Project : Queryable {
-    var title : String!
-    var rate : Rate!
-    var archived : Bool!
-    var numberOfHoursPerDay : Int!
+   @Persisted  var title : String
+    @Persisted var rate : Optional<Rate>
+    @Persisted var archived : Bool
+    @Persisted var numberOfHoursPerDay : Int
 }
 
 class Company : Queryable {
-    var name : String!
-    var address : Address!
-    var iban : String!
+    @Persisted var name : String
+    @Persisted var address : Optional<Address>
+    @Persisted var iban : String
 }
 
 class Address : Queryable {
-    var street : String!
-    var city : String!
-    var postalCode : String!
-    var country : String!
+    @Persisted var street : String
+    @Persisted var city : String
+    @Persisted var postalCode : String
+    @Persisted  var country : String
 }
 
 class Consultant : Queryable {
-    var name : String!
-    var lastName : String!
-    var address : Address!
-    var company : Company!
+    @Persisted var name : String
+    @Persisted var lastName : String
+    @Persisted var address : Optional<Address>
+    @Persisted var company : Optional<Company>
 }
 
 class Rate : Queryable {
-    var normalRate : Float!
-    var specialRate : Float!
-    var isHourly : Bool!
+    @Persisted var normalRate : Float
+    @Persisted var specialRate : Float
+    @Persisted var isHourly : Bool
 }
 
 class Assignment : Queryable {
-    var project : Project!
-    var client : Company!
-    var endClient : Company!
-    var consultant : Consultant!
-    var jobTitle : String!
+    @Persisted var project : Optional<Project>
+    @Persisted var client : Optional<Company>
+    @Persisted var endClient : Optional<Company>
+    @Persisted var consultant : Optional<Consultant>
+    @Persisted var jobTitle : String
 }
 
 protocol QueryableProtocol {
     var id : String { get set }
 }
 
-class Queryable : QueryableProtocol{
-    var id : String = ""
+class Queryable : Object, QueryableProtocol {
+    @Persisted var id : String = ""
 }
 
 

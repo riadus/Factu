@@ -14,23 +14,30 @@ protocol TimesheetServiceProtocol {
 
 class TimesheetService : TimesheetServiceProtocol {
     
-    var timesheets : [Timesheet] = []
+    @Inject var repository : RepositoryProtocol
     
     func createTimesheet(assignment : Assignment, days : [Day], month : Int, year : Int) -> Void {
         let timesheet = Timesheet()
         timesheet.assignment = assignment
-        timesheet.dates = days
+        timesheet.dates = days.toList()
         timesheet.month = month
         timesheet.year = year
         
+        repository.saveObject(object: timesheet)
+        /*
         if(timesheets.contains(where: { t in t.month == month && t.year == year})){
             timesheets.removeAll(where:  { t in t.month == month && t.year == year})
         }
         
-        timesheets.append(timesheet)
+        timesheets.append(timesheet)*/
     }
     
     func getTimesheet(month : Int, year : Int) -> Timesheet? {
-        return timesheets.first(where: {timesheet in timesheet.year == year && timesheet.month == month})
+        let timesheets = repository.getObjects(filter: "year = " + String(year) + " AND month = " + String(month)) as [Timesheet]
+        if(timesheets.count > 0)
+        {
+            return timesheets[0]
+        }
+        return nil
     }
 }

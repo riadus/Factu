@@ -27,23 +27,23 @@ class AssignmentQuery : AssignmentQueryProtocol {
             var filter = true
             if(queryables.keys.contains(where: { $0 == QueryableType.project}))
             {
-                filter = filter && assignment.project.id == queryables[QueryableType.project]!.id
+                filter = filter && assignment.project!.id == queryables[QueryableType.project]!.id
             }
             if(queryables.keys.contains(where: { $0 == QueryableType.client}))
             {
-                filter = filter && assignment.client.id == queryables[QueryableType.client]!.id
+                filter = filter && assignment.client!.id == queryables[QueryableType.client]!.id
             }
             if(queryables.keys.contains(where: { $0 == QueryableType.endClient}))
             {
-                filter = filter && assignment.endClient.id == queryables[QueryableType.endClient]!.id
+                filter = filter && assignment.endClient!.id == queryables[QueryableType.endClient]!.id
             }
             if(queryables.keys.contains(where: { $0 == QueryableType.consultant}))
             {
-                filter = filter && assignment.consultant.id == queryables[QueryableType.consultant]!.id
+                filter = filter && assignment.consultant!.id == queryables[QueryableType.consultant]!.id
             }
             if(queryables.keys.contains(where: { $0 == QueryableType.rate}))
             {
-                filter = filter && assignment.project.rate.id == queryables[QueryableType.rate]!.id
+                filter = filter && assignment.project!.rate!.id == queryables[QueryableType.rate]!.id
             }
             
             return filter

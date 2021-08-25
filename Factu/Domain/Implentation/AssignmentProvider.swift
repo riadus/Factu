@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import RealmSwift
 
 class AssignmentProvider : AssignmentProviderProtocol {
+    @Inject var repository : RepositoryProtocol
+    
     private var assignments : [Assignment] = []
     
     init() {
-        let project_1 = Project()
+          let project_1 = Project()
         project_1.id = "1"
         project_1.title = "Project"
         project_1.numberOfHoursPerDay = 8
@@ -40,11 +43,15 @@ class AssignmentProvider : AssignmentProviderProtocol {
         addAssignment(assignment_1)
     }
     
-    func addAssignment(_ assignment: Assignment) {
-        self.assignments.append(assignment)
+    func addAssignment(_ assignment: Assignment) -> Void {
+        if(getAllAssignments().count > 0)
+        {
+            return
+        }
+        repository.saveObject(object: assignment)
     }
     
     func getAllAssignments() -> [Assignment] {
-        return assignments
+        return repository.getObjects()
     }
 }
