@@ -10,5 +10,6 @@ import UIKit
 protocol  ICoordinator {
     init()
     func start() -> UINavigationController
-    func toTimesheet()
+    func toTimesheet() -> Void
+    func toInvoice(invoice : Invoice) -> Void
 }

@@ -7,33 +7,38 @@
 
 import Foundation
 
-protocol TimesheetServiceProtocol {
-    func createTimesheet(assignment : Assignment, days : [Day], month : Int, year : Int) -> Void
-    func getTimesheet(month : Int, year : Int) -> Timesheet?
-}
-
 class TimesheetService : TimesheetServiceProtocol {
     
     @Inject var repository : RepositoryProtocol
+    @Inject var guidGenerator : GuidGeneratorProtocol
     
-    func createTimesheet(assignment : Assignment, days : [Day], month : Int, year : Int) -> Void {
+    func createTimesheet(assignment : Assignment, days : [Day], month : Int, year : Int) -> Timesheet {
         let timesheet = Timesheet()
+        timesheet.id = guidGenerator.getNewGuid()
         timesheet.assignment = assignment
         timesheet.dates = days.toList()
         timesheet.month = month
         timesheet.year = year
         
-        repository.saveObject(object: timesheet)
-        /*
-        if(timesheets.contains(where: { t in t.month == month && t.year == year})){
-            timesheets.removeAll(where:  { t in t.month == month && t.year == year})
-        }
-        
-        timesheets.append(timesheet)*/
+        return timesheet
     }
     
-    func getTimesheet(month : Int, year : Int) -> Timesheet? {
-        let timesheets = repository.getObjects(filter: "year = " + String(year) + " AND month = " + String(month)) as [Timesheet]
+    
+   func saveTimesheet(timesheet: Timesheet) {
+    let existingTimesheets = repository.get(filter: { t in t.year == timesheet.year  && t.month == timesheet.month}) as [Timesheet]
+        
+       if(existingTimesheets.count > 0){
+           for i in 0...existingTimesheets.count - 1
+           {
+               repository.delete(objects: existingTimesheets[i].dates)
+           }
+           repository.delete(objects: existingTimesheets)
+       }
+       repository.save(object: timesheet)
+   }
+
+    func getTimesheet(assignment : Assignment, month : Int, year : Int) -> Timesheet? {
+        let timesheets = repository.get(filter: { $0.year == year && $0.month == month && $0.assignment?.id == assignment.id}) as [Timesheet]
         if(timesheets.count > 0)
         {
             return timesheets[0]

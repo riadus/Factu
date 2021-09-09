@@ -9,7 +9,11 @@ import Foundation
 import RealmSwift
 
 protocol RepositoryProtocol {
-    func saveObject<T:Object>(object: T)
-    func getObjects<T:Object>()->[T]
-    func getObjects<T:Object>(filter:String)->[T]
+    func save<T : Object>(object : T)
+    func get<T : Object>() -> [T]
+    func get<T : Object>(filter : String) -> [T]
+    func get<T : Object>(filter : (T) -> Bool) -> [T]
+    func delete<T : Object>(objects : [T]) -> Void
+    func delete<T : Object>(object : T) -> Void
+    func delete<T : Object>(objects : List<T>) -> Void
 }

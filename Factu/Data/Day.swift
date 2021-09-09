@@ -14,7 +14,7 @@ class Day : Object {
     @Persisted var isHalfDay : Bool
 }
 
-class Timesheet : Object{
+class Timesheet : Object {
     @Persisted var id : String = ""
     @Persisted var month : Int
     @Persisted var year : Int
@@ -22,11 +22,21 @@ class Timesheet : Object{
     @Persisted var assignment : Optional<Assignment>
 }
 
+class Invoice : Object {
+    @Persisted var id : String
+    @Persisted var timesheet : Optional<Timesheet>
+    @Persisted var amountExcludingVat : Float
+    @Persisted var amountIncludingVat : Float
+    @Persisted var vat : Float
+    @Persisted var quantity : Float
+}
+
 class Project : Queryable {
-   @Persisted  var title : String
+    @Persisted var title : String
     @Persisted var rate : Optional<Rate>
     @Persisted var archived : Bool
     @Persisted var numberOfHoursPerDay : Int
+    @Persisted var vat : Float
 }
 
 class Company : Queryable {

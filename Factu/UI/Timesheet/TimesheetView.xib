@@ -85,19 +85,19 @@
                             <rect key="frame" x="0.0" y="30" width="414" height="50"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EXi-rf-HE8">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zv2-k9-JZ0">
-                                            <rect key="frame" x="14" y="16" width="40" height="18"/>
+                                            <rect key="frame" x="14" y="21" width="40" height="18"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Iw-9w-f5h">
-                                            <rect key="frame" x="379" y="12.5" width="25" height="25"/>
+                                            <rect key="frame" x="369" y="12.5" width="35" height="35"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="4Iw-9w-f5h" secondAttribute="height" multiplier="1:1" id="JT7-LI-lyV"/>
-                                                <constraint firstAttribute="height" constant="25" id="qOc-HH-MnZ"/>
+                                                <constraint firstAttribute="height" constant="35" id="qOc-HH-MnZ"/>
                                             </constraints>
                                             <state key="normal" image="Cross"/>
                                             <connections>
@@ -109,7 +109,7 @@
                                     <constraints>
                                         <constraint firstItem="4Iw-9w-f5h" firstAttribute="centerY" secondItem="EXi-rf-HE8" secondAttribute="centerY" id="5x8-3Y-2MJ"/>
                                         <constraint firstAttribute="trailing" secondItem="4Iw-9w-f5h" secondAttribute="trailing" constant="10" id="Csm-Cq-iYa"/>
-                                        <constraint firstAttribute="height" constant="50" id="IQL-Wa-oFm"/>
+                                        <constraint firstAttribute="height" constant="60" id="IQL-Wa-oFm"/>
                                         <constraint firstItem="zv2-k9-JZ0" firstAttribute="centerY" secondItem="EXi-rf-HE8" secondAttribute="centerY" id="Koe-cw-pgN"/>
                                         <constraint firstItem="zv2-k9-JZ0" firstAttribute="leading" secondItem="EXi-rf-HE8" secondAttribute="leading" constant="14" id="sfj-mg-xpV"/>
                                     </constraints>
@@ -126,19 +126,19 @@
                             <rect key="frame" x="0.0" y="80" width="414" height="118"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hEy-KJ-0PR">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="079-0G-21n">
-                                            <rect key="frame" x="14" y="16" width="40" height="18"/>
+                                            <rect key="frame" x="14" y="21" width="40" height="18"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNX-0L-gmk">
-                                            <rect key="frame" x="379" y="12.5" width="25" height="25"/>
+                                            <rect key="frame" x="369" y="12.5" width="35" height="35"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="zNX-0L-gmk" secondAttribute="height" multiplier="1:1" id="jBh-AL-BjJ"/>
-                                                <constraint firstAttribute="height" constant="25" id="t91-14-VWb"/>
+                                                <constraint firstAttribute="height" constant="35" id="t91-14-VWb"/>
                                             </constraints>
                                             <state key="normal" image="Cross"/>
                                             <connections>
@@ -151,12 +151,12 @@
                                         <constraint firstItem="079-0G-21n" firstAttribute="centerY" secondItem="hEy-KJ-0PR" secondAttribute="centerY" id="D8R-aN-EWI"/>
                                         <constraint firstItem="079-0G-21n" firstAttribute="leading" secondItem="hEy-KJ-0PR" secondAttribute="leading" constant="14" id="InU-RV-swW"/>
                                         <constraint firstAttribute="trailing" secondItem="zNX-0L-gmk" secondAttribute="trailing" constant="10" id="SMW-kQ-w3h"/>
-                                        <constraint firstAttribute="height" constant="50" id="iQ7-ln-54e"/>
+                                        <constraint firstAttribute="height" constant="60" id="iQ7-ln-54e"/>
                                         <constraint firstItem="zNX-0L-gmk" firstAttribute="centerY" secondItem="hEy-KJ-0PR" secondAttribute="centerY" id="mxW-un-Lja"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tRT-zu-cpw" customClass="CalendarView" customModule="Factu" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="50" width="414" height="68"/>
+                                    <rect key="frame" x="0.0" y="60" width="414" height="58"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </view>
                             </subviews>

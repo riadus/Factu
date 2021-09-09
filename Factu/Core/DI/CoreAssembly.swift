@@ -15,6 +15,8 @@ struct CoreAssembly : DIPart {
                            .lifeCycle(.prototype)
                 DIRegister(TimesheetViewModel.init)
                            .lifeCycle(.prototype)
+                DIRegister(InvoiceViewModel.init)
+                            .lifeCycle(.prototype)
         }
     }
 }

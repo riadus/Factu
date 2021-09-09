@@ -18,16 +18,25 @@ class AssignmentProvider : AssignmentProviderProtocol {
         project_1.id = "1"
         project_1.title = "Project"
         project_1.numberOfHoursPerDay = 8
+        project_1.vat = 21
         
         let rate_1 = Rate()
-        rate_1.isHourly = false
-        rate_1.normalRate = 10
+        rate_1.isHourly = true
+        rate_1.normalRate = 100
         rate_1.id = "1"
         project_1.rate = rate_1
+        
+        let consultantCompany_1 = Company()
+        consultantCompany_1.name = "Service Provider"
+        consultantCompany_1.address = Address()
+        consultantCompany_1.address?.street = "Street 12"
+        consultantCompany_1.address?.postalCode = "1212 XB"
+        consultantCompany_1.address?.city = "Cityville"
         
         let consultant_1 = Consultant()
         consultant_1.name = "Riad"
         consultant_1.id = "1"
+        consultant_1.company = consultantCompany_1
         
         let client_1 = Company()
         client_1.name = "Client"
@@ -48,10 +57,10 @@ class AssignmentProvider : AssignmentProviderProtocol {
         {
             return
         }
-        repository.saveObject(object: assignment)
+        repository.save(object: assignment)
     }
     
     func getAllAssignments() -> [Assignment] {
-        return repository.getObjects()
+        return repository.get()
     }
 }

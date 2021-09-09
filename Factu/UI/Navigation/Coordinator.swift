@@ -7,7 +7,7 @@
 import UIKit
 
 class Coordinator : ICoordinator {
-    var navigationController : UINavigationController
+     var navigationController : UINavigationController
     
     required init(){
         self.navigationController = UINavigationController()
@@ -27,7 +27,13 @@ class Coordinator : ICoordinator {
         return navigationController
     }
     
-    func toTimesheet(){
+    func toTimesheet() -> Void {
         navigationController.pushViewController(TimesheetViewController(), animated: true)
+    }
+    
+    func toInvoice(invoice : Invoice) -> Void {
+        let viewController = InvoiceViewController()
+        viewController.bindingContext.prepare(invoice : invoice)
+        navigationController.pushViewController(viewController, animated: true)
     }
 }

@@ -24,7 +24,7 @@ class TimesheetViewController : BaseViewController<TimesheetViewModel> {
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var calendarView: CalendarView!
     
-    private let titleContainerSize :CGFloat = 50
+    private let titleContainerSize :CGFloat = 60
     private var _assignmentClosed : Bool = true
     private var _calendarClosed : Bool = true
     
@@ -76,6 +76,7 @@ class TimesheetViewController : BaseViewController<TimesheetViewModel> {
         bindingContext.saveText.bind(to: saveButton.reactive.title)
         bindingContext.generateInvoiceText.bind(to : generateInvoiceButton.reactive.title)
         saveButton.reactive.Command(bindingContext.saveCommand)
+        generateInvoiceButton.reactive.Command(bindingContext.generateInvoiceCommand)
     }
     
     func closeAssignment() -> Void {
