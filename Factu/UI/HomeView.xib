@@ -26,37 +26,31 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Factu" translatesAutoresizingMaskIntoConstraints="NO" id="1OR-7l-8Qd">
-                            <rect key="frame" x="30" y="30" width="354" height="458"/>
+                            <rect key="frame" x="30" y="232" width="354" height="354"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="1OR-7l-8Qd" secondAttribute="height" multiplier="1:1" id="jVf-2m-upM"/>
+                            </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCs-FF-1TT" userLabel="archivedButton">
-                            <rect key="frame" x="0.0" y="758" width="414" height="60"/>
+                            <rect key="frame" x="0.0" y="760.5" width="414" height="57.5"/>
                             <color key="backgroundColor" name="Orange"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="60" id="xge-JP-yUf"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <state key="normal" title="ARCHIVED">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XwM-Ae-9Qj" userLabel="timesheetButton">
-                            <rect key="frame" x="0.0" y="518" width="414" height="80"/>
-                            <color key="backgroundColor" name="LightGray"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="80" id="Q2b-ht-DIW"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                            <rect key="frame" x="0.0" y="546" width="414" height="57.5"/>
+                            <color key="backgroundColor" name="Gray"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <state key="normal" title="cra">
                                 <color key="titleColor" name="DarkGray"/>
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l2O-wp-gkg" userLabel="settingsButton">
-                            <rect key="frame" x="0.0" y="698" width="414" height="60"/>
+                            <rect key="frame" x="0.0" y="703.5" width="414" height="57"/>
                             <color key="backgroundColor" name="Green"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="60" id="eMO-iE-VqN"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <state key="normal" title="SETTINGS">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -66,17 +60,19 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="1OR-7l-8Qd" secondAttribute="trailing" constant="30" id="49i-pF-wpg"/>
                         <constraint firstItem="l2O-wp-gkg" firstAttribute="leading" secondItem="HOW-83-HfB" secondAttribute="leading" id="9QO-0g-sUD"/>
+                        <constraint firstItem="l2O-wp-gkg" firstAttribute="height" secondItem="XwM-Ae-9Qj" secondAttribute="height" id="DAh-9i-j1t"/>
+                        <constraint firstItem="1OR-7l-8Qd" firstAttribute="centerY" secondItem="HOW-83-HfB" secondAttribute="centerY" id="E77-cb-c84"/>
                         <constraint firstItem="iCs-FF-1TT" firstAttribute="leading" secondItem="HOW-83-HfB" secondAttribute="leading" id="GtW-fN-1eh"/>
                         <constraint firstAttribute="trailing" secondItem="iCs-FF-1TT" secondAttribute="trailing" id="INT-jc-wvM"/>
                         <constraint firstAttribute="trailing" secondItem="l2O-wp-gkg" secondAttribute="trailing" id="Kqg-j7-GGS"/>
-                        <constraint firstItem="1OR-7l-8Qd" firstAttribute="top" secondItem="HOW-83-HfB" secondAttribute="top" constant="30" id="NyQ-E6-iQ9"/>
+                        <constraint firstItem="XwM-Ae-9Qj" firstAttribute="height" secondItem="HOW-83-HfB" secondAttribute="height" multiplier="0.07" id="TMH-oi-pZh"/>
                         <constraint firstItem="iCs-FF-1TT" firstAttribute="top" secondItem="l2O-wp-gkg" secondAttribute="bottom" id="WTh-g2-jOC"/>
                         <constraint firstAttribute="trailing" secondItem="XwM-Ae-9Qj" secondAttribute="trailing" id="aIE-QU-fVT"/>
                         <constraint firstItem="XwM-Ae-9Qj" firstAttribute="leading" secondItem="HOW-83-HfB" secondAttribute="leading" id="iFE-DT-O3m"/>
                         <constraint firstItem="1OR-7l-8Qd" firstAttribute="leading" secondItem="HOW-83-HfB" secondAttribute="leading" constant="30" id="jFm-rz-1BH"/>
+                        <constraint firstItem="iCs-FF-1TT" firstAttribute="height" secondItem="XwM-Ae-9Qj" secondAttribute="height" id="nBJ-YE-rfe"/>
                         <constraint firstAttribute="bottom" secondItem="iCs-FF-1TT" secondAttribute="bottom" id="rG7-xt-wT1"/>
                         <constraint firstItem="l2O-wp-gkg" firstAttribute="top" secondItem="XwM-Ae-9Qj" secondAttribute="bottom" constant="100" id="stl-v5-VOx"/>
-                        <constraint firstItem="XwM-Ae-9Qj" firstAttribute="top" secondItem="1OR-7l-8Qd" secondAttribute="bottom" constant="30" id="zqY-rx-ivL"/>
                     </constraints>
                 </view>
             </subviews>
@@ -96,11 +92,11 @@
         <namedColor name="DarkGray">
             <color red="0.34099999070167542" green="0.34099999070167542" blue="0.33700001239776611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="Gray">
+            <color red="0.70999997854232788" green="0.72200000286102295" blue="0.7369999885559082" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Green">
             <color red="0.1289999932050705" green="0.68599998950958252" blue="0.58799999952316284" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="LightGray">
-            <color red="0.70999997854232788" green="0.72200000286102295" blue="0.7369999885559082" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Orange">
             <color red="0.93300002813339233" green="0.50199997425079346" blue="0.016000000759959221" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

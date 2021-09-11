@@ -44,7 +44,7 @@ class DayViewCell: UICollectionViewCell {
     
     func StyleWeekend() -> Void {
         self.dayLabel.textColor = UIColor.white
-        self.backgroundColor = UIColor(named: "LightGray")
+        self.backgroundColor = UIColor(named: "Gray")
     }
     
     func StyleNormal() -> Void {

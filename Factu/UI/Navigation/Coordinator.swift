@@ -36,4 +36,8 @@ class Coordinator : ICoordinator {
         viewController.bindingContext.prepare(invoice : invoice)
         navigationController.pushViewController(viewController, animated: true)
     }
+    
+    func toSettings() -> Void {
+        navigationController.pushViewController(AssignmentSettingsViewController(), animated: true)
+    }
 }

@@ -56,7 +56,7 @@ class AssignmentProvider : AssignmentProviderProtocol {
         if(getAllAssignments().count > 0)
         {
             return
-        }
+        } 
         repository.save(object: assignment)
     }
     

@@ -12,4 +12,5 @@ protocol  ICoordinator {
     func start() -> UINavigationController
     func toTimesheet() -> Void
     func toInvoice(invoice : Invoice) -> Void
+    func toSettings() -> Void
 }

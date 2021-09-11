@@ -14,7 +14,8 @@ class HomeViewModel : IBaseViewModel{
     let timesheetText = Observable<String>("Timesheet")
     let settingsText = Observable<String>("Settings")
     let archivedText = Observable<String>("Archived")
-    var timesheetCommand : ICommand? = nil
+    var timesheetCommand : ICommand!
+    var settingsCommand : ICommand!
     
     @Inject var coordinator : ICoordinator
     
@@ -23,9 +24,14 @@ class HomeViewModel : IBaseViewModel{
         settingsText.value = settingsText.value.uppercased()
         archivedText.value = archivedText.value.uppercased()
         timesheetCommand = Command(action: navigateToTimesheet)
+        settingsCommand = Command(action: navigateToSettings)
     }
     
     private func navigateToTimesheet() -> Void{
         coordinator.toTimesheet()
+    }
+    
+    private func navigateToSettings() -> Void {
+        coordinator.toSettings()
     }
 }
