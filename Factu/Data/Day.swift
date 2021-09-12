@@ -43,13 +43,14 @@ class Company : Queryable {
     @Persisted var name : String
     @Persisted var address : Optional<Address>
     @Persisted var iban : String
+    @Persisted var isClient : Bool
 }
 
 class Address : Queryable {
     @Persisted var street : String
     @Persisted var city : String
     @Persisted var postalCode : String
-    @Persisted  var country : String
+    @Persisted var country : String
 }
 
 class Consultant : Queryable {

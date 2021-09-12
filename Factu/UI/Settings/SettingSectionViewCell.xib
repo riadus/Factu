@@ -27,10 +27,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cross" translatesAutoresizingMaskIntoConstraints="NO" id="D3k-Cl-Pah">
-                                <rect key="frame" x="280" y="7" width="30" height="30"/>
+                                <rect key="frame" x="283" y="8.5" width="27" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="D3k-Cl-Pah" secondAttribute="height" id="GCX-kb-9Rx"/>
-                                    <constraint firstAttribute="height" constant="30" id="QqF-xq-S82"/>
                                 </constraints>
                             </imageView>
                         </subviews>

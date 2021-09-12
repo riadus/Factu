@@ -11,11 +11,12 @@ import Bond
 class AssignmentSettingsViewController: BaseViewController<AssignmentSettingsViewModel>, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
      override func viewDidLoad() {
-        super.viewDidLoad()
-      
+        bindingContext.loadData()
         tableView.register(UINib(nibName: "SettingSectionViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "Section")
         tableView.register(UINib(nibName: "SettingItemViewCell", bundle: nil), forCellReuseIdentifier: "Item")
-    }
+        
+        super.viewDidLoad()
+     }
     
     override func bindViewModel() {
         super.bindViewModel()

@@ -8,16 +8,17 @@
 import Foundation
 import Bond
 
-class AssignmentBinder<Changeset: SectionedDataSourceChangeset>: TableViewBinderDataSource<Changeset>, UITableViewDelegate where Changeset.Collection == Array2D<HeadSection, SubSection> {
+class AssignmentBinder<Changeset: SectionedDataSourceChangeset>: TableViewBinderDataSource<Changeset>, UITableViewDelegate where Changeset.Collection == Array2D<HeadSection, SubSectionProtocol> {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "Section") as! SettingSectionViewCell
-        let factor = CGFloat(self.changeset!.collection[sectionAt: section].metadata.isOpened.value == true ? 0 : -1)
+        let isOpen = self.changeset!.collection[sectionAt: section].metadata.isOpened.value
+        let factor = CGFloat(isOpen == true ? 0 : -1)
         cell.openCloseImage.transform = CGAffineTransform(rotationAngle: factor * CGFloat.pi / 4)
         self.changeset!.collection[sectionAt: section].metadata.title.bind(to : cell.sectionTitle)
         cell.setTapAction {
             self.changeset!.collection[sectionAt: section].metadata.openCloseCommand.Execute()
-            let factor = CGFloat(self.changeset!.collection[sectionAt: section].metadata.isOpened.value == true ? 0 : -1)
+            let factor = CGFloat(!isOpen ? 0 : -1)
             UIView.animate(withDuration: 0.3, animations: {
                 cell.openCloseImage.transform = CGAffineTransform(rotationAngle: factor * CGFloat.pi / 4)
             })

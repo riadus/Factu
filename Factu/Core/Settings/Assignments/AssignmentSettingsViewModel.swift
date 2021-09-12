@@ -12,39 +12,77 @@ class AssignmentSettingsViewModel : IBaseViewModel {
 
     var title: Observable<String> = Observable("Settings")
     var back: String = "Back"
-    var sections : MutableObservableArray2D<HeadSection, SubSection>
+    var sections : MutableObservableArray2D<HeadSection, SubSectionProtocol>!
+    
+    @Inject var settingsProvider : SettingsProviderProtocol
+    @Inject var assignmentProvider : AssignmentProviderProtocol
     
     required init() {
-        let initData = Array2D<HeadSection, SubSection>(sectionsWithItems: [
-            (HeadSection(title:"Section 1"), [SubSection("1"), SubSection("2")]),
-            (HeadSection(title:"Section 2"), [SubSection("1"), SubSection("2"), SubSection("3")]),
-            (HeadSection(title:"Section 3", isOpened: true), [SubSection("1"), SubSection("2"), SubSection("3"), SubSection("4")]),
-            (HeadSection(title:"Section 4"), [SubSection("1"), SubSection("2"), SubSection("3")])
+        }
+    
+    func loadData() {
+        let initData = Array2D<HeadSection, SubSectionProtocol>(sectionsWithItems: [
+            (HeadSection(title:"Assignments"), loadAssignment()),
+            (HeadSection(title:"Consultants"), loadConsultants()),
+            (HeadSection(title:"Projects"), loadProjects()),
+            (HeadSection(title:"Clients"), loadClients()),
+            (HeadSection(title:"Rates"), loadRates())
         ])
         sections = MutableObservableArray2D(initData)
     }
-}
-
-class HeadSection : ObservableObject, Identifiable {
-    let title : Observable<String>!
-    var isOpened : Observable<Bool>!
-    let openCloseCommand : ICommand = Command()
     
-    init(title : String, isOpened : Bool = false) {
-        self.title = Observable(title)
-        self.isOpened = Observable(isOpened)
-        self.openCloseCommand.setAction(self.openClose)
+    func addAddNew(_ subsections: inout [SubSectionProtocol]) -> [SubSectionProtocol]{
+        subsections.append(SubSection())
+        return subsections
     }
     
-    func openClose() -> Void {
-        self.isOpened.value = !self.isOpened.value
+    func loadAssignment() -> [SubSectionProtocol]{
+        let assignments = assignmentProvider.getAllAssignments()
+        var subSections : [SubSectionProtocol] = [AssignmentSection]()
+        
+        for assignment in assignments {
+            subSections.append(AssignmentSection(assignment))
+        }
+        return addAddNew(&subSections)
     }
-}
-
-class SubSection {
-    let title : String
     
-    init(_ title : String){
-        self.title = title
+    func loadConsultants() -> [SubSectionProtocol]{
+        let consultants = settingsProvider.getConsultants()
+        var subSections : [SubSectionProtocol] = [ConsultantSubSection]()
+        
+        for consultant in consultants {
+            subSections.append(ConsultantSubSection(consultant))
+        }
+        return addAddNew(&subSections)
+    }
+    
+    func loadProjects() -> [SubSectionProtocol] {
+        let projects = settingsProvider.getProjetcs()
+        var subSections : [SubSectionProtocol] = [ProjectSubSection]()
+        
+        for project in projects {
+            subSections.append(ProjectSubSection(project))
+        }
+        return addAddNew(&subSections)
+    }
+    
+    func loadRates() -> [SubSectionProtocol] {
+        let rates = settingsProvider.getRates()
+        var subSections : [SubSectionProtocol] = [RateSubSection]()
+        
+        for rate in rates {
+            subSections.append(RateSubSection(rate))
+        }
+        return addAddNew(&subSections)
+    }
+    
+    func loadClients() -> [SubSectionProtocol] {
+        let clients = settingsProvider.getClients()
+        var subSections : [SubSectionProtocol] = [CompanySubSection]()
+        
+        for client in clients {
+            subSections.append(CompanySubSection(client))
+        }
+        return addAddNew(&subSections)
     }
 }

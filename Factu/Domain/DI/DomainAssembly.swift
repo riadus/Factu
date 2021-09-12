@@ -22,6 +22,8 @@ struct DomainAssembly : DIPart {
                 DIRegister(TimesheetService.init)
                         .as(TimesheetServiceProtocol.self)
                         .lifeCycle(.single)
+                DIRegister(SettingsProvider.init)
+                        .as(SettingsProviderProtocol.self)
         }
     }
 }

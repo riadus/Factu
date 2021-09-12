@@ -32,6 +32,7 @@ class AssignmentProvider : AssignmentProviderProtocol {
         consultantCompany_1.address?.street = "Street 12"
         consultantCompany_1.address?.postalCode = "1212 XB"
         consultantCompany_1.address?.city = "Cityville"
+        consultantCompany_1.isClient = false
         
         let consultant_1 = Consultant()
         consultant_1.name = "Riad"
@@ -41,6 +42,7 @@ class AssignmentProvider : AssignmentProviderProtocol {
         let client_1 = Company()
         client_1.name = "Client"
         client_1.id = "1"
+        client_1.isClient = true
         
         let assignment_1 = Assignment()
         assignment_1.project = project_1
