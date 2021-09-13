@@ -40,4 +40,22 @@ class Coordinator : ICoordinator {
     func toSettings() -> Void {
         navigationController.pushViewController(AssignmentSettingsViewController(), animated: true)
     }
+    
+    func toEditConsultantView(consultant : Consultant?) {
+        let viewController = EditViewController()
+        viewController.setTarget(target : .consulant)
+        let navigationEditObject = NavigationEditObject(object: consultant ?? NSObject(), target: .consulant, addNew: consultant == nil)
+       
+        viewController.bindingContext.prepare(navigationEditObject: navigationEditObject)
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func toEditCompany(company: Company?) -> Void {
+        let viewController = EditViewController()
+        viewController.setTarget(target: .client)
+        let navigationEditObject = NavigationEditObject(object: company ?? NSObject(), target: .client, addNew: company == nil)
+       
+        viewController.bindingContext.prepare(navigationEditObject: navigationEditObject)
+        navigationController.pushViewController(viewController, animated: true)
+    }
 }

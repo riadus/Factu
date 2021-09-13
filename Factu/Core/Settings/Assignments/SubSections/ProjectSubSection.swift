@@ -12,4 +12,8 @@ class ProjectSubSection : SubSection {
     init(_ project : Project){
         super.init("\(project.title)")
     }
+    
+    override init() {
+        super.init()
+    }
 }

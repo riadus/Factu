@@ -19,6 +19,12 @@ struct CoreAssembly : DIPart {
                             .lifeCycle(.prototype)
                 DIRegister(AssignmentSettingsViewModel.init)
                             .lifeCycle(.prototype)
+                DIRegister(EditItemViewModelFactory.init)
+                            .as(EditItemViewModelFactoryProtocol.self)
+                DIRegister(AssignmentSettingsViewModel.init)
+                            .lifeCycle(.prototype)
+                DIRegister(EditViewModel.init)
+                            .lifeCycle(.prototype)
         }
     }
 }

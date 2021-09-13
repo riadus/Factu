@@ -22,4 +22,8 @@ extension UIView {
     func reduceHeight(_ height: CGFloat) -> Void {
         self.frame = CGRect(x : self.frame.minX, y : self.frame.minY, width: self.frame.width, height: height)
     }
+    
+    func bondsWithReducedWidth(_ offset: CGFloat) -> CGRect {
+        return CGRect(x : self.bounds.minX, y : self.bounds.minY, width: self.bounds.width - offset, height: self.bounds.height)
+    }
 }

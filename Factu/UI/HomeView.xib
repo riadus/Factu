@@ -34,7 +34,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCs-FF-1TT" userLabel="archivedButton">
                             <rect key="frame" x="0.0" y="760.5" width="414" height="57.5"/>
                             <color key="backgroundColor" name="Orange"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="ARCHIVED">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -42,7 +42,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XwM-Ae-9Qj" userLabel="timesheetButton">
                             <rect key="frame" x="0.0" y="546" width="414" height="57.5"/>
                             <color key="backgroundColor" name="Gray"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="cra">
                                 <color key="titleColor" name="DarkGray"/>
                             </state>
@@ -50,7 +50,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l2O-wp-gkg" userLabel="settingsButton">
                             <rect key="frame" x="0.0" y="703.5" width="414" height="57"/>
                             <color key="backgroundColor" name="Green"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="SETTINGS">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
@@ -84,7 +84,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HOW-83-HfB" secondAttribute="trailing" id="uca-yK-UfP"/>
                 <constraint firstItem="HOW-83-HfB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="znp-5G-SpR"/>
             </constraints>
-            <point key="canvasLocation" x="-96" y="154"/>
+            <point key="canvasLocation" x="-97.101449275362327" y="153.34821428571428"/>
         </view>
     </objects>
     <resources>

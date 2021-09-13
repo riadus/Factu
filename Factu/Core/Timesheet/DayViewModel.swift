@@ -60,6 +60,9 @@ class DayViewModel : ObservableObject, Identifiable {
     }
     
     func setIsSelected(_ isSelected : Bool) -> Void {
+        if(!self.isSelectable) {
+            return
+        }
         self.isSelected = isSelected
         if(self.isSelected){
             self.isHalfDay = false

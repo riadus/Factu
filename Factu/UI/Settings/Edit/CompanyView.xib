@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompanyView" customModule="Factu" customModuleProvider="target">
+            <connections>
+                <outlet property="address" destination="qiS-S5-oOw" id="gJp-EX-K9z"/>
+                <outlet property="bic" destination="x2K-MJ-Cwa" id="SeD-hh-RPT"/>
+                <outlet property="city" destination="Tb1-lA-jlj" id="4Ht-ie-fy3"/>
+                <outlet property="country" destination="aTC-en-Dix" id="QsN-Nm-B52"/>
+                <outlet property="iban" destination="y1k-Qw-qFd" id="o3I-4F-ccr"/>
+                <outlet property="name" destination="9An-kM-RkJ" id="aey-uG-oag"/>
+                <outlet property="postalCode" destination="Vha-Dr-zUW" id="4cm-yD-Rqd"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9An-kM-RkJ">
+                    <rect key="frame" x="0.0" y="44" width="414" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qiS-S5-oOw">
+                    <rect key="frame" x="0.0" y="86" width="414" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vha-Dr-zUW">
+                    <rect key="frame" x="0.0" y="128" width="202" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aTC-en-Dix">
+                    <rect key="frame" x="0.0" y="170" width="414" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tb1-lA-jlj">
+                    <rect key="frame" x="212" y="128" width="202" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x2K-MJ-Cwa">
+                    <rect key="frame" x="0.0" y="212" width="80" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="OUJ-B5-VVJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y1k-Qw-qFd">
+                    <rect key="frame" x="88" y="212" width="326" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" name="LightGray"/>
+            <constraints>
+                <constraint firstItem="y1k-Qw-qFd" firstAttribute="leading" secondItem="x2K-MJ-Cwa" secondAttribute="trailing" constant="8" symbolic="YES" id="3Td-5J-0PO"/>
+                <constraint firstItem="x2K-MJ-Cwa" firstAttribute="top" secondItem="aTC-en-Dix" secondAttribute="bottom" constant="8" symbolic="YES" id="3ep-bX-CfR"/>
+                <constraint firstItem="Tb1-lA-jlj" firstAttribute="leading" secondItem="Vha-Dr-zUW" secondAttribute="trailing" constant="10" id="4Oe-4C-Ao4"/>
+                <constraint firstItem="x2K-MJ-Cwa" firstAttribute="leading" secondItem="aTC-en-Dix" secondAttribute="leading" id="4VZ-Dc-O2u"/>
+                <constraint firstItem="Tb1-lA-jlj" firstAttribute="top" secondItem="Vha-Dr-zUW" secondAttribute="top" id="BU2-BB-AWR"/>
+                <constraint firstItem="y1k-Qw-qFd" firstAttribute="top" secondItem="x2K-MJ-Cwa" secondAttribute="top" id="BuD-Hh-ge1"/>
+                <constraint firstItem="Tb1-lA-jlj" firstAttribute="trailing" secondItem="qiS-S5-oOw" secondAttribute="trailing" id="FmV-Id-8Qa"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9An-kM-RkJ" secondAttribute="trailing" id="J0A-ZY-UgK"/>
+                <constraint firstItem="aTC-en-Dix" firstAttribute="leading" secondItem="Vha-Dr-zUW" secondAttribute="leading" id="Lxl-D9-j4f"/>
+                <constraint firstItem="aTC-en-Dix" firstAttribute="trailing" secondItem="Tb1-lA-jlj" secondAttribute="trailing" id="Q9u-eR-AC5"/>
+                <constraint firstItem="y1k-Qw-qFd" firstAttribute="trailing" secondItem="aTC-en-Dix" secondAttribute="trailing" id="SKK-rl-0ah"/>
+                <constraint firstItem="qiS-S5-oOw" firstAttribute="leading" secondItem="9An-kM-RkJ" secondAttribute="leading" id="WTL-W1-lBh"/>
+                <constraint firstItem="Vha-Dr-zUW" firstAttribute="width" secondItem="Tb1-lA-jlj" secondAttribute="width" id="d9c-fb-ib2"/>
+                <constraint firstItem="qiS-S5-oOw" firstAttribute="top" secondItem="9An-kM-RkJ" secondAttribute="bottom" constant="8" symbolic="YES" id="e3U-gq-tUA"/>
+                <constraint firstItem="9An-kM-RkJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="gd6-vc-Ej1"/>
+                <constraint firstItem="9An-kM-RkJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="lVH-pR-UBL"/>
+                <constraint firstItem="aTC-en-Dix" firstAttribute="top" secondItem="Vha-Dr-zUW" secondAttribute="bottom" constant="8" symbolic="YES" id="nao-OC-KDI"/>
+                <constraint firstItem="Vha-Dr-zUW" firstAttribute="top" secondItem="qiS-S5-oOw" secondAttribute="bottom" constant="8" symbolic="YES" id="pan-8D-i3M"/>
+                <constraint firstItem="qiS-S5-oOw" firstAttribute="trailing" secondItem="9An-kM-RkJ" secondAttribute="trailing" id="wMZ-Vt-AUn"/>
+                <constraint firstItem="Vha-Dr-zUW" firstAttribute="leading" secondItem="qiS-S5-oOw" secondAttribute="leading" id="zpE-Fv-ZJx"/>
+            </constraints>
+            <point key="canvasLocation" x="28" y="74"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="LightGray">
+            <color red="0.94900000095367432" green="0.93699997663497925" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

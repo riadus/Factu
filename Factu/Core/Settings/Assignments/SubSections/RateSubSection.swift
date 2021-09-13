@@ -12,4 +12,8 @@ class RateSubSection : SubSection {
     init(_ rate : Rate){
         super.init("\(rate.normalRate)")
     }
+    
+    override init() {
+        super.init()
+    }
 }

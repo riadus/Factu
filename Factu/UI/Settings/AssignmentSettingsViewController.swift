@@ -26,6 +26,10 @@ class AssignmentSettingsViewController: BaseViewController<AssignmentSettingsVie
             if(!changeset.sections[indexPath.section].metadata.isOpened.value){
                 itemCell.isHidden = true
             }
+            itemCell.setTapAction {
+                changeset.sections[indexPath.section].items[indexPath.row].tapCommand.Execute()
+                
+            }
             return itemCell
         }
         self.bindingContext.sections.bind(to: self.tableView, using: sectionBindingDatSource)

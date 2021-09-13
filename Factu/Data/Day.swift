@@ -43,6 +43,7 @@ class Company : Queryable {
     @Persisted var name : String
     @Persisted var address : Optional<Address>
     @Persisted var iban : String
+    @Persisted var bic : String
     @Persisted var isClient : Bool
 }
 

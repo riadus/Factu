@@ -31,11 +31,6 @@ class AssignmentSettingsViewModel : IBaseViewModel {
         sections = MutableObservableArray2D(initData)
     }
     
-    func addAddNew(_ subsections: inout [SubSectionProtocol]) -> [SubSectionProtocol]{
-        subsections.append(SubSection())
-        return subsections
-    }
-    
     func loadAssignment() -> [SubSectionProtocol]{
         let assignments = assignmentProvider.getAllAssignments()
         var subSections : [SubSectionProtocol] = [AssignmentSection]()
@@ -43,7 +38,9 @@ class AssignmentSettingsViewModel : IBaseViewModel {
         for assignment in assignments {
             subSections.append(AssignmentSection(assignment))
         }
-        return addAddNew(&subSections)
+        subSections.append(AssignmentSection())
+        
+        return subSections
     }
     
     func loadConsultants() -> [SubSectionProtocol]{
@@ -53,7 +50,9 @@ class AssignmentSettingsViewModel : IBaseViewModel {
         for consultant in consultants {
             subSections.append(ConsultantSubSection(consultant))
         }
-        return addAddNew(&subSections)
+        subSections.append(ConsultantSubSection())
+        
+        return subSections
     }
     
     func loadProjects() -> [SubSectionProtocol] {
@@ -63,7 +62,9 @@ class AssignmentSettingsViewModel : IBaseViewModel {
         for project in projects {
             subSections.append(ProjectSubSection(project))
         }
-        return addAddNew(&subSections)
+        subSections.append(ProjectSubSection())
+        
+        return subSections
     }
     
     func loadRates() -> [SubSectionProtocol] {
@@ -73,7 +74,9 @@ class AssignmentSettingsViewModel : IBaseViewModel {
         for rate in rates {
             subSections.append(RateSubSection(rate))
         }
-        return addAddNew(&subSections)
+        subSections.append(RateSubSection())
+        
+        return subSections
     }
     
     func loadClients() -> [SubSectionProtocol] {
@@ -83,6 +86,8 @@ class AssignmentSettingsViewModel : IBaseViewModel {
         for client in clients {
             subSections.append(CompanySubSection(client))
         }
-        return addAddNew(&subSections)
+        subSections.append(CompanySubSection())
+        
+        return subSections
     }
 }

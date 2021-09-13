@@ -27,5 +27,4 @@ class SettingSectionViewCell: UITableViewHeaderFooterView {
     func setTapAction(_ action : @escaping () -> Void){
         self.tapAction = action
     }
-    
 }

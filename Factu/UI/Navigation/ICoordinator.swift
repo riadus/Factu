@@ -13,4 +13,6 @@ protocol  ICoordinator {
     func toTimesheet() -> Void
     func toInvoice(invoice : Invoice) -> Void
     func toSettings() -> Void
+    func toEditConsultantView(consultant : Consultant?) -> Void
+    func toEditCompany(company: Company?) -> Void
 }

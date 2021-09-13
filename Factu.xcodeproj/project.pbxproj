@@ -93,6 +93,14 @@
 		91F7D4C126EE0F3000BE383F /* AssignmentSubSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D4C026EE0F3000BE383F /* AssignmentSubSection.swift */; };
 		91F7D4C326EE0F4400BE383F /* CompanySubSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D4C226EE0F4400BE383F /* CompanySubSection.swift */; };
 		91F7D4C526EE0FAF00BE383F /* ProjectSubSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D4C426EE0FAF00BE383F /* ProjectSubSection.swift */; };
+		91F7D4C826EE2F0C00BE383F /* ConsultantView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F7D4C726EE2F0C00BE383F /* ConsultantView.xib */; };
+		91F7D4CA26EE310100BE383F /* ConsultantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D4C926EE310100BE383F /* ConsultantView.swift */; };
+		91F7D4CC26EE33AE00BE383F /* CompanyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F7D4CB26EE33AE00BE383F /* CompanyView.xib */; };
+		91F7D4CE26EE342000BE383F /* CompanyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D4CD26EE342000BE383F /* CompanyView.swift */; };
+		91F7D4D326EE365A00BE383F /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D4D226EE365A00BE383F /* EditViewModel.swift */; };
+		91F7D4D526EE392600BE383F /* EditItemViewModelFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D4D426EE392600BE383F /* EditItemViewModelFactoryProtocol.swift */; };
+		91F7D4D826EF349900BE383F /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F7D4D626EF349900BE383F /* EditViewController.swift */; };
+		91F7D4D926EF349900BE383F /* EditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F7D4D726EF349900BE383F /* EditViewController.xib */; };
 		91FF6E8826DFA064003E6CBE /* InvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF6E8626DFA064003E6CBE /* InvoiceViewController.swift */; };
 		91FF6E8926DFA064003E6CBE /* InvoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91FF6E8726DFA064003E6CBE /* InvoiceViewController.xib */; };
 		91FF6E8B26E10067003E6CBE /* InvoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF6E8A26E10067003E6CBE /* InvoiceViewModel.swift */; };
@@ -203,6 +211,14 @@
 		91F7D4C026EE0F3000BE383F /* AssignmentSubSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentSubSection.swift; sourceTree = "<group>"; };
 		91F7D4C226EE0F4400BE383F /* CompanySubSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanySubSection.swift; sourceTree = "<group>"; };
 		91F7D4C426EE0FAF00BE383F /* ProjectSubSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSubSection.swift; sourceTree = "<group>"; };
+		91F7D4C726EE2F0C00BE383F /* ConsultantView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConsultantView.xib; sourceTree = "<group>"; };
+		91F7D4C926EE310100BE383F /* ConsultantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultantView.swift; sourceTree = "<group>"; };
+		91F7D4CB26EE33AE00BE383F /* CompanyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyView.xib; sourceTree = "<group>"; };
+		91F7D4CD26EE342000BE383F /* CompanyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyView.swift; sourceTree = "<group>"; };
+		91F7D4D226EE365A00BE383F /* EditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
+		91F7D4D426EE392600BE383F /* EditItemViewModelFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewModelFactoryProtocol.swift; sourceTree = "<group>"; };
+		91F7D4D626EF349900BE383F /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		91F7D4D726EF349900BE383F /* EditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditViewController.xib; sourceTree = "<group>"; };
 		91FF6E8626DFA064003E6CBE /* InvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceViewController.swift; sourceTree = "<group>"; };
 		91FF6E8726DFA064003E6CBE /* InvoiceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvoiceViewController.xib; sourceTree = "<group>"; };
 		91FF6E8A26E10067003E6CBE /* InvoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceViewModel.swift; sourceTree = "<group>"; };
@@ -397,6 +413,8 @@
 			children = (
 				91F7D4B426EE0E6000BE383F /* SubSections */,
 				91ADDE4B26EB478B00281C02 /* AssignmentSettingsViewModel.swift */,
+				91F7D4D226EE365A00BE383F /* EditViewModel.swift */,
+				91F7D4D426EE392600BE383F /* EditItemViewModelFactoryProtocol.swift */,
 			);
 			path = Assignments;
 			sourceTree = "<group>";
@@ -404,6 +422,7 @@
 		91ADDE4D26EB48EF00281C02 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				91F7D4C626EE2EAF00BE383F /* Edit */,
 				91ADDE4E26EB492400281C02 /* AssignmentSettingsViewController.swift */,
 				91ADDE4F26EB492400281C02 /* AssignmentSettingsViewController.xib */,
 				91ADDE5226EB85F600281C02 /* SettingSectionViewCell.swift */,
@@ -520,6 +539,19 @@
 			path = SubSections;
 			sourceTree = "<group>";
 		};
+		91F7D4C626EE2EAF00BE383F /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				91F7D4C726EE2F0C00BE383F /* ConsultantView.xib */,
+				91F7D4C926EE310100BE383F /* ConsultantView.swift */,
+				91F7D4CB26EE33AE00BE383F /* CompanyView.xib */,
+				91F7D4CD26EE342000BE383F /* CompanyView.swift */,
+				91F7D4D626EF349900BE383F /* EditViewController.swift */,
+				91F7D4D726EF349900BE383F /* EditViewController.xib */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
 		A4849C5E33C1BFE1775D5B0B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -623,6 +655,7 @@
 				9101960126A775780079A4A8 /* Launch Screen.storyboard in Resources */,
 				91BFE83A26C5A3B90006A22A /* DayViewCell.xib in Resources */,
 				917760C126AD81F200DA200E /* TimesheetView.xib in Resources */,
+				91F7D4C826EE2F0C00BE383F /* ConsultantView.xib in Resources */,
 				918BA7DE26A61F8000DF5F84 /* Assets.xcassets in Resources */,
 				91ADDE5526EB85F600281C02 /* SettingSectionViewCell.xib in Resources */,
 				91F3637E26CE6F8C00E48622 /* CalendarView.xib in Resources */,
@@ -630,6 +663,8 @@
 				91BFE83626C3C4760006A22A /* MonthViewCell.xib in Resources */,
 				91FF6E8926DFA064003E6CBE /* InvoiceViewController.xib in Resources */,
 				91ADDE5126EB492400281C02 /* AssignmentSettingsViewController.xib in Resources */,
+				91F7D4D926EF349900BE383F /* EditViewController.xib in Resources */,
+				91F7D4CC26EE33AE00BE383F /* CompanyView.xib in Resources */,
 				91F3638026CE9CF800E48622 /* AssignmentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -690,6 +725,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91F7D4D326EE365A00BE383F /* EditViewModel.swift in Sources */,
 				91F7D4C326EE0F4400BE383F /* CompanySubSection.swift in Sources */,
 				917FEFB526ED300000D93450 /* AssignmentBinder.swift in Sources */,
 				91ADDE5026EB492400281C02 /* AssignmentSettingsViewController.swift in Sources */,
@@ -742,6 +778,7 @@
 				9184EF9026AB1CED005B4988 /* AnyDIPart.swift in Sources */,
 				9184EF9626AB1DB7005B4988 /* DIObject+DIPartBuildable.swift in Sources */,
 				91F3638426CFEB9100E48622 /* Day.swift in Sources */,
+				91F7D4D826EF349900BE383F /* EditViewController.swift in Sources */,
 				9184EF9826AB1DDA005B4988 /* DIPart+DIPartBuildabl.swift in Sources */,
 				91F3639926D4076700E48622 /* AssignmentQueryProtocol.swift in Sources */,
 				9184EF7A26AB1B31005B4988 /* DIContainer.swift in Sources */,
@@ -752,6 +789,7 @@
 				9184EF8926AB1C47005B4988 /* InjectableProperty.swift in Sources */,
 				9184EF7E26AB1B70005B4988 /* DIComponentContext.swift in Sources */,
 				9184EFA926AB2CFE005B4988 /* CoreAssembly.swift in Sources */,
+				91F7D4CE26EE342000BE383F /* CompanyView.swift in Sources */,
 				91F3636E26CCF44800E48622 /* CalendarViewModel.swift in Sources */,
 				91F3637526CCF4D300E48622 /* RangeExtensions.swift in Sources */,
 				91E9D8B126D7864F00D59D95 /* TimesheetServiceProtocol.swift in Sources */,
@@ -764,7 +802,9 @@
 				91F363A126D4230800E48622 /* TimesheetService.swift in Sources */,
 				9184EF9B26AB1E0D005B4988 /* DIPartBuildable.swift in Sources */,
 				91F7D4BF26EE0EF800BE383F /* SubSection.swift in Sources */,
+				91F7D4D526EE392600BE383F /* EditItemViewModelFactoryProtocol.swift in Sources */,
 				91F3637C26CE6F4900E48622 /* CalendarView.swift in Sources */,
+				91F7D4CA26EE310100BE383F /* ConsultantView.swift in Sources */,
 				91D37EA626AB688200835836 /* IBaseViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

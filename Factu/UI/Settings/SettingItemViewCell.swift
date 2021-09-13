@@ -10,15 +10,20 @@ import UIKit
 class SettingItemViewCell: UITableViewCell {
 
     @IBOutlet weak var itemTitle: UILabel!
+    
+    var tapAction : (() -> Void)!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
+        addGestureRecognizer(tapGesture)
     }
     
+    @objc func cellTapped() {
+        tapAction()
+    }
+ 
+    func setTapAction(_ action : @escaping () -> Void){
+        self.tapAction = action
+    }
 }

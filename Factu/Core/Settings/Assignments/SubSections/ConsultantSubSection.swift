@@ -8,8 +8,21 @@
 import Foundation
 
 class ConsultantSubSection : SubSection {
-   
-    init(_ consultant : Consultant){
+    var consultant : Consultant = Consultant()
+    init(_ consultant : Consultant) {
         super.init("\(consultant.name) \(consultant.lastName)")
+        self.consultant = consultant
+    }
+    
+    override init() {
+        super.init()
+    }
+    
+    override func edit() {
+        coordinator.toEditConsultantView(consultant: self.consultant)
+    }
+    
+    override func addNewItem() {
+        coordinator.toEditConsultantView(consultant: nil)
     }
 }
