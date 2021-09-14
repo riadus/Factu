@@ -17,6 +17,13 @@ class Repository : RepositoryProtocol {
         }
      }
     
+    func update<T : Object>(object : T, update : (T) -> Void) {
+        let realm = try! Realm()
+        try! realm.write {
+            update(object)
+        }
+    }
+    
     func get<T : Object>() -> [T] {
         let realm = try! Realm()
         let realmResults = realm.objects(T.self)

@@ -14,8 +14,8 @@ class ConsultantView : UIScrollView {
     @IBOutlet weak var companyView: CompanyView!
     
     func setViewModel(bindingContext : EditConsultantViewModel) -> Void {
-        bindingContext.name.bind(to: consultantName.reactive.text)
-        bindingContext.lastName.bind(to: consulantLastName.reactive.text)
+        bindingContext.name.bidirectionalBind(to: consultantName.reactive.text)
+        bindingContext.lastName.bidirectionalBind(to: consulantLastName.reactive.text)
         consultantName.placeholder = bindingContext.namePlaceholder
         consulantLastName.placeholder = bindingContext.lastNamePlaceholder
         

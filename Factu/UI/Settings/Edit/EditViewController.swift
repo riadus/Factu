@@ -10,6 +10,9 @@ import UIKit
 class EditViewController: BaseViewController<EditViewModel> {
         
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    
     var navigationEditTagret : NavigationEditTagret!
         func setTarget(target : NavigationEditTagret){
             navigationEditTagret = target
@@ -18,14 +21,14 @@ class EditViewController: BaseViewController<EditViewModel> {
         override func viewDidLoad() {
             super.viewDidLoad()
             switch self.navigationEditTagret {
-            case .consulant:
-                loadConsultantView()
-                break
-            case .client:
-                loadCompanyView()
-                break
-            default:
-                return
+                case .consulant:
+                    loadConsultantView()
+                    break
+                case .client:
+                    loadCompanyView()
+                    break
+                default:
+                    return
             }
         }
         func loadConsultantView() -> Void {
@@ -40,4 +43,15 @@ class EditViewController: BaseViewController<EditViewModel> {
             companyView.setViewModel(bindingContext: bindingContext.editItemViewModel as! EditCompanyViewModel)
             containerView.addSubview(companyView)
         }
+    
+    override func bindViewModel() {
+        super.bindViewModel()
+        
+        saveButton.reactive.Command(self.bindingContext.editItemViewModel.saveCommand)
+        deleteButton.reactive.Command(self.bindingContext.editItemViewModel.deleteCommand)
+        
+        self.bindingContext.editItemViewModel.canDelete.bind(to : deleteButton.reactive.isEnabled)
+        self.bindingContext.editItemViewModel.canDelete.map{ $0 ? UIColor.white : UIColor.gray }.bind(to : deleteButton.reactive.titleColor)
+
     }
+}

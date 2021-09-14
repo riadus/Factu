@@ -46,59 +46,163 @@ enum NavigationEditTagret {
 }
 
 protocol EditItemViewModel {
+    var saveCommand : ICommand! { get }
+    var deleteCommand : ICommand! { get }
+    var canDelete : Observable<Bool>! { get }
 }
 
 class EditConsultantViewModel : EditItemViewModel {
     
-    var name : Observable<String>
-    var lastName : Observable<String>
+    @Inject var consultantUpdate : ConsultantUpdateProtocol
+    @Inject var coordinator : ICoordinator
+    
+    var saveCommand: ICommand!
+    var deleteCommand: ICommand!
+    var canDelete : Observable<Bool>!
+    
+    var name : Observable<String?>
+    var lastName : Observable<String?>
     var editCompanyViewModel : EditCompanyViewModel
     let namePlaceholder = "Name"
     let lastNamePlaceholder = "Last name"
+    var consultant : Consultant?
     
     init(consultant : Consultant) {
         self.name = Observable(consultant.name)
         self.lastName = Observable(consultant.lastName)
         self.editCompanyViewModel = EditCompanyViewModel(company: consultant.company ?? Company())
+        self.saveCommand = Command(action: save)
+        self.deleteCommand = Command(action: delete)
+        self.consultant = consultant
+        self.canDelete = Observable(true)
     }
     
     init() {
         self.name = Observable("")
         self.lastName = Observable("")
         self.editCompanyViewModel = EditCompanyViewModel()
+        self.saveCommand = Command(action: save)
+        self.deleteCommand = Command(action: delete)
+        self.consultant = nil
+        self.canDelete = Observable(false)
+    }
+    
+    func save() -> Void {
+        if(self.consultant == nil) {
+            
+            self.consultant = Consultant()
+            self.consultant?.name = name.value ?? ""
+            self.consultant?.lastName = lastName.value ?? ""
+            self.consultant?.company = self.editCompanyViewModel.getCompany()
+            self.consultantUpdate.save(object: self.consultant)
+        }
+        else {
+            self.consultantUpdate.update(consultant: self.consultant!, update: { c in
+                c.name = name.value ?? ""
+                c.lastName = lastName.value ?? ""
+                c.company = self.editCompanyViewModel.getCompany()
+            })
+        }
+        
+        self.coordinator.back()
+    }
+    
+    func delete() -> Void {
+        if(!self.canDelete.value) {
+            return
+        }
+        self.consultantUpdate.delete(object: self.consultant)
+        self.coordinator.back()
     }
 }
 
 class EditCompanyViewModel : EditItemViewModel {
-    var name : Observable<String>
+    @Inject var companyUpdate : CompanyUpdateProtocol
+    @Inject var coordinator : ICoordinator
+    
+    var saveCommand: ICommand!
+    var deleteCommand: ICommand!
+    var canDelete : Observable<Bool>!
+    var company : Company?
+    
+    var name : Observable<String?>
     var address : AddressViewModel
-    var bic : Observable<String>
-    var iban : Observable<String>
+    var bic : Observable<String?>
+    var iban : Observable<String?>
    
     let namePlaceholder = "Company name"
     let bicPlaceholder = "BIC"
     let ibanPlaceholder = "IBAN"
     
     init(company : Company) {
-        address = AddressViewModel(address: company.address ?? Address())
-        name = Observable(company.name)
-        bic = Observable(company.bic)
-        iban = Observable(company.iban)
+        self.address = AddressViewModel(address: company.address ?? Address())
+        self.name = Observable(company.name)
+        self.bic = Observable(company.bic)
+        self.iban = Observable(company.iban)
+        self.company = company
+        self.canDelete = Observable(true)
+        self.saveCommand = Command(action: save)
+        self.deleteCommand = Command(action: delete)
     }
     
     init() {
-        address = AddressViewModel()
-        name = Observable("")
-        bic = Observable("")
-        iban = Observable("")
+        self.address = AddressViewModel()
+        self.name = Observable("")
+        self.bic = Observable("")
+        self.iban = Observable("")
+        self.company = nil
+        self.canDelete = Observable(false)
+        self.saveCommand = Command(action: save)
+        self.deleteCommand = Command(action: delete)
     }
+    
+    func getCompany() -> Company {
+        if(self.company == nil) {
+            self.company = Company()
+        }
+        
+        self.company?.address = self.address.getAddress()
+        self.company?.name = name.value ?? ""
+        self.company?.bic = bic.value ?? ""
+        self.company?.iban = iban.value ?? ""
+        
+        return self.company!
+    }
+    
+    func save() -> Void {
+        
+        if(self.company == nil) {
+            self.company = getCompany()
+            self.companyUpdate.save(object: self.company)
+        }
+        else {
+            self.companyUpdate.update(company: self.company!, update: { c in
+                c.address = self.address.getAddress()
+                c.name = name.value ?? ""
+                c.bic = bic.value ?? ""
+                c.iban = iban.value ?? ""
+            })
+        }
+        
+        self.coordinator.back()
+    }
+    
+    func delete() -> Void {
+        if(!self.canDelete.value) {
+            return
+        }
+        self.companyUpdate.delete(object: self.company)
+        self.coordinator.back()
+    }
+    
 }
 
 class AddressViewModel : ObservableObject {
-    var street : Observable<String>
-    var postalCode : Observable<String>
-    var city : Observable<String>
-    var country : Observable<String>
+    var address : Address?
+    var street : Observable<String?>
+    var postalCode : Observable<String?>
+    var city : Observable<String?>
+    var country : Observable<String?>
     
     var streetPlaceholder = "Street"
     var postalCodePlaceholder = "Postal code"
@@ -110,6 +214,7 @@ class AddressViewModel : ObservableObject {
         self.postalCode = Observable(address.postalCode)
         self.city = Observable(address.city)
         self.country = Observable(address.country)
+        self.address = address
     }
     
     init(){
@@ -117,5 +222,18 @@ class AddressViewModel : ObservableObject {
         self.postalCode = Observable("")
         self.city = Observable("")
         self.country = Observable("")
+        self.address = nil
+    }
+    
+    func getAddress() -> Address {
+        if(self.address == nil){
+            self.address = Address()
+        }
+        self.address?.street = self.street.value ?? ""
+        self.address?.city = self.city.value ?? ""
+        self.address?.postalCode = self.postalCode.value ?? ""
+        self.address?.country = self.country.value ?? ""
+        
+        return self.address!
     }
 }

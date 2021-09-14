@@ -6,6 +6,7 @@
 //
 
 import ReactiveKit
+import Bond
 
 public protocol ICommand {
     func Execute() -> Void
@@ -37,5 +38,11 @@ extension ReactiveExtensions where Base: UIButton{
           .observeNext {
             command.Execute()
           }
+    }
+    
+    public var titleColor: Bond<UIColor?> {
+        return bond {
+            $0.setTitleColor($1, for: .normal)
+        }
     }
 }

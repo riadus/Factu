@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditViewController" customModule="Factu" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="5DJ-fz-UBz" id="RlA-wI-bG0"/>
+                <outlet property="deleteButton" destination="D1V-Fk-kBN" id="o72-Qw-75D"/>
+                <outlet property="saveButton" destination="a1i-C1-4pd" id="mcl-zp-U2i"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

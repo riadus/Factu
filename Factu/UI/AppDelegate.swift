@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         DomainAssembly()
                         RepositoryAssembly()
                    })
-                    
                
        SwiftDI.useContainer(container)
         

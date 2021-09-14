@@ -24,6 +24,10 @@ struct DomainAssembly : DIPart {
                         .lifeCycle(.single)
                 DIRegister(SettingsProvider.init)
                         .as(SettingsProviderProtocol.self)
+                DIRegister(CompanyUpdate.init)
+                        .as(CompanyUpdateProtocol.self)
+                DIRegister(ConsultantUpdate.init)
+                        .as(ConsultantUpdateProtocol.self)
         }
     }
 }

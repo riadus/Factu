@@ -18,7 +18,9 @@ class AssignmentSettingsViewModel : IBaseViewModel {
     @Inject var assignmentProvider : AssignmentProviderProtocol
     
     required init() {
+            sections = MutableObservableArray2D(Array2D<HeadSection, SubSectionProtocol>())
         }
+    
     
     func loadData() {
         let initData = Array2D<HeadSection, SubSectionProtocol>(sectionsWithItems: [
@@ -28,7 +30,14 @@ class AssignmentSettingsViewModel : IBaseViewModel {
             (HeadSection(title:"Clients"), loadClients()),
             (HeadSection(title:"Rates"), loadRates())
         ])
-        sections = MutableObservableArray2D(initData)
+        if(sections.tree.children.count > 0) {
+            for i in 0...sections.tree.children.count - 1 {
+                sections.replaceItems(ofSectionAt: i, with: initData.sections[i].items)
+            }
+        }
+        else {
+            sections.replace(with: initData)
+        }
     }
     
     func loadAssignment() -> [SubSectionProtocol]{

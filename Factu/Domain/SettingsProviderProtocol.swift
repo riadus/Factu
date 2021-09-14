@@ -13,3 +13,16 @@ protocol SettingsProviderProtocol {
     func getRates() -> [Rate]
     func getClients() -> [Company]
 }
+
+protocol SettingUpdateProtocol {
+    func save<T>(object : T) -> Void
+    func delete<T>(object : T) -> Void
+}
+
+protocol ConsultantUpdateProtocol : SettingUpdateProtocol {
+    func update(consultant : Consultant, update : (Consultant) -> Void ) -> Void
+}
+
+protocol CompanyUpdateProtocol : SettingUpdateProtocol {
+    func update(company : Company, update : (Company) -> Void ) -> Void
+}

@@ -11,10 +11,9 @@ import Bond
 class AssignmentSettingsViewController: BaseViewController<AssignmentSettingsViewModel>, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
      override func viewDidLoad() {
-        bindingContext.loadData()
         tableView.register(UINib(nibName: "SettingSectionViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "Section")
         tableView.register(UINib(nibName: "SettingItemViewCell", bundle: nil), forCellReuseIdentifier: "Item")
-        
+        bindingContext.loadData()
         super.viewDidLoad()
      }
     
@@ -34,5 +33,18 @@ class AssignmentSettingsViewController: BaseViewController<AssignmentSettingsVie
         }
         self.bindingContext.sections.bind(to: self.tableView, using: sectionBindingDatSource)
         self.tableView.delegate = sectionBindingDatSource
+    }
+    var needsToReloadData = false
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if(needsToReloadData) {
+            bindingContext.loadData()
+        }
+        self.needsToReloadData = false
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.needsToReloadData = true
     }
 }

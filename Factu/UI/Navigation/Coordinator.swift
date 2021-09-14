@@ -58,4 +58,8 @@ class Coordinator : ICoordinator {
         viewController.bindingContext.prepare(navigationEditObject: navigationEditObject)
         navigationController.pushViewController(viewController, animated: true)
     }
+    
+    func back() -> Void {
+        navigationController.popViewController(animated: true)
+    }
 }

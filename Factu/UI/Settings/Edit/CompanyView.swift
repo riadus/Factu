@@ -45,13 +45,13 @@ class CompanyView : UIView {
     }
         
     func setViewModel(bindingContext : EditCompanyViewModel) -> Void {
-        bindingContext.name.bind(to: name.reactive.text)
-        bindingContext.address.street.bind(to: address.reactive.text)
-        bindingContext.address.postalCode.bind(to: postalCode.reactive.text)
-        bindingContext.address.city.bind(to: city.reactive.text)
-        bindingContext.address.country.bind(to: country.reactive.text)
-        bindingContext.bic.bind(to: bic.reactive.text)
-        bindingContext.iban.bind(to: iban.reactive.text)
+        bindingContext.name.bidirectionalBind(to: name.reactive.text)
+        bindingContext.address.street.bidirectionalBind(to: address.reactive.text)
+        bindingContext.address.postalCode.bidirectionalBind(to: postalCode.reactive.text)
+        bindingContext.address.city.bidirectionalBind(to: city.reactive.text)
+        bindingContext.address.country.bidirectionalBind(to: country.reactive.text)
+        bindingContext.bic.bidirectionalBind(to: bic.reactive.text)
+        bindingContext.iban.bidirectionalBind(to: iban.reactive.text)
         name.placeholder = bindingContext.namePlaceholder
         address.placeholder = bindingContext.address.streetPlaceholder
         postalCode.placeholder = bindingContext.address.postalCodePlaceholder

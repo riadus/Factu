@@ -8,22 +8,19 @@
 import Foundation
 import RealmSwift
 
-class Day : Object {
-    @Persisted var id : String = ""
+class Day : Queryable {
     @Persisted var date : Int
     @Persisted var isHalfDay : Bool
 }
 
-class Timesheet : Object {
-    @Persisted var id : String = ""
+class Timesheet : Queryable {
     @Persisted var month : Int
     @Persisted var year : Int
     @Persisted var dates : List<Day>
     @Persisted var assignment : Optional<Assignment>
 }
 
-class Invoice : Object {
-    @Persisted var id : String
+class Invoice : Queryable {
     @Persisted var timesheet : Optional<Timesheet>
     @Persisted var amountExcludingVat : Float
     @Persisted var amountIncludingVat : Float
@@ -75,12 +72,12 @@ class Assignment : Queryable {
     @Persisted var jobTitle : String
 }
 
-protocol QueryableProtocol {
+protocol QueryableProtocol : Object {
     var id : String { get set }
 }
 
 class Queryable : Object, QueryableProtocol {
-    @Persisted var id : String = ""
+    @Persisted(primaryKey: true) var id : String = UUID().uuidString
 }
 
 
