@@ -27,8 +27,7 @@ class AssignmentSettingsViewModel : IBaseViewModel {
             (HeadSection(title:"Assignments"), loadAssignment()),
             (HeadSection(title:"Consultants"), loadConsultants()),
             (HeadSection(title:"Projects"), loadProjects()),
-            (HeadSection(title:"Clients"), loadClients()),
-            (HeadSection(title:"Rates"), loadRates())
+            (HeadSection(title:"Clients"), loadClients())
         ])
         if(sections.tree.children.count > 0) {
             for i in 0...sections.tree.children.count - 1 {
@@ -72,18 +71,6 @@ class AssignmentSettingsViewModel : IBaseViewModel {
             subSections.append(ProjectSubSection(project))
         }
         subSections.append(ProjectSubSection())
-        
-        return subSections
-    }
-    
-    func loadRates() -> [SubSectionProtocol] {
-        let rates = settingsProvider.getRates()
-        var subSections : [SubSectionProtocol] = [RateSubSection]()
-        
-        for rate in rates {
-            subSections.append(RateSubSection(rate))
-        }
-        subSections.append(RateSubSection())
         
         return subSections
     }

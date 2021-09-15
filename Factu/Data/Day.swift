@@ -69,7 +69,7 @@ class Assignment : Queryable {
     @Persisted var client : Optional<Company>
     @Persisted var endClient : Optional<Company>
     @Persisted var consultant : Optional<Consultant>
-    @Persisted var jobTitle : String
+    @Persisted var assignmentTitle : String
 }
 
 protocol QueryableProtocol : Object {

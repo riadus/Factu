@@ -44,7 +44,7 @@ class AssignmentProvider : AssignmentProviderProtocol {
         assignment_1.project = project_1
         assignment_1.consultant = consultant_1
         assignment_1.client = client_1
-        assignment_1.jobTitle = "Job"
+        assignment_1.assignmentTitle = "Job"
         
         addAssignment(assignment_1)
     }

@@ -11,9 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditViewController" customModule="Factu" customModuleProvider="target">
             <connections>
-                <outlet property="containerView" destination="5DJ-fz-UBz" id="RlA-wI-bG0"/>
+                <outlet property="containerView" destination="1Of-ET-OSg" id="Vhf-19-Cyd"/>
                 <outlet property="deleteButton" destination="D1V-Fk-kBN" id="o72-Qw-75D"/>
                 <outlet property="saveButton" destination="a1i-C1-4pd" id="mcl-zp-U2i"/>
+                <outlet property="scrollView" destination="5DJ-fz-UBz" id="5g5-Qa-WR3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,9 +23,23 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5DJ-fz-UBz">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5DJ-fz-UBz" customClass="UIScrollView">
                     <rect key="frame" x="20" y="64" width="374" height="663"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Of-ET-OSg">
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="663"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" name="LightGray"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="1Of-ET-OSg" secondAttribute="trailing" id="1Cj-rs-6iF"/>
+                        <constraint firstItem="1Of-ET-OSg" firstAttribute="height" secondItem="5DJ-fz-UBz" secondAttribute="height" id="CmN-0i-NwE"/>
+                        <constraint firstItem="1Of-ET-OSg" firstAttribute="leading" secondItem="5DJ-fz-UBz" secondAttribute="leading" id="ZGv-zE-FqS"/>
+                        <constraint firstAttribute="bottom" secondItem="1Of-ET-OSg" secondAttribute="bottom" id="iLh-4t-JlZ"/>
+                        <constraint firstItem="1Of-ET-OSg" firstAttribute="width" secondItem="5DJ-fz-UBz" secondAttribute="width" id="r4O-Xz-h1h"/>
+                        <constraint firstItem="1Of-ET-OSg" firstAttribute="top" secondItem="5DJ-fz-UBz" secondAttribute="top" id="vc5-jV-DKi"/>
+                    </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D1V-Fk-kBN" userLabel="archivedButton">
                     <rect key="frame" x="0.0" y="804" width="414" height="57.5"/>

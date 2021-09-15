@@ -78,7 +78,7 @@ class InvoiceViewModel : IBaseViewModel {
         clientCountry.value = client.address?.country ?? ""
         
         description.value = self.invoice.timesheet?.assignment?.project?.title ?? ""
-        extraDescription.value = self.invoice.timesheet?.assignment?.jobTitle ?? ""
+        extraDescription.value = self.invoice.timesheet?.assignment?.assignmentTitle ?? ""
         quantity.value = String(self.invoice.quantity)
         rate.value = String(format: "%.02f €", timesheet.assignment?.project?.rate?.normalRate ?? 0)
         amount.value = String(format : "%.02f €", self.invoice.amountExcludingVat)

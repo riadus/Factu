@@ -10,7 +10,7 @@ import Foundation
 class AssignmentSection : SubSection {
    
     init(_ assignment : Assignment){
-        super.init("\(assignment.jobTitle) \(assignment.endClient?.name ?? assignment.client?.name ?? "")")
+        super.init("\(assignment.assignmentTitle) \(assignment.endClient?.name ?? assignment.client?.name ?? "")")
     }
     
     override init() {

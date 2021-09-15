@@ -17,9 +17,15 @@ class ProjectView: BaseView {
     @IBOutlet weak var numberOfHoursStepper: UIStepper!
     @IBOutlet weak var rateStepper: UIStepper!
     @IBOutlet weak var vatStepper: UIStepper!
+    @IBOutlet weak var rateLabel: UILabel!
+    @IBOutlet weak var numberOfHoursLabel: UILabel!
+    @IBOutlet weak var vatLabel: UILabel!
     
+    override func setViewModel(bindingContext : EditItemViewModel) -> Void {
+        self.setViewModel(bindingContext: bindingContext as! EditProjectViewModel)
+    }
     
-    func setViewModel(bindingContext : EditProjectViewModel) {
+    private func setViewModel(bindingContext : EditProjectViewModel) {
         numberOfHoursStepper.value = Double(bindingContext.numberOfHours.value ?? "") ?? 0
         rateStepper.value = Double(bindingContext.rate.value ?? "") ?? 0
         vatStepper.value = Double(bindingContext.vat.value ?? "") ?? 0
@@ -28,6 +34,9 @@ class ProjectView: BaseView {
         bindingContext.rate.bidirectionalBind(to: rate.reactive.text)
         bindingContext.vat.bidirectionalBind(to: vatPercentage.reactive.text)
         bindingContext.numberOfHours.bidirectionalBind(to: numberOfHours.reactive.text)
+        bindingContext.rateText.bind(to: rateLabel.reactive.text)
+        bindingContext.vatText.bind(to: vatLabel.reactive.text)
+        bindingContext.numberOfHoursText.bind(to: numberOfHoursLabel.reactive.text)
         
         bindingContext.isHourly.map{ $0 ? UIColor(named : "Green") : UIColor(named : "Pink")  }.bind(to: hourlyRateButton.reactive.tintColor)
         bindingContext.isHourly.map{ $0 ? UIColor(named : "Green") : UIColor(named : "Pink")  }.bind(to: hourlyRateButton.reactive.titleColor)
@@ -45,10 +54,7 @@ class ProjectView: BaseView {
         vatStepper.reactive.value.bidirectionalMap(to: { String($0) }, from: { Double($0 ?? "") ?? 0 }).bidirectionalBind(to: bindingContext.vat)
         
         projectName.placeholder = bindingContext.titlePlaceholder
-        rate.placeholder = bindingContext.ratePlaceholder
-        vatPercentage.placeholder = bindingContext.vatPlaceholder
-        numberOfHours.placeholder = bindingContext.numberOfHoursPlaceholder
-        
+       
         UITextField.connectFields(fields: [projectName, rate, numberOfHours, vatPercentage])
     }
 }

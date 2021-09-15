@@ -37,6 +37,10 @@ class BaseView : UIView {
           
         return view
     }
+    
+    func setViewModel(bindingContext : EditItemViewModel) -> Void {
+        
+    }
 }
 
 class CompanyView : BaseView {
@@ -49,7 +53,11 @@ class CompanyView : BaseView {
     @IBOutlet weak var bic: UITextField!
     @IBOutlet weak var iban: UITextField!
 
-    func setViewModel(bindingContext : EditCompanyViewModel) -> Void {
+    override func setViewModel(bindingContext : EditItemViewModel) -> Void {
+        self.setViewModel(bindingContext: bindingContext as! EditCompanyViewModel)
+    }
+    
+    private func setViewModel(bindingContext : EditCompanyViewModel) -> Void {
         bindingContext.name.bidirectionalBind(to: name.reactive.text)
         bindingContext.address.street.bidirectionalBind(to: address.reactive.text)
         bindingContext.address.postalCode.bidirectionalBind(to: postalCode.reactive.text)
