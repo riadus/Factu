@@ -7,28 +7,21 @@
 
 import UIKit
 
-class CompanyView : UIView {
+class BaseView : UIView {
     
     var view:UIView!
-
-    @IBOutlet weak var name: UITextField!
-    @IBOutlet weak var address: UITextField!
-    @IBOutlet weak var postalCode: UITextField!
-    @IBOutlet weak var city: UITextField!
-    @IBOutlet weak var country: UITextField!
-    @IBOutlet weak var bic: UITextField!
-    @IBOutlet weak var iban: UITextField!
     
-     override init(frame:CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
+    
+    override init(frame:CGRect) {
+       super.init(frame: frame)
+       setup()
+   }
 
-    required init(coder aCoder: NSCoder) {
-        super.init(coder: aCoder)!
-        setup()
-    }
-
+   required init(coder aCoder: NSCoder) {
+       super.init(coder: aCoder)!
+       setup()
+   }
+    
     func setup() {
         view = self.loadViewFromNib()
         view.frame = bounds
@@ -38,12 +31,24 @@ class CompanyView : UIView {
 
     func loadViewFromNib() -> UIView {
         let bundle = Bundle(for:type(of: self))
-        let nib = UINib(nibName: "CompanyView", bundle: bundle)
+        let nibName = String(describing: type(of: self))
+        let nib = UINib(nibName: nibName, bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
           
         return view
     }
-        
+}
+
+class CompanyView : BaseView {
+    
+    @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var address: UITextField!
+    @IBOutlet weak var postalCode: UITextField!
+    @IBOutlet weak var city: UITextField!
+    @IBOutlet weak var country: UITextField!
+    @IBOutlet weak var bic: UITextField!
+    @IBOutlet weak var iban: UITextField!
+
     func setViewModel(bindingContext : EditCompanyViewModel) -> Void {
         bindingContext.name.bidirectionalBind(to: name.reactive.text)
         bindingContext.address.street.bidirectionalBind(to: address.reactive.text)
@@ -59,5 +64,7 @@ class CompanyView : UIView {
         country.placeholder = bindingContext.address.countryPlaceholder
         bic.placeholder = bindingContext.bicPlaceholder
         iban.placeholder = bindingContext.ibanPlaceholder
+        
+        UITextField.connectFields(fields: [name, address, postalCode, city, country, bic, iban])
     }
 }

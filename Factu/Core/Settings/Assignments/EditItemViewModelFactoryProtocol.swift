@@ -26,6 +26,11 @@ class EditItemViewModelFactory : EditItemViewModelFactoryProtocol{
                 return EditCompanyViewModel()
             }
             return EditCompanyViewModel(company: navigationEditObject.object as! Company)
+        case .project:
+            if(newObject){
+                return EditProjectViewModel()
+            }
+            return EditProjectViewModel(project: navigationEditObject.object as! Project)
         default:
             return EditConsultantViewModel()
         }

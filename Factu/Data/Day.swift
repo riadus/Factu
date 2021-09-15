@@ -32,7 +32,7 @@ class Project : Queryable {
     @Persisted var title : String
     @Persisted var rate : Optional<Rate>
     @Persisted var archived : Bool
-    @Persisted var numberOfHoursPerDay : Int
+    @Persisted var numberOfHoursPerDay : Float
     @Persisted var vat : Float
 }
 

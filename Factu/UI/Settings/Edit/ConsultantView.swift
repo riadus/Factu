@@ -18,7 +18,7 @@ class ConsultantView : UIScrollView {
         bindingContext.lastName.bidirectionalBind(to: consulantLastName.reactive.text)
         consultantName.placeholder = bindingContext.namePlaceholder
         consulantLastName.placeholder = bindingContext.lastNamePlaceholder
-        
+        UITextField.connectFields(fields: [consultantName, consulantLastName, companyView.name])
         companyView.setViewModel(bindingContext: bindingContext.editCompanyViewModel)
     }
     

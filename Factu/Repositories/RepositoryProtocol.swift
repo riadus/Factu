@@ -11,6 +11,7 @@ import RealmSwift
 protocol RepositoryProtocol {
     func save<T : Object>(object : T)
     func update<T : Object>(object : T, update : (T) -> Void)
+    func update<T : Object>(object : inout T, update : (inout T) -> Void)
     func get<T : Object>() -> [T]
     func get<T : Object>(filter : String) -> [T]
     func get<T : Object>(filter : (T) -> Bool) -> [T]

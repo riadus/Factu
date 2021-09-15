@@ -12,6 +12,8 @@
 		913BA80C26D6C5CB009E6C09 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913BA80B26D6C5CB009E6C09 /* RepositoryProtocol.swift */; };
 		913BA80E26D6C5DE009E6C09 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913BA80D26D6C5DE009E6C09 /* Repository.swift */; };
 		913BA81026D6C6BA009E6C09 /* RepositoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913BA80F26D6C6BA009E6C09 /* RepositoryAssembly.swift */; };
+		914D695826F0F3A20008F86D /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914D695726F0F3A20008F86D /* ProjectView.swift */; };
+		914D695A26F0F3B30008F86D /* ProjectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 914D695926F0F3B30008F86D /* ProjectView.xib */; };
 		9169FF6E26B059210024C6B4 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9169FF6D26B059210024C6B4 /* ViewExtensions.swift */; };
 		916BBE6E26E90DE1004629AA /* GuidGeneratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916BBE6D26E90DE1004629AA /* GuidGeneratorProtocol.swift */; };
 		916BBE7026E90E24004629AA /* GuidGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916BBE6F26E90E24004629AA /* GuidGenerator.swift */; };
@@ -126,6 +128,8 @@
 		913BA80B26D6C5CB009E6C09 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
 		913BA80D26D6C5DE009E6C09 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		913BA80F26D6C6BA009E6C09 /* RepositoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryAssembly.swift; sourceTree = "<group>"; };
+		914D695726F0F3A20008F86D /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
+		914D695926F0F3B30008F86D /* ProjectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectView.xib; sourceTree = "<group>"; };
 		9169FF6D26B059210024C6B4 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		916BBE6D26E90DE1004629AA /* GuidGeneratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidGeneratorProtocol.swift; sourceTree = "<group>"; };
 		916BBE6F26E90E24004629AA /* GuidGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidGenerator.swift; sourceTree = "<group>"; };
@@ -548,6 +552,8 @@
 				91F7D4CD26EE342000BE383F /* CompanyView.swift */,
 				91F7D4D626EF349900BE383F /* EditViewController.swift */,
 				91F7D4D726EF349900BE383F /* EditViewController.xib */,
+				914D695726F0F3A20008F86D /* ProjectView.swift */,
+				914D695926F0F3B30008F86D /* ProjectView.xib */,
 			);
 			path = Edit;
 			sourceTree = "<group>";
@@ -653,6 +659,7 @@
 			files = (
 				91ADDE5926EB901500281C02 /* SettingItemViewCell.xib in Resources */,
 				9101960126A775780079A4A8 /* Launch Screen.storyboard in Resources */,
+				914D695A26F0F3B30008F86D /* ProjectView.xib in Resources */,
 				91BFE83A26C5A3B90006A22A /* DayViewCell.xib in Resources */,
 				917760C126AD81F200DA200E /* TimesheetView.xib in Resources */,
 				91F7D4C826EE2F0C00BE383F /* ConsultantView.xib in Resources */,
@@ -765,6 +772,7 @@
 				9184EF7C26AB1B4B005B4988 /* DIObject.swift in Sources */,
 				91D37EA826AB68A100835836 /* TimesheetViewModel.swift in Sources */,
 				916BBE7426E91E09004629AA /* InvoiceService.swift in Sources */,
+				914D695826F0F3A20008F86D /* ProjectView.swift in Sources */,
 				9184EF9426AB1D8E005B4988 /* DIGroup.swift in Sources */,
 				91ADDE5826EB901500281C02 /* SettingItemViewCell.swift in Sources */,
 				91F7D4C126EE0F3000BE383F /* AssignmentSubSection.swift in Sources */,

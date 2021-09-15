@@ -21,16 +21,20 @@ class EditViewController: BaseViewController<EditViewModel> {
         override func viewDidLoad() {
             super.viewDidLoad()
             switch self.navigationEditTagret {
-                case .consulant:
+            case .consulant:
                     loadConsultantView()
                     break
-                case .client:
+            case .client:
                     loadCompanyView()
+                    break
+            case .project :
+                    loadProjectView()
                     break
                 default:
                     return
             }
         }
+    
         func loadConsultantView() -> Void {
             let consultantView = ConsultantView(frame: containerView.bondsWithReducedWidth(20))
             print(containerView.bounds)
@@ -38,20 +42,25 @@ class EditViewController: BaseViewController<EditViewModel> {
             containerView.addSubview(consultantView)
         }
         
-    func loadCompanyView() -> Void {
+        func loadCompanyView() -> Void {
             let companyView = CompanyView(frame: containerView.bondsWithReducedWidth(20))
             companyView.setViewModel(bindingContext: bindingContext.editItemViewModel as! EditCompanyViewModel)
             containerView.addSubview(companyView)
         }
     
-    override func bindViewModel() {
-        super.bindViewModel()
-        
-        saveButton.reactive.Command(self.bindingContext.editItemViewModel.saveCommand)
-        deleteButton.reactive.Command(self.bindingContext.editItemViewModel.deleteCommand)
-        
-        self.bindingContext.editItemViewModel.canDelete.bind(to : deleteButton.reactive.isEnabled)
-        self.bindingContext.editItemViewModel.canDelete.map{ $0 ? UIColor.white : UIColor.gray }.bind(to : deleteButton.reactive.titleColor)
-
-    }
+        func loadProjectView() -> Void {
+            let projectView = ProjectView(frame: containerView.bondsWithReducedWidth(20))
+            projectView.setViewModel(bindingContext: bindingContext.editItemViewModel as! EditProjectViewModel)
+            containerView.addSubview(projectView)
+        }
+    
+        override func bindViewModel() {
+            super.bindViewModel()
+            
+            saveButton.reactive.Command(self.bindingContext.editItemViewModel.saveCommand)
+            deleteButton.reactive.Command(self.bindingContext.editItemViewModel.deleteCommand)
+            
+            self.bindingContext.editItemViewModel.canDelete.bind(to : deleteButton.reactive.isEnabled)
+            self.bindingContext.editItemViewModel.canDelete.map{ $0 ? UIColor.white : UIColor.gray }.bind(to : deleteButton.reactive.titleColor)
+        }
 }

@@ -24,5 +24,9 @@ protocol ConsultantUpdateProtocol : SettingUpdateProtocol {
 }
 
 protocol CompanyUpdateProtocol : SettingUpdateProtocol {
-    func update(company : Company, update : (Company) -> Void ) -> Void
+    func update(company : inout Company, update : (inout Company) -> Void ) -> Void
+}
+
+protocol ProjectUpdateProtocol : SettingUpdateProtocol{
+    func update(project : inout Project, update : (inout Project) -> Void ) -> Void
 }

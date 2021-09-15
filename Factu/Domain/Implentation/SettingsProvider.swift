@@ -58,8 +58,8 @@ class CompanyUpdate : CompanyUpdateProtocol {
         repository.save(object: company)
     }
     
-    func update(company : Company, update : (Company) -> Void ) -> Void {
-        repository.update(object: company, update: update)
+    func update(company : inout Company, update : (inout Company) -> Void ) -> Void {
+        repository.update(object: &company, update: update)
     }
     
     func delete<T>(object: T) {
@@ -69,5 +69,28 @@ class CompanyUpdate : CompanyUpdateProtocol {
             repository.delete(object: company.address!)
         }
         repository.delete(object: company)
+    }
+}
+
+
+class ProjectUpdate : ProjectUpdateProtocol {
+    @Inject var repository : RepositoryProtocol
+    
+    func save<T>(object: T) {
+        guard let project = object as! Project? else { return }
+        repository.save(object: project)
+    }
+    
+    func update(project : inout Project, update : (inout Project) -> Void ) -> Void {
+        repository.update(object: &project, update: update)
+    }
+    
+    func delete<T>(object: T) {
+        guard let project = object as! Project? else { return }
+        if(project.rate != nil)
+        {
+            repository.delete(object: project.rate!)
+        }
+        repository.delete(object: project)
     }
 }
