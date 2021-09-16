@@ -7,43 +7,7 @@
 
 import UIKit
 
-class BaseView : UIView {
-    
-    var view:UIView!
-    
-    
-    override init(frame:CGRect) {
-       super.init(frame: frame)
-       setup()
-   }
-
-   required init(coder aCoder: NSCoder) {
-       super.init(coder: aCoder)!
-       setup()
-   }
-    
-    func setup() {
-        view = self.loadViewFromNib()
-        view.frame = bounds
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        addSubview(view)
-    }
-
-    func loadViewFromNib() -> UIView {
-        let bundle = Bundle(for:type(of: self))
-        let nibName = String(describing: type(of: self))
-        let nib = UINib(nibName: nibName, bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
-          
-        return view
-    }
-    
-    func setViewModel(bindingContext : EditItemViewModel) -> Void {
-        
-    }
-}
-
-class CompanyView : BaseView {
+class CompanyView : BaseSettingItemView {
     
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var address: UITextField!

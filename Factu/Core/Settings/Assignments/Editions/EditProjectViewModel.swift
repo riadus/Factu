@@ -23,19 +23,19 @@ class EditProjectViewModel : EditItemViewModel {
     
     var project : Project?
     var title : Observable<String?>
-    var rate : Observable<String?>
+    var rate : Observable<Float?>
     var isHourly : Observable<Bool>
-    var vat : Observable<String?>
-    var numberOfHours : Observable<String?>
+    var vat : Observable<Float?>
+    var numberOfHours : Observable<Float?>
       
     var hourlyCommand : ICommand!
     var dailyCommand : ICommand!
     init(project : Project) {
         self.project = project
         self.title = Observable(project.title)
-        self.rate = Observable(String(project.rate?.normalRate ?? 0))
-        self.vat = Observable(String(project.vat))
-        self.numberOfHours = Observable(String(project.numberOfHoursPerDay))
+        self.rate = Observable(project.rate?.normalRate == nil ? nil : project.rate!.normalRate)
+        self.vat = Observable(project.vat)
+        self.numberOfHours = Observable(project.numberOfHoursPerDay)
         self.isHourly = Observable(project.rate?.isHourly ?? false)
 
         self.hourlyCommand = Command(action : setIsHourly)
@@ -49,9 +49,9 @@ class EditProjectViewModel : EditItemViewModel {
     init() {
         self.project = nil
         self.title = Observable("")
-        self.rate = Observable("")
-        self.vat = Observable("")
-        self.numberOfHours = Observable("")
+        self.rate = Observable(nil)
+        self.vat = Observable(nil)
+        self.numberOfHours = Observable(nil)
         self.isHourly = Observable(false)
         
         self.hourlyCommand = Command(action : setIsHourly)
@@ -72,11 +72,11 @@ class EditProjectViewModel : EditItemViewModel {
     
     func getProjectAction(project : inout Project) -> Project {
         project.title = self.title.value ?? ""
-        project.numberOfHoursPerDay = ((self.numberOfHours.value ?? "0") as NSString).floatValue
-        project.vat = ((self.vat.value ?? "0") as NSString).floatValue
+        project.numberOfHoursPerDay = self.numberOfHours.value!
+        project.vat = self.vat.value!
         project.rate = project.rate ?? Rate()
         project.rate?.isHourly = self.isHourly.value
-        project.rate?.normalRate = ((self.rate.value ?? "0") as NSString).floatValue
+        project.rate?.normalRate = self.rate.value ?? 0
         
         return project
     }

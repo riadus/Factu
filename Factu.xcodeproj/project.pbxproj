@@ -28,6 +28,10 @@
 		914D697626F24D970008F86D /* ConsultantUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914D697526F24D970008F86D /* ConsultantUpdate.swift */; };
 		914D697826F24DA40008F86D /* CompanyUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914D697726F24DA40008F86D /* CompanyUpdate.swift */; };
 		914D697A26F24DAE0008F86D /* ProjectUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914D697926F24DAE0008F86D /* ProjectUpdate.swift */; };
+		914D697D26F328C20008F86D /* Stepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914D697C26F328C20008F86D /* Stepper.swift */; };
+		914D697F26F328E30008F86D /* Stepper.xib in Resources */ = {isa = PBXBuildFile; fileRef = 914D697E26F328E30008F86D /* Stepper.xib */; };
+		914D698126F32AD00008F86D /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914D698026F32AD00008F86D /* BaseView.swift */; };
+		914D698326F32B240008F86D /* BaseSettingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914D698226F32B240008F86D /* BaseSettingItemView.swift */; };
 		9169FF6E26B059210024C6B4 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9169FF6D26B059210024C6B4 /* ViewExtensions.swift */; };
 		916BBE6E26E90DE1004629AA /* GuidGeneratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916BBE6D26E90DE1004629AA /* GuidGeneratorProtocol.swift */; };
 		916BBE7026E90E24004629AA /* GuidGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916BBE6F26E90E24004629AA /* GuidGenerator.swift */; };
@@ -157,6 +161,10 @@
 		914D697526F24D970008F86D /* ConsultantUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultantUpdate.swift; sourceTree = "<group>"; };
 		914D697726F24DA40008F86D /* CompanyUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyUpdate.swift; sourceTree = "<group>"; };
 		914D697926F24DAE0008F86D /* ProjectUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectUpdate.swift; sourceTree = "<group>"; };
+		914D697C26F328C20008F86D /* Stepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stepper.swift; sourceTree = "<group>"; };
+		914D697E26F328E30008F86D /* Stepper.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Stepper.xib; sourceTree = "<group>"; };
+		914D698026F32AD00008F86D /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		914D698226F32B240008F86D /* BaseSettingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingItemView.swift; sourceTree = "<group>"; };
 		9169FF6D26B059210024C6B4 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		916BBE6D26E90DE1004629AA /* GuidGeneratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidGeneratorProtocol.swift; sourceTree = "<group>"; };
 		916BBE6F26E90E24004629AA /* GuidGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidGenerator.swift; sourceTree = "<group>"; };
@@ -318,6 +326,16 @@
 			path = SettingUpdates;
 			sourceTree = "<group>";
 		};
+		914D697B26F3289A0008F86D /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				914D697C26F328C20008F86D /* Stepper.swift */,
+				914D697E26F328E30008F86D /* Stepper.xib */,
+				914D698026F32AD00008F86D /* BaseView.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
 		9169FF6C26B0590E0024C6B4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,6 +464,7 @@
 		918BA7E826A72A7800DF5F84 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				914D697B26F3289A0008F86D /* Controls */,
 				91ADDE4D26EB48EF00281C02 /* Settings */,
 				91F3637826CE52AA00E48622 /* Timesheet */,
 				9169FF6C26B0590E0024C6B4 /* Extensions */,
@@ -617,6 +636,7 @@
 				91F7D4D726EF349900BE383F /* EditViewController.xib */,
 				914D695726F0F3A20008F86D /* ProjectView.swift */,
 				914D695926F0F3B30008F86D /* ProjectView.xib */,
+				914D698226F32B240008F86D /* BaseSettingItemView.swift */,
 			);
 			path = Edit;
 			sourceTree = "<group>";
@@ -727,6 +747,7 @@
 				917760C126AD81F200DA200E /* TimesheetView.xib in Resources */,
 				91F7D4C826EE2F0C00BE383F /* ConsultantView.xib in Resources */,
 				918BA7DE26A61F8000DF5F84 /* Assets.xcassets in Resources */,
+				914D697F26F328E30008F86D /* Stepper.xib in Resources */,
 				91ADDE5526EB85F600281C02 /* SettingSectionViewCell.xib in Resources */,
 				91F3637E26CE6F8C00E48622 /* CalendarView.xib in Resources */,
 				910FE18026A770E20043A099 /* HomeView.xib in Resources */,
@@ -798,6 +819,7 @@
 				91F7D4D326EE365A00BE383F /* EditViewModel.swift in Sources */,
 				91F7D4C326EE0F4400BE383F /* CompanySubSection.swift in Sources */,
 				917FEFB526ED300000D93450 /* AssignmentBinder.swift in Sources */,
+				914D698326F32B240008F86D /* BaseSettingItemView.swift in Sources */,
 				91ADDE5026EB492400281C02 /* AssignmentSettingsViewController.swift in Sources */,
 				9184EF8526AB1BF6005B4988 /* SwiftDI.swift in Sources */,
 				913BA81026D6C6BA009E6C09 /* RepositoryAssembly.swift in Sources */,
@@ -838,6 +860,7 @@
 				9184EFA126AB1E71005B4988 /* EmptyDIPart.swift in Sources */,
 				9184EF7C26AB1B4B005B4988 /* DIObject.swift in Sources */,
 				914D696E26F24D3E0008F86D /* ConsultantUpdateProtocol.swift in Sources */,
+				914D697D26F328C20008F86D /* Stepper.swift in Sources */,
 				91D37EA826AB68A100835836 /* TimesheetViewModel.swift in Sources */,
 				916BBE7426E91E09004629AA /* InvoiceService.swift in Sources */,
 				914D695826F0F3A20008F86D /* ProjectView.swift in Sources */,
@@ -858,6 +881,7 @@
 				9184EF9026AB1CED005B4988 /* AnyDIPart.swift in Sources */,
 				9184EF9626AB1DB7005B4988 /* DIObject+DIPartBuildable.swift in Sources */,
 				91F3638426CFEB9100E48622 /* Day.swift in Sources */,
+				914D698126F32AD00008F86D /* BaseView.swift in Sources */,
 				91F7D4D826EF349900BE383F /* EditViewController.swift in Sources */,
 				9184EF9826AB1DDA005B4988 /* DIPart+DIPartBuildabl.swift in Sources */,
 				91F3639926D4076700E48622 /* AssignmentQueryProtocol.swift in Sources */,

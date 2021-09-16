@@ -19,12 +19,16 @@ extension UIView {
         self.frame = CGRect(x: self.frame.minX, y: view.frame.minY - self.frame.height, width: self.frame.width, height: self.frame.height)
     }
     
-    func reduceHeight(_ height: CGFloat) -> Void {
-        self.frame = CGRect(x : self.frame.minX, y : self.frame.minY, width: self.frame.width, height: height)
+    func changeSizeOfFrame(width : CGFloat, height: CGFloat) -> Void {
+        self.frame = CGRect(x : self.frame.minX, y : self.frame.minY, width: width, height: height)
     }
     
-    func bondsWithReducedWidth(_ offset: CGFloat) -> CGRect {
-        return CGRect(x : self.bounds.minX, y : self.bounds.minY, width: self.bounds.width - offset, height: self.bounds.height)
+    func makeItSquare() -> Void {
+        if(self == nil) {
+            return
+        }
+        let max = max(self.frame.width, self.frame.height)
+        changeSizeOfFrame(width: max, height: max)
     }
 }
 

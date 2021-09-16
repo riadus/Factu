@@ -8,7 +8,7 @@
 import UIKit
 import Bond
 
-class ConsultantView : BaseView {
+class ConsultantView : BaseSettingItemView {
     @IBOutlet weak var consultantName: UITextField!
     @IBOutlet weak var consulantLastName: UITextField!
     @IBOutlet weak var companyView: CompanyView!

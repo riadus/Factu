@@ -37,7 +37,7 @@ class EditViewController: BaseViewController<EditViewModel> {
         }
     
     
-    func loadView(view : BaseView, viewModel : EditItemViewModel) -> Void {
+    func loadView(view : BaseSettingItemView, viewModel : EditItemViewModel) -> Void {
         view.setViewModel(bindingContext: viewModel)
         containerView.addSubview(view)
         

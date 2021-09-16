@@ -7,33 +7,30 @@
 
 import UIKit
 
-class ProjectView: BaseView {
+class ProjectView: BaseSettingItemView {
     @IBOutlet weak var projectName: UITextField!
     @IBOutlet weak var rate: UITextField!
     @IBOutlet weak var vatPercentage: UITextField!
     @IBOutlet weak var numberOfHours: UITextField!
     @IBOutlet weak var hourlyRateButton: UIButton!
     @IBOutlet weak var dailyRateButton: UIButton!
-    @IBOutlet weak var numberOfHoursStepper: UIStepper!
-    @IBOutlet weak var rateStepper: UIStepper!
-    @IBOutlet weak var vatStepper: UIStepper!
+    @IBOutlet weak var numberOfHoursStepper: Stepper!
+    @IBOutlet weak var vatStepper: Stepper!
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var numberOfHoursLabel: UILabel!
     @IBOutlet weak var vatLabel: UILabel!
+    @IBOutlet weak var rateStepper: Stepper!
+    
     
     override func setViewModel(bindingContext : EditItemViewModel) -> Void {
         self.setViewModel(bindingContext: bindingContext as! EditProjectViewModel)
     }
     
     private func setViewModel(bindingContext : EditProjectViewModel) {
-        numberOfHoursStepper.value = Double(bindingContext.numberOfHours.value ?? "") ?? 0
-        rateStepper.value = Double(bindingContext.rate.value ?? "") ?? 0
-        vatStepper.value = Double(bindingContext.vat.value ?? "") ?? 0
-        
         bindingContext.title.bidirectionalBind(to: projectName.reactive.text)
-        bindingContext.rate.bidirectionalBind(to: rate.reactive.text)
-        bindingContext.vat.bidirectionalBind(to: vatPercentage.reactive.text)
-        bindingContext.numberOfHours.bidirectionalBind(to: numberOfHours.reactive.text)
+        bindingContext.rate.bidirectionalMap(to: self.floatToString, from: self.stringToFloat).bidirectionalBind(to: rate.reactive.text)
+        bindingContext.vat.bidirectionalMap(to: self.floatToString, from: self.stringToFloat).bidirectionalBind(to: vatPercentage.reactive.text)
+        bindingContext.numberOfHours.bidirectionalMap(to: self.floatToString, from: self.stringToFloat).bidirectionalBind(to: numberOfHours.reactive.text)
         bindingContext.rateText.bind(to: rateLabel.reactive.text)
         bindingContext.vatText.bind(to: vatLabel.reactive.text)
         bindingContext.numberOfHoursText.bind(to: numberOfHoursLabel.reactive.text)
@@ -49,12 +46,22 @@ class ProjectView: BaseView {
         hourlyRateButton.reactive.Command(bindingContext.hourlyCommand)
         dailyRateButton.reactive.Command(bindingContext.dailyCommand)
         
-        numberOfHoursStepper.reactive.value.bidirectionalMap(to: { String($0) }, from: { Double($0 ?? "") ?? 0 }).bidirectionalBind(to: bindingContext.numberOfHours)
-        rateStepper.reactive.value.bidirectionalMap(to: { String($0) }, from: { Double($0 ?? "") ?? 0 }).bidirectionalBind(to: bindingContext.rate)
-        vatStepper.reactive.value.bidirectionalMap(to: { String($0) }, from: { Double($0 ?? "") ?? 0 }).bidirectionalBind(to: bindingContext.vat)
+        bindingContext.rate.bidirectionalBind(to: rateStepper.reactive.value)
+        bindingContext.numberOfHours.bidirectionalBind(to: numberOfHoursStepper.reactive.value)
+        bindingContext.vat.bidirectionalBind(to: vatStepper.reactive.value)
         
         projectName.placeholder = bindingContext.titlePlaceholder
        
         UITextField.connectFields(fields: [projectName, rate, numberOfHours, vatPercentage])
+    }
+    
+    private func stringToFloat(_ text : String?) -> Float? {
+        if text == nil { return nil }
+        return Float(text!)
+    }
+
+    private func floatToString(_ number : Float?) -> String? {
+        if number == nil { return nil }
+        return String(number!)
     }
 }

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Stepper" customModule="Factu" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="UIControl">
+            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NtB-IY-GLS">
+                    <rect key="frame" x="0.0" y="45" width="90" height="45"/>
+                    <color key="backgroundColor" name="Gray"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="NtB-IY-GLS" secondAttribute="height" multiplier="2:1" id="Tip-lK-0uw"/>
+                    </constraints>
+                    <color key="tintColor" name="Pink"/>
+                    <state key="normal" image="minus" catalog="system"/>
+                    <connections>
+                        <action selector="remove:" destination="-1" eventType="touchUpInside" id="cd3-df-12m"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQL-6C-Zym">
+                    <rect key="frame" x="0.0" y="0.0" width="90" height="45"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="FQL-6C-Zym" secondAttribute="height" multiplier="2:1" id="Dxd-rI-CUo"/>
+                    </constraints>
+                    <color key="tintColor" name="Green"/>
+                    <state key="normal" image="plus" catalog="system">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="add:" destination="-1" eventType="touchUpInside" id="C9V-Ap-JY9"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="FQL-6C-Zym" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="JQ0-fA-LQu"/>
+                <constraint firstItem="NtB-IY-GLS" firstAttribute="height" secondItem="FQL-6C-Zym" secondAttribute="height" id="SuU-iI-ceS"/>
+                <constraint firstAttribute="top" secondItem="FQL-6C-Zym" secondAttribute="top" id="UDH-tW-Ui5"/>
+                <constraint firstItem="NtB-IY-GLS" firstAttribute="top" secondItem="FQL-6C-Zym" secondAttribute="bottom" id="bXh-vb-Fmv"/>
+                <constraint firstItem="NtB-IY-GLS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="d9T-HT-o2C"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="NtB-IY-GLS" secondAttribute="bottom" id="g5D-hP-Oi8"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FQL-6C-Zym" secondAttribute="trailing" id="kFo-kB-K4U"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="NtB-IY-GLS" secondAttribute="trailing" id="nVj-7r-bwl"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-121.73913043478262" y="-64.285714285714278"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="minus" catalog="system" width="128" height="24"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <namedColor name="Gray">
+            <color red="0.70999997854232788" green="0.72200000286102295" blue="0.7369999885559082" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Green">
+            <color red="0.1289999932050705" green="0.68599998950958252" blue="0.58799999952316284" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Pink">
+            <color red="0.86299997568130493" green="0.125" blue="0.37599998712539673" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
