@@ -24,7 +24,16 @@ class EditConsultantViewModel : EditItemViewModel {
     let lastNamePlaceholder = "Last name"
     var consultant : Consultant?
     
-    init(consultant : Consultant) {
+    convenience init(navigationEditObject : NavigationEditObject){
+        if(navigationEditObject.addNew){
+            self.init()
+        }
+        else {
+            self.init(consultant : navigationEditObject.object as! Consultant)
+        }
+    }
+    
+    private init(consultant : Consultant) {
         self.name = Observable(consultant.name)
         self.lastName = Observable(consultant.lastName)
         self.editCompanyViewModel = EditCompanyViewModel(company: consultant.company ?? Company())

@@ -26,6 +26,15 @@ class EditCompanyViewModel : EditItemViewModel {
     let bicPlaceholder = "BIC"
     let ibanPlaceholder = "IBAN"
     
+    convenience init(navigationEditObject : NavigationEditObject){
+        if(navigationEditObject.addNew){
+            self.init()
+        }
+        else {
+            self.init(company : navigationEditObject.object as! Company)
+        }
+    }
+    
     init(company : Company) {
         self.address = AddressViewModel(address: company.address ?? Address())
         self.name = Observable(company.name)

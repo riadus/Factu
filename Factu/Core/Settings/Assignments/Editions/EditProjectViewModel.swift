@@ -30,7 +30,17 @@ class EditProjectViewModel : EditItemViewModel {
       
     var hourlyCommand : ICommand!
     var dailyCommand : ICommand!
-    init(project : Project) {
+    
+    convenience init(navigationEditObject : NavigationEditObject){
+        if(navigationEditObject.addNew){
+            self.init()
+        }
+        else {
+            self.init(project : navigationEditObject.object as! Project)
+        }
+    }
+    
+    private init(project : Project) {
         self.project = project
         self.title = Observable(project.title)
         self.rate = Observable(project.rate?.normalRate == nil ? nil : project.rate!.normalRate)

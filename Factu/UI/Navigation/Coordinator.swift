@@ -68,6 +68,15 @@ class Coordinator : ICoordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
+    func toEditAssignment(assignment : Assignment?) -> Void {
+        let viewController = EditViewController()
+        viewController.setTarget(target: .assignment)
+        let navigationEditObject = NavigationEditObject(object: assignment ?? NSObject(), target: .assignment, addNew: assignment == nil)
+       
+        viewController.bindingContext.prepare(navigationEditObject: navigationEditObject)
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
     func back() -> Void {
         navigationController.popViewController(animated: true)
     }

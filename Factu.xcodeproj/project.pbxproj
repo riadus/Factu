@@ -38,6 +38,13 @@
 		916BBE7226E91DE4004629AA /* InvoiceServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916BBE7126E91DE4004629AA /* InvoiceServiceProtocol.swift */; };
 		916BBE7426E91E09004629AA /* InvoiceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916BBE7326E91E09004629AA /* InvoiceService.swift */; };
 		917760C126AD81F200DA200E /* TimesheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917760C026AD81F200DA200E /* TimesheetView.xib */; };
+		917D0CD426F48E7100A4A144 /* EditAssignmentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917D0CD326F48E7100A4A144 /* EditAssignmentView.xib */; };
+		917D0CD626F48E8500A4A144 /* EditAssignmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917D0CD526F48E8500A4A144 /* EditAssignmentView.swift */; };
+		917D0CD826F4C49100A4A144 /* EditAssignmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917D0CD726F4C49100A4A144 /* EditAssignmentViewModel.swift */; };
+		917D0CDA26F4C54B00A4A144 /* SelectableSubSectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917D0CD926F4C54B00A4A144 /* SelectableSubSectionProtocol.swift */; };
+		917D0CDC26F4C58F00A4A144 /* SelectableSubSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917D0CDB26F4C58F00A4A144 /* SelectableSubSection.swift */; };
+		917D0CDE26F4D9AF00A4A144 /* SectionLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917D0CDD26F4D9AF00A4A144 /* SectionLoader.swift */; };
+		917D0CE026F4D9CB00A4A144 /* SectionLoaderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917D0CDF26F4D9CB00A4A144 /* SectionLoaderProtocol.swift */; };
 		917FEFB526ED300000D93450 /* AssignmentBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917FEFB426ED300000D93450 /* AssignmentBinder.swift */; };
 		9184EF7526AB0722005B4988 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9184EF7426AB0722005B4988 /* Coordinator.swift */; };
 		9184EF7826AB1AFC005B4988 /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9184EF7726AB1AFC005B4988 /* Inject.swift */; };
@@ -171,6 +178,13 @@
 		916BBE7126E91DE4004629AA /* InvoiceServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceServiceProtocol.swift; sourceTree = "<group>"; };
 		916BBE7326E91E09004629AA /* InvoiceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceService.swift; sourceTree = "<group>"; };
 		917760C026AD81F200DA200E /* TimesheetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimesheetView.xib; sourceTree = "<group>"; };
+		917D0CD326F48E7100A4A144 /* EditAssignmentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditAssignmentView.xib; sourceTree = "<group>"; };
+		917D0CD526F48E8500A4A144 /* EditAssignmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAssignmentView.swift; sourceTree = "<group>"; };
+		917D0CD726F4C49100A4A144 /* EditAssignmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAssignmentViewModel.swift; sourceTree = "<group>"; };
+		917D0CD926F4C54B00A4A144 /* SelectableSubSectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableSubSectionProtocol.swift; sourceTree = "<group>"; };
+		917D0CDB26F4C58F00A4A144 /* SelectableSubSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableSubSection.swift; sourceTree = "<group>"; };
+		917D0CDD26F4D9AF00A4A144 /* SectionLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionLoader.swift; sourceTree = "<group>"; };
+		917D0CDF26F4D9CB00A4A144 /* SectionLoaderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionLoaderProtocol.swift; sourceTree = "<group>"; };
 		917FEFB426ED300000D93450 /* AssignmentBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentBinder.swift; sourceTree = "<group>"; };
 		9184EF7426AB0722005B4988 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		9184EF7726AB1AFC005B4988 /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
@@ -301,6 +315,7 @@
 				914D696426F24C270008F86D /* EditCompanyViewModel.swift */,
 				914D696626F24C350008F86D /* AddressViewModel.swift */,
 				914D696826F24C430008F86D /* EditProjectViewModel.swift */,
+				917D0CD726F4C49100A4A144 /* EditAssignmentViewModel.swift */,
 			);
 			path = Editions;
 			sourceTree = "<group>";
@@ -500,6 +515,8 @@
 				91ADDE4B26EB478B00281C02 /* AssignmentSettingsViewModel.swift */,
 				91F7D4D226EE365A00BE383F /* EditViewModel.swift */,
 				91F7D4D426EE392600BE383F /* EditItemViewModelFactoryProtocol.swift */,
+				917D0CDD26F4D9AF00A4A144 /* SectionLoader.swift */,
+				917D0CDF26F4D9CB00A4A144 /* SectionLoaderProtocol.swift */,
 			);
 			path = Assignments;
 			sourceTree = "<group>";
@@ -621,6 +638,8 @@
 				91F7D4C026EE0F3000BE383F /* AssignmentSubSection.swift */,
 				91F7D4C226EE0F4400BE383F /* CompanySubSection.swift */,
 				91F7D4C426EE0FAF00BE383F /* ProjectSubSection.swift */,
+				917D0CD926F4C54B00A4A144 /* SelectableSubSectionProtocol.swift */,
+				917D0CDB26F4C58F00A4A144 /* SelectableSubSection.swift */,
 			);
 			path = SubSections;
 			sourceTree = "<group>";
@@ -637,6 +656,8 @@
 				914D695726F0F3A20008F86D /* ProjectView.swift */,
 				914D695926F0F3B30008F86D /* ProjectView.xib */,
 				914D698226F32B240008F86D /* BaseSettingItemView.swift */,
+				917D0CD326F48E7100A4A144 /* EditAssignmentView.xib */,
+				917D0CD526F48E8500A4A144 /* EditAssignmentView.swift */,
 			);
 			path = Edit;
 			sourceTree = "<group>";
@@ -757,6 +778,7 @@
 				91F7D4D926EF349900BE383F /* EditViewController.xib in Resources */,
 				91F7D4CC26EE33AE00BE383F /* CompanyView.xib in Resources */,
 				91F3638026CE9CF800E48622 /* AssignmentView.xib in Resources */,
+				917D0CD426F48E7100A4A144 /* EditAssignmentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -820,6 +842,7 @@
 				91F7D4C326EE0F4400BE383F /* CompanySubSection.swift in Sources */,
 				917FEFB526ED300000D93450 /* AssignmentBinder.swift in Sources */,
 				914D698326F32B240008F86D /* BaseSettingItemView.swift in Sources */,
+				917D0CDA26F4C54B00A4A144 /* SelectableSubSectionProtocol.swift in Sources */,
 				91ADDE5026EB492400281C02 /* AssignmentSettingsViewController.swift in Sources */,
 				9184EF8526AB1BF6005B4988 /* SwiftDI.swift in Sources */,
 				913BA81026D6C6BA009E6C09 /* RepositoryAssembly.swift in Sources */,
@@ -835,6 +858,7 @@
 				918BA7D926A61F6100DF5F84 /* HomeViewController.swift in Sources */,
 				9184EF9226AB1D56005B4988 /* DIBuilder.swift in Sources */,
 				91D37EA226AB57C800835836 /* BaseViewController.swift in Sources */,
+				917D0CE026F4D9CB00A4A144 /* SectionLoaderProtocol.swift in Sources */,
 				91F7D4C526EE0FAF00BE383F /* ProjectSubSection.swift in Sources */,
 				91F3638926CFEFF300E48622 /* AssignmentProtocol.swift in Sources */,
 				91F3639F26D407D100E48622 /* QueryableType.swift in Sources */,
@@ -843,6 +867,7 @@
 				9184EF8726AB1C20005B4988 /* Utils.swift in Sources */,
 				914D695F26F24C020008F86D /* NavigationEditTagret.swift in Sources */,
 				9169FF6E26B059210024C6B4 /* ViewExtensions.swift in Sources */,
+				917D0CD826F4C49100A4A144 /* EditAssignmentViewModel.swift in Sources */,
 				91F7D4BD26EE0EE600BE383F /* SubSectionProtocol.swift in Sources */,
 				916BBE7026E90E24004629AA /* GuidGenerator.swift in Sources */,
 				9184EF8E26AB1CC8005B4988 /* DIPart.swift in Sources */,
@@ -850,6 +875,7 @@
 				91E38A0426D57BF6004076C7 /* DomainAssembly.swift in Sources */,
 				918BA7D526A61F6100DF5F84 /* AppDelegate.swift in Sources */,
 				91BFE83926C5A3B90006A22A /* DayViewCell.swift in Sources */,
+				917D0CDE26F4D9AF00A4A144 /* SectionLoader.swift in Sources */,
 				91F3639B26D4077D00E48622 /* AssignmentProvider.swift in Sources */,
 				91F3639D26D407B000E48622 /* AssignmentQuery.swift in Sources */,
 				9184EF8226AB1BC4005B4988 /* Resolver.swift in Sources */,
@@ -890,6 +916,7 @@
 				9184EF8B26AB1C5F005B4988 /* Extensions.swift in Sources */,
 				9184EF9F26AB1E58005B4988 /* DITuplePart.swift in Sources */,
 				914D696726F24C350008F86D /* AddressViewModel.swift in Sources */,
+				917D0CDC26F4C58F00A4A144 /* SelectableSubSection.swift in Sources */,
 				9184EF8926AB1C47005B4988 /* InjectableProperty.swift in Sources */,
 				9184EF7E26AB1B70005B4988 /* DIComponentContext.swift in Sources */,
 				914D697826F24DA40008F86D /* CompanyUpdate.swift in Sources */,
@@ -901,6 +928,7 @@
 				91E9D8B126D7864F00D59D95 /* TimesheetServiceProtocol.swift in Sources */,
 				918B411026A85D1F0084C6B5 /* TimesheetViewController.swift in Sources */,
 				9184EF9D26AB1E26005B4988 /* DIRegister.swift in Sources */,
+				917D0CD626F48E8500A4A144 /* EditAssignmentView.swift in Sources */,
 				91F3637726CCF56000E48622 /* MonthViewModel.swift in Sources */,
 				91FF6E8826DFA064003E6CBE /* InvoiceViewController.swift in Sources */,
 				9184EF8026AB1BA7005B4988 /* DIComponentManager.swift in Sources */,

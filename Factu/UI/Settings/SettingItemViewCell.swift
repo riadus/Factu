@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingItemViewCell: UITableViewCell {
+class SettingItemViewCell: BindableTableViewCell {
 
     @IBOutlet weak var itemTitle: UILabel!
     
@@ -20,7 +20,9 @@ class SettingItemViewCell: UITableViewCell {
     }
     
     @objc func cellTapped() {
+        if(tapAction != nil) {
         tapAction()
+        }
     }
  
     func setTapAction(_ action : @escaping () -> Void){

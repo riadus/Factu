@@ -31,6 +31,9 @@ class EditViewController: BaseViewController<EditViewModel> {
             case .project :
                 loadView(view: ProjectView(frame : containerView.bounds), viewModel: bindingContext.editItemViewModel)
                     break
+            case .assignment :
+                loadView(view: EditAssignmentView(frame : containerView.bounds), viewModel: bindingContext.editItemViewModel)
+                    break
                 default:
                     return
             }

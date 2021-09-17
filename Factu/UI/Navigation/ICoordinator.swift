@@ -17,4 +17,5 @@ protocol  ICoordinator {
     func toEditConsultantView(consultant : Consultant?) -> Void
     func toEditCompany(company: Company?) -> Void
     func toEditProject(project: Project?) -> Void
+    func toEditAssignment(assignment : Assignment?) -> Void
 }

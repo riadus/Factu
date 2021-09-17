@@ -14,25 +14,15 @@ protocol EditItemViewModelFactoryProtocol {
 class EditItemViewModelFactory : EditItemViewModelFactoryProtocol{
     
     func Build(navigationEditObject : NavigationEditObject) -> EditItemViewModel{
-        let newObject = navigationEditObject.addNew
         switch navigationEditObject.target{
         case .consulant:
-            if(newObject) {
-                return EditConsultantViewModel()
-                }
-            return EditConsultantViewModel(consultant : navigationEditObject.object as! Consultant)
+            return EditConsultantViewModel(navigationEditObject : navigationEditObject)
         case .client:
-            if(newObject){
-                return EditCompanyViewModel()
-            }
-            return EditCompanyViewModel(company: navigationEditObject.object as! Company)
+            return EditCompanyViewModel(navigationEditObject: navigationEditObject)
         case .project:
-            if(newObject){
-                return EditProjectViewModel()
-            }
-            return EditProjectViewModel(project: navigationEditObject.object as! Project)
-        default:
-            return EditConsultantViewModel()
+            return EditProjectViewModel(navigationEditObject: navigationEditObject)
+        case .assignment:
+            return EditAssignmentViewModel(navigationEditObject :navigationEditObject)
         }
     }
 }

@@ -8,6 +8,12 @@
 import Foundation
 
 class SubSection : SubSectionProtocol {
+    required init<T>(object: T) {
+        self.title = ""
+        self.addNew = false
+        tapCommand = Command(action: edit)
+    }
+    
     @Inject var coordinator : ICoordinator
     
     var title: String
@@ -20,7 +26,7 @@ class SubSection : SubSectionProtocol {
         tapCommand = Command(action: edit)
     }
     
-    init() {
+    required init() {
         self.title = "Add new"
         self.addNew = true
         tapCommand = Command(action: addNewItem)

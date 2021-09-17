@@ -10,4 +10,7 @@ import Foundation
 protocol SubSectionProtocol {
     var title : String { get }
     var tapCommand : ICommand! { get }
+    
+    init()
+    init<T>(object : T)
 }
