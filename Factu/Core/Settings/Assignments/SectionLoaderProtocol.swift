@@ -15,4 +15,5 @@ protocol SectionLoaderProtocol {
     func loadConsultants<T : SubSectionProtocol>(addEmpty : Bool, assignment : Assignment?) -> [T]
     func loadClients<T : SubSectionProtocol>(addEmpty : Bool) -> [T]
     func loadClients<T : SubSectionProtocol>(addEmpty : Bool, assignment : Assignment?) -> [T]
+    func loadEndClients<T : SubSectionProtocol>(assignment : Assignment?) -> [T]
 }

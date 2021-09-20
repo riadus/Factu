@@ -47,6 +47,11 @@ class SectionLoader : SectionLoaderProtocol {
         return getSubsections(addEmpty: addEmpty, objects: clients, selectedObject: assignment?.client)
     }
     
+    func loadEndClients<T>(assignment: Assignment?) -> [T] where T : SubSectionProtocol {
+        let clients = settingsProvider.getClients()
+        return getSubsections(addEmpty: false, objects: clients, selectedObject: assignment?.endClient)
+    }
+    
     private func getSubsections<T : SubSectionProtocol> (addEmpty : Bool, objects : [QueryableProtocol], selectedObject : QueryableProtocol? = nil) -> [T] {
         var subSections : [T] = [T]()
         for object in objects {

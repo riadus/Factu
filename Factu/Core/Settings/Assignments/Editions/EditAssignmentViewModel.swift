@@ -79,6 +79,7 @@ class EditAssignmentViewModel : EditItemViewModel {
         assignment.consultant = (self.sections[sectionAt: 0].metadata.selectedSubSection as? SelectableConsultantSubSection)?.consultant
         assignment.project = (self.sections[sectionAt: 1].metadata.selectedSubSection as? SelectableProjectSubSection)?.project
         assignment.client =  (self.sections[sectionAt: 2].metadata.selectedSubSection as? SelectableCompanySubSection)?.company
+        assignment.endClient =  (self.sections[sectionAt: 3].metadata.selectedSubSection as? SelectableCompanySubSection)?.company
         
         return assignment
     }
@@ -96,11 +97,13 @@ class EditAssignmentViewModel : EditItemViewModel {
         let consultantsHeader = HeadSection(title:"Consultants")
         let projectsHeader = HeadSection(title:"Projects")
         let clientsHeader = HeadSection(title:"Clients")
+        let endClientsHeader = HeadSection(title:"End clients")
         
         let initData = Array2D<HeadSection, SubSectionProtocol>(sectionsWithItems: [
             (consultantsHeader, sectionLoader.loadConsultants(addEmpty: false, assignment : self.assignment ) as [SelectableConsultantSubSection]),
             (projectsHeader, sectionLoader.loadProjects(addEmpty: false, assignment : self.assignment) as [SelectableProjectSubSection]),
-            (clientsHeader, sectionLoader.loadClients(addEmpty: false, assignment : self.assignment) as [SelectableCompanySubSection])
+            (clientsHeader, sectionLoader.loadClients(addEmpty: false, assignment : self.assignment) as [SelectableCompanySubSection]),
+            (endClientsHeader, sectionLoader.loadEndClients(assignment : self.assignment) as [SelectableCompanySubSection])
         ])
         if(sections.tree.children.count > 0) {
             for i in 0...sections.tree.children.count - 1 {

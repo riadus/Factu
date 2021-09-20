@@ -8,6 +8,5 @@
 import Foundation
 
 protocol AssignmentProviderProtocol {
-    func addAssignment(_ assignment : Assignment) -> Void
     func getAllAssignments() -> [Assignment]
 }

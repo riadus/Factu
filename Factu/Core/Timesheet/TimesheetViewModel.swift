@@ -43,7 +43,7 @@ class TimesheetViewModel : IBaseViewModel{
     func getTimesheet() -> Timesheet {
         let currentAssignment = assignmentProvider.getAllAssignments()[0]
         let dayViewModels = calendarViewModel.getSelectedDays()
-        let days = dayViewModels.map( {vm in vm.getDay() })
+        let days = dayViewModels.map { vm in vm.getDay() }
         let month = calendarViewModel.month.value!.monthIndex
         let year = Int(calendarViewModel.year.value!) ?? 0
         let timesheet = timesheetService.getTimesheet(assignment: currentAssignment, month: month, year: year)
