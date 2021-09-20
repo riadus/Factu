@@ -17,10 +17,6 @@ class SelectableSubSection : SubSection, SelectableSubSectionProtocol {
     required init<T>(object: T) {
         self.isSelected = Observable(true)
         super.init(object: object)
-        
-        isSelected.observeNext(with: { s in
-            print(s)
-        })
     }
     
     var isSelected: Observable<Bool>
@@ -28,5 +24,9 @@ class SelectableSubSection : SubSection, SelectableSubSectionProtocol {
    init(title : String, isSelected : Bool) {
         self.isSelected = Observable(isSelected)
         super.init(title)
+   }
+    
+    func selection() -> Void {
+        self.isSelected.value = !self.isSelected.value
     }
 }

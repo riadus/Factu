@@ -10,6 +10,9 @@ import Foundation
 protocol SectionLoaderProtocol {
     func loadAssignments<T : SubSectionProtocol>(addEmpty : Bool) -> [T]
     func loadProjects<T : SubSectionProtocol>(addEmpty : Bool) -> [T]
+    func loadProjects<T : SubSectionProtocol>(addEmpty : Bool, assignment : Assignment?) -> [T]
     func loadConsultants<T : SubSectionProtocol>(addEmpty : Bool) -> [T]
+    func loadConsultants<T : SubSectionProtocol>(addEmpty : Bool, assignment : Assignment?) -> [T]
     func loadClients<T : SubSectionProtocol>(addEmpty : Bool) -> [T]
+    func loadClients<T : SubSectionProtocol>(addEmpty : Bool, assignment : Assignment?) -> [T]
 }

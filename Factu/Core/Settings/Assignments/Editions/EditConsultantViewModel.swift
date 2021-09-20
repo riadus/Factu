@@ -16,6 +16,7 @@ class EditConsultantViewModel : EditItemViewModel {
     var saveCommand: ICommand!
     var deleteCommand: ICommand!
     var canDelete : Observable<Bool>!
+    var canSave: Observable<Bool>! = Observable(true)
     
     var name : Observable<String?>
     var lastName : Observable<String?>
@@ -60,6 +61,7 @@ class EditConsultantViewModel : EditItemViewModel {
             self.consultant?.name = name.value ?? ""
             self.consultant?.lastName = lastName.value ?? ""
             self.consultant?.company = self.editCompanyViewModel.getCompany()
+            self.consultant?.company?.isClient = false
             self.consultantUpdate.save(object: self.consultant)
         }
         else {

@@ -24,9 +24,10 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GRs-dk-N74">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GRs-dk-N74">
                     <rect key="frame" x="0.0" y="98" width="414" height="764"/>
                     <color key="backgroundColor" name="LightGray"/>
+                    <color key="tintColor" name="Green"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -44,6 +45,9 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="Green">
+            <color red="0.1289999932050705" green="0.68599998950958252" blue="0.58799999952316284" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="LightGray">
             <color red="0.94900000095367432" green="0.93699997663497925" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

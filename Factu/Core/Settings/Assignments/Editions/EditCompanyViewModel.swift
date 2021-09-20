@@ -15,6 +15,8 @@ class EditCompanyViewModel : EditItemViewModel {
     var saveCommand: ICommand!
     var deleteCommand: ICommand!
     var canDelete : Observable<Bool>!
+    var canSave: Observable<Bool>! = Observable(true)
+    
     var company : Company?
     
     var name : Observable<String?>
@@ -71,6 +73,7 @@ class EditCompanyViewModel : EditItemViewModel {
         company.name = name.value ?? ""
         company.bic = bic.value ?? ""
         company.iban = iban.value ?? ""
+        company.isClient = true
         
         return company
     }

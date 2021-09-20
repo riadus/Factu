@@ -60,6 +60,8 @@ class EditViewController: BaseViewController<EditViewModel> {
         
         self.bindingContext.editItemViewModel.canDelete.bind(to : deleteButton.reactive.isEnabled)
         self.bindingContext.editItemViewModel.canDelete.map{ $0 ? UIColor.white : UIColor.gray }.bind(to : deleteButton.reactive.titleColor)
+        self.bindingContext.editItemViewModel.canSave.bind(to : saveButton.reactive.isEnabled)
+        self.bindingContext.editItemViewModel.canSave.map{ $0 ? UIColor.white : UIColor.gray }.bind(to: saveButton.reactive.titleColor)
     }
 }
 

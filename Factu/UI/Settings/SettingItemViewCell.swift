@@ -7,9 +7,10 @@
 
 import UIKit
 
-class SettingItemViewCell: BindableTableViewCell {
+class SettingItemViewCell: UITableViewCell {
 
     @IBOutlet weak var itemTitle: UILabel!
+    @IBOutlet weak var checkmarkView: UIImageView!
     
     var tapAction : (() -> Void)!
     
@@ -21,7 +22,7 @@ class SettingItemViewCell: BindableTableViewCell {
     
     @objc func cellTapped() {
         if(tapAction != nil) {
-        tapAction()
+            tapAction()
         }
     }
  

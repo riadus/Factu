@@ -12,4 +12,5 @@ protocol EditItemViewModel {
     var saveCommand : ICommand! { get }
     var deleteCommand : ICommand! { get }
     var canDelete : Observable<Bool>! { get }
+    var canSave : Observable<Bool>! { get }
 }

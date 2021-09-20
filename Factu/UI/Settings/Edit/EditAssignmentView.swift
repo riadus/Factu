@@ -26,15 +26,25 @@ class EditAssignmentView : BaseSettingItemView {
         bindingContext.loadData()
         let sectionBindingDatSource: AssignmentBinder = AssignmentBinder<TreeChangeset>{ (changeset, indexPath, tableView) -> UITableViewCell in
             let itemCell = tableView.dequeueReusableCell(withIdentifier: "Item", for: indexPath) as! SettingItemViewCell
+            
             itemCell.itemTitle?.text = changeset.sections[indexPath.section].items[indexPath.row].title
             if(!changeset.sections[indexPath.section].metadata.isOpened.value){
                 itemCell.isHidden = true
             }
-            let bindingContext = changeset.sections[indexPath.section].items[indexPath.row] as? SelectableSubSectionProtocol
-            itemCell.reactive.isSelected.bidirectionalBind(to: bindingContext!.isSelected)
-            bindingContext!.isSelected.map { $0 ? UIColor(named : "Orange") : UIColor(named : "LightGray")}.bind(to: itemCell.reactive.backgroundColor)
+            let subsection = changeset.sections[indexPath.section].items[indexPath.row] as? SelectableSubSectionProtocol
+            itemCell.setTapAction {
+                changeset.sections[indexPath.section].metadata.selectedSubSection = subsection
+            }
+            _  = subsection?.isSelected.observeNext(with: { isSelected in
+                
+                if(itemCell.itemTitle.text != subsection?.title){
+                    return
+                }
+                bindingContext.editSelection(section: changeset.sections[indexPath.section].metadata, selection: subsection)
+                itemCell.checkmarkView.isHidden = !isSelected
+            })
             
-           return itemCell
+            return itemCell
         }
         bindingContext.sections.bind(to: self.tableView, using: sectionBindingDatSource)
         bindingContext.assignmentTitle.bidirectionalBind(to: assignmentTitle.reactive.text)

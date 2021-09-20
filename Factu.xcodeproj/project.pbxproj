@@ -92,6 +92,8 @@
 		91D37EA626AB688200835836 /* IBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D37EA526AB688200835836 /* IBaseViewModel.swift */; };
 		91D37EA826AB68A100835836 /* TimesheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D37EA726AB68A100835836 /* TimesheetViewModel.swift */; };
 		91D37EAB26AC666100835836 /* ICommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D37EAA26AC666100835836 /* ICommand.swift */; };
+		91E330C926F8DC960080309F /* AssignmentUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E330C826F8DC960080309F /* AssignmentUpdate.swift */; };
+		91E330CD26F8DFC30080309F /* AssignmentUpdateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E330CC26F8DFC30080309F /* AssignmentUpdateProtocol.swift */; };
 		91E38A0426D57BF6004076C7 /* DomainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E38A0326D57BF6004076C7 /* DomainAssembly.swift */; };
 		91E9D8B126D7864F00D59D95 /* TimesheetServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E9D8B026D7864F00D59D95 /* TimesheetServiceProtocol.swift */; };
 		91F3636E26CCF44800E48622 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F3636D26CCF44800E48622 /* CalendarViewModel.swift */; };
@@ -234,6 +236,8 @@
 		91D37EA526AB688200835836 /* IBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBaseViewModel.swift; sourceTree = "<group>"; };
 		91D37EA726AB68A100835836 /* TimesheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetViewModel.swift; sourceTree = "<group>"; };
 		91D37EAA26AC666100835836 /* ICommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICommand.swift; sourceTree = "<group>"; };
+		91E330C826F8DC960080309F /* AssignmentUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentUpdate.swift; sourceTree = "<group>"; };
+		91E330CC26F8DFC30080309F /* AssignmentUpdateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentUpdateProtocol.swift; sourceTree = "<group>"; };
 		91E38A0326D57BF6004076C7 /* DomainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainAssembly.swift; sourceTree = "<group>"; };
 		91E9D8B026D7864F00D59D95 /* TimesheetServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetServiceProtocol.swift; sourceTree = "<group>"; };
 		91F3636D26CCF44800E48622 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
@@ -327,6 +331,7 @@
 				914D696D26F24D3E0008F86D /* ConsultantUpdateProtocol.swift */,
 				914D697026F24D4D0008F86D /* CompanyUpdateProtocol.swift */,
 				914D697226F24D590008F86D /* ProjectUpdateProtocol.swift */,
+				91E330CC26F8DFC30080309F /* AssignmentUpdateProtocol.swift */,
 			);
 			path = SettingUpdates;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				914D697526F24D970008F86D /* ConsultantUpdate.swift */,
 				914D697726F24DA40008F86D /* CompanyUpdate.swift */,
 				914D697926F24DAE0008F86D /* ProjectUpdate.swift */,
+				91E330C826F8DC960080309F /* AssignmentUpdate.swift */,
 			);
 			path = SettingUpdates;
 			sourceTree = "<group>";
@@ -894,6 +900,7 @@
 				91ADDE5826EB901500281C02 /* SettingItemViewCell.swift in Sources */,
 				91F7D4C126EE0F3000BE383F /* AssignmentSubSection.swift in Sources */,
 				914D697126F24D4D0008F86D /* CompanyUpdateProtocol.swift in Sources */,
+				91E330C926F8DC960080309F /* AssignmentUpdate.swift in Sources */,
 				918BA7D726A61F6100DF5F84 /* SceneDelegate.swift in Sources */,
 				914D696C26F24D310008F86D /* SettingUpdateProtocol.swift in Sources */,
 				913BA80E26D6C5DE009E6C09 /* Repository.swift in Sources */,
@@ -928,6 +935,7 @@
 				91E9D8B126D7864F00D59D95 /* TimesheetServiceProtocol.swift in Sources */,
 				918B411026A85D1F0084C6B5 /* TimesheetViewController.swift in Sources */,
 				9184EF9D26AB1E26005B4988 /* DIRegister.swift in Sources */,
+				91E330CD26F8DFC30080309F /* AssignmentUpdateProtocol.swift in Sources */,
 				917D0CD626F48E8500A4A144 /* EditAssignmentView.swift in Sources */,
 				91F3637726CCF56000E48622 /* MonthViewModel.swift in Sources */,
 				91FF6E8826DFA064003E6CBE /* InvoiceViewController.swift in Sources */,

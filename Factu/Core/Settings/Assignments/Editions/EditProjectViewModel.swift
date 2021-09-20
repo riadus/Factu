@@ -15,6 +15,7 @@ class EditProjectViewModel : EditItemViewModel {
     var saveCommand: ICommand!
     var deleteCommand: ICommand!
     var canDelete: Observable<Bool>!
+    var canSave: Observable<Bool>! = Observable(true)
     
     var titlePlaceholder = "Project title"
     let rateText = Observable("Rate")

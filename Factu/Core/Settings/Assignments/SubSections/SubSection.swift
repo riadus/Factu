@@ -32,6 +32,6 @@ class SubSection : SubSectionProtocol {
         tapCommand = Command(action: addNewItem)
     }
     
-    func  addNewItem() -> Void { }
-    func  edit() -> Void { }
+    func  addNewItem() -> Void { print("Add")}
+    func  edit() -> Void {  print("Edit")}
 }

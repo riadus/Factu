@@ -22,14 +22,6 @@ extension UIView {
     func changeSizeOfFrame(width : CGFloat, height: CGFloat) -> Void {
         self.frame = CGRect(x : self.frame.minX, y : self.frame.minY, width: width, height: height)
     }
-    
-    func makeItSquare() -> Void {
-        if(self == nil) {
-            return
-        }
-        let max = max(self.frame.width, self.frame.height)
-        changeSizeOfFrame(width: max, height: max)
-    }
 }
 
 extension UITextField {

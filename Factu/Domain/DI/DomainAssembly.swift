@@ -30,6 +30,8 @@ struct DomainAssembly : DIPart {
                         .as(ConsultantUpdateProtocol.self)
                 DIRegister(ProjectUpdate.init)
                         .as(ProjectUpdateProtocol.self)
+                DIRegister(AssignmentUpdate.init)
+                        .as(AssignmentUpdateProtocol.self)
         }
     }
 }

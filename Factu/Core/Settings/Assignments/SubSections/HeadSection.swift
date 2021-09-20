@@ -22,4 +22,24 @@ class HeadSection {
     func openClose() -> Void {
         self.isOpened.value = !self.isOpened.value
     }
+    
+    var selectedSubSection : SelectableSubSectionProtocol? {
+        willSet {
+            let sameSelection = newValue?.isSelected.value == true
+            selectedSubSection?.isSelected.value = false
+            if sameSelection { return }
+            newValue?.isSelected.value = true
+        }
+    }
+}
+
+extension HeadSection : Hashable {
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
+    }
+
+    static func ==(lhs: HeadSection, rhs: HeadSection) -> Bool {
+        return lhs === rhs
+    }
 }
