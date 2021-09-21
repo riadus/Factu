@@ -24,7 +24,7 @@ class EditAssignmentView : BaseSettingItemView {
    
     func bindViewModel(bindingContext : EditAssignmentViewModel) {
         bindingContext.loadData()
-        let sectionBindingDatSource: AssignmentBinder = AssignmentBinder<TreeChangeset>{ (changeset, indexPath, tableView) -> UITableViewCell in
+        let sectionBindingDatSource: SectionsBinder = SectionsBinder<TreeChangeset>{ (changeset, indexPath, tableView) -> UITableViewCell in
             let itemCell = tableView.dequeueReusableCell(withIdentifier: "Item", for: indexPath) as! SettingItemViewCell
             
             itemCell.itemTitle?.text = changeset.sections[indexPath.section].items[indexPath.row].title

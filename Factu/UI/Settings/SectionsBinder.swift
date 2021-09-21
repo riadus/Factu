@@ -8,7 +8,7 @@
 import Foundation
 import Bond
 
-class AssignmentBinder<Changeset: SectionedDataSourceChangeset>: TableViewBinderDataSource<Changeset>, UITableViewDelegate where Changeset.Collection == Array2D<HeadSection, SubSectionProtocol> {
+class SectionsBinder<Changeset: SectionedDataSourceChangeset>: TableViewBinderDataSource<Changeset>, UITableViewDelegate where Changeset.Collection == SectionsArray2D {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "Section") as! SettingSectionViewCell
@@ -35,7 +35,7 @@ class AssignmentBinder<Changeset: SectionedDataSourceChangeset>: TableViewBinder
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(changeset?.collection[sectionAt: indexPath.section].metadata.isOpened.value == true)
         {
-            return 44
+            return UITableView.automaticDimension
         }
         return 0
     }

@@ -45,7 +45,7 @@
 		917D0CDC26F4C58F00A4A144 /* SelectableSubSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917D0CDB26F4C58F00A4A144 /* SelectableSubSection.swift */; };
 		917D0CDE26F4D9AF00A4A144 /* SectionLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917D0CDD26F4D9AF00A4A144 /* SectionLoader.swift */; };
 		917D0CE026F4D9CB00A4A144 /* SectionLoaderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917D0CDF26F4D9CB00A4A144 /* SectionLoaderProtocol.swift */; };
-		917FEFB526ED300000D93450 /* AssignmentBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917FEFB426ED300000D93450 /* AssignmentBinder.swift */; };
+		917FEFB526ED300000D93450 /* SectionsBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917FEFB426ED300000D93450 /* SectionsBinder.swift */; };
 		9184EF7526AB0722005B4988 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9184EF7426AB0722005B4988 /* Coordinator.swift */; };
 		9184EF7826AB1AFC005B4988 /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9184EF7726AB1AFC005B4988 /* Inject.swift */; };
 		9184EF7A26AB1B31005B4988 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9184EF7926AB1B31005B4988 /* DIContainer.swift */; };
@@ -94,6 +94,12 @@
 		91D37EAB26AC666100835836 /* ICommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D37EAA26AC666100835836 /* ICommand.swift */; };
 		91E330C926F8DC960080309F /* AssignmentUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E330C826F8DC960080309F /* AssignmentUpdate.swift */; };
 		91E330CD26F8DFC30080309F /* AssignmentUpdateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E330CC26F8DFC30080309F /* AssignmentUpdateProtocol.swift */; };
+		91E330D126F90F280080309F /* TimesheetAssignmentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E330CF26F90F270080309F /* TimesheetAssignmentViewCell.swift */; };
+		91E330D226F90F280080309F /* TimesheetAssignmentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91E330D026F90F280080309F /* TimesheetAssignmentViewCell.xib */; };
+		91E330D526F90F660080309F /* TimesheetCalendarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E330D326F90F660080309F /* TimesheetCalendarViewCell.swift */; };
+		91E330D626F90F660080309F /* TimesheetCalendarViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91E330D426F90F660080309F /* TimesheetCalendarViewCell.xib */; };
+		91E330D826F9F77F0080309F /* AssignmentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E330D726F9F77F0080309F /* AssignmentsViewModel.swift */; };
+		91E330DA26F9F7EA0080309F /* Sections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E330D926F9F7EA0080309F /* Sections.swift */; };
 		91E38A0426D57BF6004076C7 /* DomainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E38A0326D57BF6004076C7 /* DomainAssembly.swift */; };
 		91E9D8B126D7864F00D59D95 /* TimesheetServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E9D8B026D7864F00D59D95 /* TimesheetServiceProtocol.swift */; };
 		91F3636E26CCF44800E48622 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F3636D26CCF44800E48622 /* CalendarViewModel.swift */; };
@@ -187,7 +193,7 @@
 		917D0CDB26F4C58F00A4A144 /* SelectableSubSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableSubSection.swift; sourceTree = "<group>"; };
 		917D0CDD26F4D9AF00A4A144 /* SectionLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionLoader.swift; sourceTree = "<group>"; };
 		917D0CDF26F4D9CB00A4A144 /* SectionLoaderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionLoaderProtocol.swift; sourceTree = "<group>"; };
-		917FEFB426ED300000D93450 /* AssignmentBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentBinder.swift; sourceTree = "<group>"; };
+		917FEFB426ED300000D93450 /* SectionsBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsBinder.swift; sourceTree = "<group>"; };
 		9184EF7426AB0722005B4988 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		9184EF7726AB1AFC005B4988 /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
 		9184EF7926AB1B31005B4988 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
@@ -238,6 +244,12 @@
 		91D37EAA26AC666100835836 /* ICommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICommand.swift; sourceTree = "<group>"; };
 		91E330C826F8DC960080309F /* AssignmentUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentUpdate.swift; sourceTree = "<group>"; };
 		91E330CC26F8DFC30080309F /* AssignmentUpdateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentUpdateProtocol.swift; sourceTree = "<group>"; };
+		91E330CF26F90F270080309F /* TimesheetAssignmentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetAssignmentViewCell.swift; sourceTree = "<group>"; };
+		91E330D026F90F280080309F /* TimesheetAssignmentViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimesheetAssignmentViewCell.xib; sourceTree = "<group>"; };
+		91E330D326F90F660080309F /* TimesheetCalendarViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetCalendarViewCell.swift; sourceTree = "<group>"; };
+		91E330D426F90F660080309F /* TimesheetCalendarViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimesheetCalendarViewCell.xib; sourceTree = "<group>"; };
+		91E330D726F9F77F0080309F /* AssignmentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentsViewModel.swift; sourceTree = "<group>"; };
+		91E330D926F9F7EA0080309F /* Sections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sections.swift; sourceTree = "<group>"; };
 		91E38A0326D57BF6004076C7 /* DomainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainAssembly.swift; sourceTree = "<group>"; };
 		91E9D8B026D7864F00D59D95 /* TimesheetServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetServiceProtocol.swift; sourceTree = "<group>"; };
 		91F3636D26CCF44800E48622 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
@@ -439,6 +451,7 @@
 			children = (
 				91ADDE4926EB472B00281C02 /* Settings */,
 				91F3637426CCF4D300E48622 /* RangeExtensions.swift */,
+				91E330D926F9F7EA0080309F /* Sections.swift */,
 				91F3636F26CCF46C00E48622 /* Timesheet */,
 				9184EFA726AB2CF0005B4988 /* DI */,
 				918B411326A870250084C6B5 /* HomeViewModel.swift */,
@@ -537,7 +550,7 @@
 				91ADDE5326EB85F600281C02 /* SettingSectionViewCell.xib */,
 				91ADDE5626EB901500281C02 /* SettingItemViewCell.swift */,
 				91ADDE5726EB901500281C02 /* SettingItemViewCell.xib */,
-				917FEFB426ED300000D93450 /* AssignmentBinder.swift */,
+				917FEFB426ED300000D93450 /* SectionsBinder.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -548,6 +561,17 @@
 				91D37EAA26AC666100835836 /* ICommand.swift */,
 			);
 			path = Binding;
+			sourceTree = "<group>";
+		};
+		91E330CE26F90F000080309F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				91E330CF26F90F270080309F /* TimesheetAssignmentViewCell.swift */,
+				91E330D026F90F280080309F /* TimesheetAssignmentViewCell.xib */,
+				91E330D326F90F660080309F /* TimesheetCalendarViewCell.swift */,
+				91E330D426F90F660080309F /* TimesheetCalendarViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		91E38A0226D57BE7004076C7 /* DI */ = {
@@ -566,6 +590,7 @@
 				91F3637026CCF48000E48622 /* DayViewModel.swift */,
 				91F3637226CCF49700E48622 /* DateExtensions.swift */,
 				91F3637626CCF56000E48622 /* MonthViewModel.swift */,
+				91E330D726F9F77F0080309F /* AssignmentsViewModel.swift */,
 			);
 			path = Timesheet;
 			sourceTree = "<group>";
@@ -573,6 +598,7 @@
 		91F3637826CE52AA00E48622 /* Timesheet */ = {
 			isa = PBXGroup;
 			children = (
+				91E330CE26F90F000080309F /* Cells */,
 				917760C026AD81F200DA200E /* TimesheetView.xib */,
 				918B410F26A85D1F0084C6B5 /* TimesheetViewController.swift */,
 				91BFE83326C3C4760006A22A /* MonthViewCell.swift */,
@@ -774,7 +800,9 @@
 				917760C126AD81F200DA200E /* TimesheetView.xib in Resources */,
 				91F7D4C826EE2F0C00BE383F /* ConsultantView.xib in Resources */,
 				918BA7DE26A61F8000DF5F84 /* Assets.xcassets in Resources */,
+				91E330D626F90F660080309F /* TimesheetCalendarViewCell.xib in Resources */,
 				914D697F26F328E30008F86D /* Stepper.xib in Resources */,
+				91E330D226F90F280080309F /* TimesheetAssignmentViewCell.xib in Resources */,
 				91ADDE5526EB85F600281C02 /* SettingSectionViewCell.xib in Resources */,
 				91F3637E26CE6F8C00E48622 /* CalendarView.xib in Resources */,
 				910FE18026A770E20043A099 /* HomeView.xib in Resources */,
@@ -846,7 +874,7 @@
 			files = (
 				91F7D4D326EE365A00BE383F /* EditViewModel.swift in Sources */,
 				91F7D4C326EE0F4400BE383F /* CompanySubSection.swift in Sources */,
-				917FEFB526ED300000D93450 /* AssignmentBinder.swift in Sources */,
+				917FEFB526ED300000D93450 /* SectionsBinder.swift in Sources */,
 				914D698326F32B240008F86D /* BaseSettingItemView.swift in Sources */,
 				917D0CDA26F4C54B00A4A144 /* SelectableSubSectionProtocol.swift in Sources */,
 				91ADDE5026EB492400281C02 /* AssignmentSettingsViewController.swift in Sources */,
@@ -855,6 +883,7 @@
 				91D37EAB26AC666100835836 /* ICommand.swift in Sources */,
 				91F3637126CCF48000E48622 /* DayViewModel.swift in Sources */,
 				914D697A26F24DAE0008F86D /* ProjectUpdate.swift in Sources */,
+				91E330D826F9F77F0080309F /* AssignmentsViewModel.swift in Sources */,
 				91ADDE5426EB85F600281C02 /* SettingSectionViewCell.swift in Sources */,
 				9184EFA626AB2041005B4988 /* UIAssembly.swift in Sources */,
 				9184EF7826AB1AFC005B4988 /* Inject.swift in Sources */,
@@ -875,6 +904,7 @@
 				9169FF6E26B059210024C6B4 /* ViewExtensions.swift in Sources */,
 				917D0CD826F4C49100A4A144 /* EditAssignmentViewModel.swift in Sources */,
 				91F7D4BD26EE0EE600BE383F /* SubSectionProtocol.swift in Sources */,
+				91E330D526F90F660080309F /* TimesheetCalendarViewCell.swift in Sources */,
 				916BBE7026E90E24004629AA /* GuidGenerator.swift in Sources */,
 				9184EF8E26AB1CC8005B4988 /* DIPart.swift in Sources */,
 				91F7D4BA26EE0EAB00BE383F /* HeadSection.swift in Sources */,
@@ -897,6 +927,7 @@
 				916BBE7426E91E09004629AA /* InvoiceService.swift in Sources */,
 				914D695826F0F3A20008F86D /* ProjectView.swift in Sources */,
 				9184EF9426AB1D8E005B4988 /* DIGroup.swift in Sources */,
+				91E330DA26F9F7EA0080309F /* Sections.swift in Sources */,
 				91ADDE5826EB901500281C02 /* SettingItemViewCell.swift in Sources */,
 				91F7D4C126EE0F3000BE383F /* AssignmentSubSection.swift in Sources */,
 				914D697126F24D4D0008F86D /* CompanyUpdateProtocol.swift in Sources */,
@@ -947,6 +978,7 @@
 				914D697626F24D970008F86D /* ConsultantUpdate.swift in Sources */,
 				91F7D4BF26EE0EF800BE383F /* SubSection.swift in Sources */,
 				91F7D4D526EE392600BE383F /* EditItemViewModelFactoryProtocol.swift in Sources */,
+				91E330D126F90F280080309F /* TimesheetAssignmentViewCell.swift in Sources */,
 				91F3637C26CE6F4900E48622 /* CalendarView.swift in Sources */,
 				91F7D4CA26EE310100BE383F /* ConsultantView.swift in Sources */,
 				91D37EA626AB688200835836 /* IBaseViewModel.swift in Sources */,

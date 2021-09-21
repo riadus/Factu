@@ -17,15 +17,18 @@ class DayViewModel : ObservableObject, Identifiable {
     var isSelectable : Bool
     var isHalfDay : Bool = false
     var dayInt : Int = 0
+    var workedDay : Decimal = 0
+    var updateAction : () -> Void
     
-    init(day : Int, isWeekend : Bool){
+    init(day : Int, isWeekend : Bool, updateAction : @escaping () -> Void ){
         self.dayInt = day
         self.day = Observable(String(day))
         self.isSelected = false
         self.isWeekDay = false
         self.isEmpty = false
         self.isWeekend = isWeekend
-        self.isSelectable = true
+        self.isSelectable = !isWeekend
+        self.updateAction = updateAction
     }
     
     init(weekday : String){
@@ -35,6 +38,7 @@ class DayViewModel : ObservableObject, Identifiable {
         self.isEmpty = false
         self.isWeekend = false
         self.isSelectable = false
+        self.updateAction = { }
     }
     
     init() {
@@ -44,13 +48,21 @@ class DayViewModel : ObservableObject, Identifiable {
         self.isEmpty = true
         self.isWeekend = false
         self.isSelectable = false
+        self.updateAction = { }
     }
     
     func longPressed() -> Void {
+        if(!self.isSelectable) {
+            return
+        }
         self.isHalfDay = !self.isHalfDay
+        self.updateAction()
     }
     
     func tapped() -> Void {
+        if(!self.isSelectable) {
+            return
+        }
         if(self.isHalfDay){
             setIsSelected(true)
         }
@@ -67,6 +79,7 @@ class DayViewModel : ObservableObject, Identifiable {
         if(self.isSelected){
             self.isHalfDay = false
         }
+        self.updateAction()
     }
     
     func getDay() -> Day{
@@ -84,5 +97,18 @@ class DayViewModel : ObservableObject, Identifiable {
         else {
             self.isSelected = true
         }
+    }
+    
+    func getWorkedDay() -> Decimal {
+        if(!self.isSelectable) {
+            return 0
+        }
+        if(self.isHalfDay) {
+            return 0.5
+        }
+        if(self.isSelected) {
+            return 1
+        }
+        return 0
     }
 }

@@ -9,33 +9,23 @@ import UIKit
 import Bond
 import ReactiveKit
 
-class CalendarView: UIScrollView, UICollectionViewDelegate {
+class CalendarView: BaseView, UICollectionViewDelegate {
 
     @IBOutlet weak var previousYearButton: UIButton!
     @IBOutlet weak var nextYearButton: UIButton!
     @IBOutlet weak var currentYearLabel: UILabel!
     @IBOutlet weak var monthsCollectionView: UICollectionView!
     @IBOutlet weak var daysCollectionView: UICollectionView!
-    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var numberOfDaysLabel: UILabel!
+    @IBOutlet weak var numberOfDays: UILabel!
     
     var bindingContext : CalendarViewModel!
     var isEditingMode = false
     
-    required init?(coder aDecoder: NSCoder) {
-            super.init(coder: aDecoder)
-            initSubviews()
-        }
-
-        override init(frame: CGRect) {
-            super.init(frame: frame)
-            initSubviews()
-        }
-
-        func initSubviews() {
-            let view = Bundle.main.loadNibNamed("CalendarView", owner: self, options: nil)![0] as! UIView
-            view.frame = self.bounds
-            addSubview(view)
-        }
+    override func commonInit() {
+        super.commonInit()
+        loadView()
+    }
     
     func loadView() -> Void {
         monthsCollectionView.register(UINib(nibName:"MonthViewCell", bundle: nil), forCellWithReuseIdentifier:"monthReuseIdentifier")
@@ -47,10 +37,6 @@ class CalendarView: UIScrollView, UICollectionViewDelegate {
         
         daysCollectionView.register(UINib(nibName:"DayViewCell", bundle: nil), forCellWithReuseIdentifier:"dayReuseIdentifier")
         daysCollectionView.allowsMultipleSelection = true
-    }
-    
-    func viewDidLayoutSubviews() {
-        scrollToMonth()
     }
     
     func updateCalendarHeight() -> Void {
@@ -68,6 +54,8 @@ class CalendarView: UIScrollView, UICollectionViewDelegate {
         bindingContext.previousYear.bind(to : previousYearButton.reactive.title)
         nextYearButton.reactive.Command(bindingContext.nextYearCommand)
         previousYearButton.reactive.Command(bindingContext.previousYearCommand)
+        bindingContext.numberOfDaysText.bind(to : numberOfDaysLabel.reactive.text)
+        bindingContext.numberOfDays.map { NSDecimalNumber(decimal : $0).stringValue }.bind(to : numberOfDays.reactive.text)
         
         bindingContext.months.bind(to : monthsCollectionView) { array, indexPath, collectionView in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "monthReuseIdentifier", for: indexPath) as! MonthViewCell
@@ -87,6 +75,9 @@ class CalendarView: UIScrollView, UICollectionViewDelegate {
         
         bindingContext.days.bind(to : daysCollectionView) { array, indexPath, collectionView in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dayReuseIdentifier", for: indexPath) as! DayViewCell
+            if(array.count <= indexPath.item) {
+                return UICollectionViewCell.init()
+            }
             let day = array[indexPath.item]
             cell.bindingContext = day
             day.day.map{ String($0) }.bind(to: cell.dayLabel)

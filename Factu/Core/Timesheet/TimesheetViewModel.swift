@@ -19,6 +19,8 @@ class TimesheetViewModel : IBaseViewModel{
     let saveCommand : ICommand = Command()
     let generateInvoiceCommand : ICommand = Command()
     
+    var sections = Sections()
+    
     @Inject var coordinator : ICoordinator
     @Inject var timesheetService : TimesheetServiceProtocol
     @Inject var assignmentProvider : AssignmentProviderProtocol
@@ -48,6 +50,18 @@ class TimesheetViewModel : IBaseViewModel{
         let year = Int(calendarViewModel.year.value!) ?? 0
         let timesheet = timesheetService.getTimesheet(assignment: currentAssignment, month: month, year: year)
         return timesheet ?? timesheetService.createTimesheet(assignment: currentAssignment, days: days, month: month, year: year)
+    }
+    
+    func loadSections() {
+        let assignmentSection = HeadSection(title: "Assignment")
+        let timesheetSection = HeadSection(title: "Timesheet")
+        
+        let initData = SectionsArray2D(sectionsWithItems: [
+            (assignmentSection, [SubSection()]),
+            (timesheetSection, [SubSection()])
+        ])
+        
+        sections.loadDataOrReplace(data: initData)
     }
 }
 

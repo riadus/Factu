@@ -19,7 +19,7 @@ class AssignmentSettingsViewController: BaseViewController<AssignmentSettingsVie
     
     override func bindViewModel() {
         super.bindViewModel()
-        let sectionBindingDatSource: AssignmentBinder = AssignmentBinder<TreeChangeset>{ (changeset, indexPath, tableView) -> UITableViewCell in
+        let sectionBindingDatSource: SectionsBinder = SectionsBinder<TreeChangeset>{ (changeset, indexPath, tableView) -> UITableViewCell in
             let itemCell = tableView.dequeueReusableCell(withIdentifier: "Item", for: indexPath) as! SettingItemViewCell
             itemCell.itemTitle?.text = changeset.sections[indexPath.section].items[indexPath.row].title
             if(!changeset.sections[indexPath.section].metadata.isOpened.value){
@@ -37,14 +37,19 @@ class AssignmentSettingsViewController: BaseViewController<AssignmentSettingsVie
     var needsToReloadData = false
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if(needsToReloadData) {
-            bindingContext.loadData()
-        }
-        self.needsToReloadData = false
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.needsToReloadData = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if(needsToReloadData) {
+            bindingContext.loadData()
+        }
+        self.needsToReloadData = false
     }
 }

@@ -14,6 +14,7 @@ class CalendarViewModel : ObservableObject {
     var year : Observable<String?>
     var nextYear : Observable<String>
     var previousYear : Observable<String>
+    var numberOfDays : Observable<Decimal>
     var month : Observable<MonthViewModel?>
     var months : MutableObservableArray<MonthViewModel>
     var days : MutableObservableArray<DayViewModel>
@@ -21,6 +22,8 @@ class CalendarViewModel : ObservableObject {
     var previousYearCommand : ICommand
     @Inject var timesheetService: TimesheetServiceProtocol
     @Inject var assignmentProvider : AssignmentProviderProtocol
+    
+    let numberOfDaysText = Observable("Days : ")
     
     init(){
         self.months = MutableObservableArray<MonthViewModel>()
@@ -36,6 +39,7 @@ class CalendarViewModel : ObservableObject {
         monthIndex = monthIndex > 0 ? monthIndex : 12
         self.month = Observable(months[ monthIndex - 1 ])
         self.days = MutableObservableArray<DayViewModel>()
+        self.numberOfDays = Observable(0)
         self.nextYearCommand = Command()
         self.previousYearCommand = Command()
         self.nextYearCommand.setAction(self.nextYearTap)
@@ -72,11 +76,12 @@ class CalendarViewModel : ObservableObject {
         for i in 0...dates.count - 1 {
             let date = dates[i]
             let isWeekend = NSCalendar.current.isDateInWeekend(date)
-            let vm =  DayViewModel(day: i+1, isWeekend: isWeekend)
+            let vm = DayViewModel(day: i+1, isWeekend: isWeekend, updateAction: updateNumberOfDays)
             if(currentTimesheet != nil){
                 let day = currentTimesheet?.dates.first(where: { d in d.date == i + 1})
                 if(day != nil){
                     vm.loadDay(day!)
+                    numberOfDays.value += day?.isHalfDay == true ? 0.5 : 1
                 }
             }
             if(startedRepeating || (dates.count - 1 - i < numberOfEmptyDays && calendar.component(.weekday, from: date) == 2))
@@ -134,5 +139,16 @@ class CalendarViewModel : ObservableObject {
             }
         }
         return selectedDays
+    }
+    
+    func updateNumberOfDays() -> Void {
+        if(self.days.count <= 0){
+            return
+        }
+        var numberOfDays : Decimal = 0
+        for i in 0...self.days.count - 1{
+            numberOfDays += self.days[i].getWorkedDay()
+        }
+        self.numberOfDays.value = numberOfDays
     }
 }

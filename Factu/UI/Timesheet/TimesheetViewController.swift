@@ -10,105 +10,39 @@ import Bond
 
 class TimesheetViewController : BaseViewController<TimesheetViewModel> {
     
-    @IBOutlet weak var assignmentButton: UIButton!
-    @IBOutlet weak var calendarButton: UIButton!
-    @IBOutlet weak var calendarLabel: UILabel!
-    @IBOutlet weak var assignmentLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var timesheetLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var generateInvoiceButton: UIButton!
-    @IBOutlet weak var calendarContainer: UIView!
-    @IBOutlet weak var assignmentContainer: UIView!
-    @IBOutlet weak var assignmentContainerConstraint: NSLayoutConstraint!
-    @IBOutlet weak var calendarContainerConstraint: NSLayoutConstraint!
-    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var calendarView: CalendarView!
-    
-    private let titleContainerSize :CGFloat = 60
-    private var _assignmentClosed : Bool = true
-    private var _calendarClosed : Bool = true
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        closeAssignment()
-        closeCalendar()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        calendarView.viewDidLayoutSubviews()
-    }
-    
+
     override func viewDidLoad() {
+        tableView.register(UINib(nibName: "SettingSectionViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "Section")
+        tableView.register(UINib(nibName: "TimesheetAssignmentViewCell", bundle: nil), forCellReuseIdentifier: "Assignment")
+        tableView.register(UINib(nibName: "TimesheetCalendarViewCell", bundle: nil), forCellReuseIdentifier: "Calendar")
+        bindingContext.loadSections()
         super.viewDidLoad()
-        calendarView.loadView()
-        calendarButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 4)
-        assignmentButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 4)
-    }
-    
-    @IBAction func assignmentButtonTapped(_ sender: Any) {
-        if(self._assignmentClosed){
-            self.openAssignment()
-        }else{
-            self.closeAssignment()
-        }
-        UIView.animate(withDuration: 0.5, animations:{
-            self.view.layoutIfNeeded()
-        })
-    }
-    
-    @IBAction func calendarButtonTapped(_ sender: Any) {
-        if(self._calendarClosed){
-            self.openCalendar()
-        } else {
-            self.closeCalendar()
-        }
-        UIView.animate(withDuration: 0.5, animations:{
-            self.view.layoutIfNeeded()
-        })
     }
     
     override func bindViewModel() {
-        self.calendarView.setViewModel(bindingContext: bindingContext.calendarViewModel)
         bindingContext.timesheetText.bind(to: timesheetLabel.reactive.text)
-        bindingContext.assignmentText.bind(to: assignmentLabel.reactive.text)
-        bindingContext.calendarText.bind(to: calendarLabel.reactive.text)
         bindingContext.saveText.bind(to: saveButton.reactive.title)
         bindingContext.generateInvoiceText.bind(to : generateInvoiceButton.reactive.title)
         saveButton.reactive.Command(bindingContext.saveCommand)
         generateInvoiceButton.reactive.Command(bindingContext.generateInvoiceCommand)
-    }
-    
-    func closeAssignment() -> Void {
-        UIView.animate(withDuration: 0.5, animations:{
-                        self.assignmentButton.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 4)})
-        _assignmentClosed = true
-        self.assignmentContainerConstraint.constant = titleContainerSize
-    }
-    
-    func closeCalendar() -> Void {
-        UIView.animate(withDuration: 0.5, animations:{
-            self.calendarButton.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 4)
-        })
-        _calendarClosed = true
-        self.calendarContainerConstraint.constant = titleContainerSize
-    }
-    
-    func openAssignment() -> Void {
-        UIView.animate(withDuration: 0.5, animations:{
-                        self.assignmentButton.transform = CGAffineTransform(rotationAngle: 0)})
-        closeCalendar()
-        _assignmentClosed = false
-        assignmentContainerConstraint.constant = saveButton.frame.minY - titleContainerSize - assignmentContainer.frame.minY
         
-    }
-    
-    func openCalendar() -> Void {
-        UIView.animate(withDuration: 0.5, animations:{
-            self.calendarButton.transform = CGAffineTransform(rotationAngle: 0)
-        })
-        closeAssignment()
-        _calendarClosed = false
-        calendarContainerConstraint.constant = saveButton.frame.minY - titleContainerSize - assignmentContainer.frame.minY
+        let sectionBindingDatSource: SectionsBinder = SectionsBinder<TreeChangeset>{ (changeset, indexPath, tableView) -> UITableViewCell in
+            if(indexPath.section == 0){
+                return tableView.dequeueReusableCell(withIdentifier: "Assignment", for: indexPath)
+            }
+           
+            let celendarCell = tableView.dequeueReusableCell(withIdentifier: "Calendar", for: indexPath) as! TimesheetCalendarViewCell
+            celendarCell.setViewModel(bindingContext: self.bindingContext.calendarViewModel)
+            celendarCell.layoutIfNeeded()
+            celendarCell.calendarView.scrollToMonth()
+            return celendarCell
+        }
+        
+        self.bindingContext.sections.bind(to: self.tableView, using: sectionBindingDatSource)
+        self.tableView.delegate = sectionBindingDatSource
     }
 }

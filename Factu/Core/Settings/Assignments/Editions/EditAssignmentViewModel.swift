@@ -19,7 +19,7 @@ class EditAssignmentViewModel : EditItemViewModel {
     var canDelete: Observable<Bool>!
     var canSave: Observable<Bool>! = Observable(false)
     var isLoading = true
-    var sections : MutableObservableArray2D<HeadSection, SubSectionProtocol> = MutableObservableArray2D(Array2D<HeadSection, SubSectionProtocol>())
+    var sections : Sections = Sections()
     
     var assignmentTitle : Observable<String?>
     let assignmentTitlePlaceholder = "Assignment title"
@@ -99,20 +99,14 @@ class EditAssignmentViewModel : EditItemViewModel {
         let clientsHeader = HeadSection(title:"Clients")
         let endClientsHeader = HeadSection(title:"End clients")
         
-        let initData = Array2D<HeadSection, SubSectionProtocol>(sectionsWithItems: [
+        let data = SectionsArray2D(sectionsWithItems: [
             (consultantsHeader, sectionLoader.loadConsultants(addEmpty: false, assignment : self.assignment ) as [SelectableConsultantSubSection]),
             (projectsHeader, sectionLoader.loadProjects(addEmpty: false, assignment : self.assignment) as [SelectableProjectSubSection]),
             (clientsHeader, sectionLoader.loadClients(addEmpty: false, assignment : self.assignment) as [SelectableCompanySubSection]),
             (endClientsHeader, sectionLoader.loadEndClients(assignment : self.assignment) as [SelectableCompanySubSection])
         ])
-        if(sections.tree.children.count > 0) {
-            for i in 0...sections.tree.children.count - 1 {
-                sections.replaceItems(ofSectionAt: i, with: initData.sections[i].items)
-            }
-        }
-        else {
-            sections.replace(with: initData)
-        }
+        
+        sections.loadDataOrReplace(data: data)
 
         for i in 0...sections.tree.sections.count - 1 {
             self.sections[sectionAt: i].metadata.selectedSubSection = sections[sectionAt: i].items.first(where: { s in (s as! SelectableSubSection).isSelected.value }) as? SelectableSubSectionProtocol
