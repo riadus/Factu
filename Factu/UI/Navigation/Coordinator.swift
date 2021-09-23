@@ -80,4 +80,8 @@ class Coordinator : ICoordinator {
     func back() -> Void {
         navigationController.popViewController(animated: true)
     }
+    
+    func getCurrentViewController() -> UIViewController? {
+        return navigationController.viewControllers.last
+    }
 }

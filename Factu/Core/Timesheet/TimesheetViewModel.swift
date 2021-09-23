@@ -83,8 +83,6 @@ class TimesheetViewModel : IBaseViewModel{
     private func updateCanSave() -> Void {
         canSave.value = self.selectedAssignment != nil
         canGenerate.value = self.selectedAssignment != nil
-        
-        print("can save : \(canSave.value)")
     }
 }
 

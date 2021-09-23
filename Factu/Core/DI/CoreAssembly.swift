@@ -19,14 +19,18 @@ struct CoreAssembly : DIPart {
                             .lifeCycle(.prototype)
                 DIRegister(AssignmentSettingsViewModel.init)
                             .lifeCycle(.prototype)
-                DIRegister(EditItemViewModelFactory.init)
-                        .as(EditItemViewModelFactoryProtocol.self)
-                DIRegister(SectionLoader.init)
-                        .as(SectionLoaderProtocol.self)
                 DIRegister(AssignmentSettingsViewModel.init)
                             .lifeCycle(.prototype)
                 DIRegister(EditViewModel.init)
                             .lifeCycle(.prototype)
+            
+                DIRegister(EditItemViewModelFactory.init)
+                    .as(EditItemViewModelFactoryProtocol.self)
+                DIRegister(SectionLoader.init)
+                    .as(SectionLoaderProtocol.self)
+                DIRegister(Formatter.init)
+                    .as(FormatterProtcol.self)
+                        
         }
     }
 }

@@ -83,6 +83,9 @@
 		91ADDE5526EB85F600281C02 /* SettingSectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91ADDE5326EB85F600281C02 /* SettingSectionViewCell.xib */; };
 		91ADDE5826EB901500281C02 /* SettingItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ADDE5626EB901500281C02 /* SettingItemViewCell.swift */; };
 		91ADDE5926EB901500281C02 /* SettingItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91ADDE5726EB901500281C02 /* SettingItemViewCell.xib */; };
+		91BEF83E26FC773A00FB092B /* FormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEF83D26FC773A00FB092B /* FormatterProtocol.swift */; };
+		91BEF84026FC7D3300FB092B /* AlertsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEF83F26FC7D3300FB092B /* AlertsProtocol.swift */; };
+		91BEF84326FC7E5300FB092B /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEF84226FC7E5300FB092B /* Alerts.swift */; };
 		91BFE83526C3C4760006A22A /* MonthViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BFE83326C3C4760006A22A /* MonthViewCell.swift */; };
 		91BFE83626C3C4760006A22A /* MonthViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91BFE83426C3C4760006A22A /* MonthViewCell.xib */; };
 		91BFE83926C5A3B90006A22A /* DayViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BFE83726C5A3B90006A22A /* DayViewCell.swift */; };
@@ -233,6 +236,9 @@
 		91ADDE5326EB85F600281C02 /* SettingSectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingSectionViewCell.xib; sourceTree = "<group>"; };
 		91ADDE5626EB901500281C02 /* SettingItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemViewCell.swift; sourceTree = "<group>"; };
 		91ADDE5726EB901500281C02 /* SettingItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingItemViewCell.xib; sourceTree = "<group>"; };
+		91BEF83D26FC773A00FB092B /* FormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterProtocol.swift; sourceTree = "<group>"; };
+		91BEF83F26FC7D3300FB092B /* AlertsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsProtocol.swift; sourceTree = "<group>"; };
+		91BEF84226FC7E5300FB092B /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		91BFE83326C3C4760006A22A /* MonthViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewCell.swift; sourceTree = "<group>"; };
 		91BFE83426C3C4760006A22A /* MonthViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthViewCell.xib; sourceTree = "<group>"; };
 		91BFE83726C5A3B90006A22A /* DayViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewCell.swift; sourceTree = "<group>"; };
@@ -449,6 +455,7 @@
 		918B411226A870000084C6B5 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				91BEF83C26FC772700FB092B /* Services */,
 				91ADDE4926EB472B00281C02 /* Settings */,
 				91F3637426CCF4D300E48622 /* RangeExtensions.swift */,
 				91E330D926F9F7EA0080309F /* Sections.swift */,
@@ -498,6 +505,7 @@
 		918BA7E826A72A7800DF5F84 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				91BEF84126FC7E4100FB092B /* Services */,
 				914D697B26F3289A0008F86D /* Controls */,
 				91ADDE4D26EB48EF00281C02 /* Settings */,
 				91F3637826CE52AA00E48622 /* Timesheet */,
@@ -553,6 +561,23 @@
 				917FEFB426ED300000D93450 /* SectionsBinder.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		91BEF83C26FC772700FB092B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				91BEF83D26FC773A00FB092B /* FormatterProtocol.swift */,
+				91BEF83F26FC7D3300FB092B /* AlertsProtocol.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		91BEF84126FC7E4100FB092B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				91BEF84226FC7E5300FB092B /* Alerts.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		91D37EA926AC664B00835836 /* Binding */ = {
@@ -879,6 +904,7 @@
 				917D0CDA26F4C54B00A4A144 /* SelectableSubSectionProtocol.swift in Sources */,
 				91ADDE5026EB492400281C02 /* AssignmentSettingsViewController.swift in Sources */,
 				9184EF8526AB1BF6005B4988 /* SwiftDI.swift in Sources */,
+				91BEF84326FC7E5300FB092B /* Alerts.swift in Sources */,
 				913BA81026D6C6BA009E6C09 /* RepositoryAssembly.swift in Sources */,
 				91D37EAB26AC666100835836 /* ICommand.swift in Sources */,
 				91F3637126CCF48000E48622 /* DayViewModel.swift in Sources */,
@@ -925,6 +951,7 @@
 				914D697D26F328C20008F86D /* Stepper.swift in Sources */,
 				91D37EA826AB68A100835836 /* TimesheetViewModel.swift in Sources */,
 				916BBE7426E91E09004629AA /* InvoiceService.swift in Sources */,
+				91BEF83E26FC773A00FB092B /* FormatterProtocol.swift in Sources */,
 				914D695826F0F3A20008F86D /* ProjectView.swift in Sources */,
 				9184EF9426AB1D8E005B4988 /* DIGroup.swift in Sources */,
 				91E330DA26F9F7EA0080309F /* Sections.swift in Sources */,
@@ -963,6 +990,7 @@
 				914D696326F24C190008F86D /* EditConsultantViewModel.swift in Sources */,
 				91F3636E26CCF44800E48622 /* CalendarViewModel.swift in Sources */,
 				91F3637526CCF4D300E48622 /* RangeExtensions.swift in Sources */,
+				91BEF84026FC7D3300FB092B /* AlertsProtocol.swift in Sources */,
 				91E9D8B126D7864F00D59D95 /* TimesheetServiceProtocol.swift in Sources */,
 				918B411026A85D1F0084C6B5 /* TimesheetViewController.swift in Sources */,
 				9184EF9D26AB1E26005B4988 /* DIRegister.swift in Sources */,

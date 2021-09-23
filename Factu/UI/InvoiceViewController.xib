@@ -26,9 +26,11 @@
                 <outlet property="descriptionLabel" destination="v1p-fc-x4n" id="R7o-NL-cAI"/>
                 <outlet property="descriptionValueLabel" destination="PNE-h1-KJb" id="BRw-Lw-vX3"/>
                 <outlet property="extraDescriptionValueLabel" destination="n5p-Oo-pN2" id="3PI-4W-zgN"/>
+                <outlet property="generatePdfButton" destination="ysU-jw-B18" id="AHr-Lx-brk"/>
                 <outlet property="invoiceDateLabel" destination="EPW-uo-TJb" id="fFi-W4-2Kj"/>
                 <outlet property="invoiceDateValueLabel" destination="OTC-YR-lkW" id="jgp-Xr-RLE"/>
                 <outlet property="invoiceLabel" destination="dTW-ED-RW5" id="OTE-JA-xmV"/>
+                <outlet property="invoiceNumberButton" destination="hjn-kX-p2T" id="9Vh-e8-pta"/>
                 <outlet property="invoiceNumberLabel" destination="KKM-nn-93R" id="gLP-sb-kZ9"/>
                 <outlet property="invoiceNumberValueLabel" destination="6kl-xr-GAg" id="uPC-pI-fIZ"/>
                 <outlet property="kvkLabel" destination="588-IF-e2i" id="AYx-iJ-Arn"/>
@@ -384,8 +386,10 @@
                                 <constraint firstItem="Hir-iG-4eV" firstAttribute="leading" secondItem="TvL-wv-6Ar" secondAttribute="leading" id="0MX-HI-uag"/>
                                 <constraint firstItem="PiI-yu-XSD" firstAttribute="top" secondItem="Hir-iG-4eV" secondAttribute="top" constant="20" id="1y0-f9-sPA"/>
                                 <constraint firstItem="yiE-5D-k3S" firstAttribute="leading" secondItem="RaN-Z2-dyx" secondAttribute="leading" id="2gd-8C-g34"/>
+                                <constraint firstItem="x8F-bv-P25" firstAttribute="top" secondItem="2Ko-De-1oj" secondAttribute="top" id="5jS-dw-GCt"/>
                                 <constraint firstItem="9WJ-ny-9KF" firstAttribute="trailing" secondItem="AMB-sP-okZ" secondAttribute="trailing" id="5uH-ze-KQd"/>
                                 <constraint firstItem="VtP-CY-Pf5" firstAttribute="leading" secondItem="EPW-uo-TJb" secondAttribute="leading" id="7tt-UM-ekm"/>
+                                <constraint firstItem="16r-la-VxI" firstAttribute="top" secondItem="VtP-CY-Pf5" secondAttribute="top" id="7zn-zV-Mjb"/>
                                 <constraint firstItem="588-IF-e2i" firstAttribute="leading" secondItem="dTW-ED-RW5" secondAttribute="leading" id="8yc-TF-bO0"/>
                                 <constraint firstItem="RaN-Z2-dyx" firstAttribute="trailing" secondItem="Hir-iG-4eV" secondAttribute="trailing" id="9ku-vB-fjK"/>
                                 <constraint firstItem="gDd-yc-qNh" firstAttribute="top" secondItem="Eju-yj-dwD" secondAttribute="bottom" id="Bcq-Wk-QwA"/>
@@ -480,7 +484,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="bqy-Eh-H7T"/>
                     </constraints>
-                    <state key="normal" title="Send by email">
+                    <state key="normal" title="Set invoice number">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>

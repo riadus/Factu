@@ -18,6 +18,9 @@ class HomeViewController: BaseViewController<HomeViewModel> {
         self.timesheetButton.titleLabel?.adjustsFontSizeToFitWidth = true
         self.settingsButton.titleLabel?.adjustsFontSizeToFitWidth = true
         self.archivedButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        self.archivedButton.isEnabled = false
+        self.archivedButton.setTitleColor(UIColor.gray, for: .normal)
     }
     
     override func bindViewModel() -> Void{

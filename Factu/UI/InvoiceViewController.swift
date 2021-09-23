@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InvoiceViewController: BaseViewController<InvoiceViewModel> {
+class InvoiceViewController: BaseViewController<InvoiceViewModel>, UIDocumentInteractionControllerDelegate {
 
     @IBOutlet weak var companyNameLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -48,14 +48,20 @@ class InvoiceViewController: BaseViewController<InvoiceViewModel> {
     @IBOutlet weak var totalIncludingValueLabel: UILabel!
     @IBOutlet weak var totalIncludingLabel: UILabel!
     @IBOutlet weak var legalMentionLabel: UILabel!
+    @IBOutlet weak var invoiceNumberButton: UIButton!
+    @IBOutlet weak var generatePdfButton: UIButton!
     
     @IBOutlet weak var BicValue: UILabel!
     @IBOutlet weak var IbanValue: UILabel!
     
     @IBAction func showPDFPressed(_ sender: Any) {
         let data = getOutputData(withView: scrollView.subviews[0])
-        let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("invoice.pdf")
+        let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(bindingContext.getFileName())
         try! data.write(to: url, options: .atomicWrite)
+        
+        let documentInteractionController = UIDocumentInteractionController(url: url)
+        documentInteractionController.delegate = self
+        documentInteractionController.presentPreview(animated: true)
     }
     
     func getOutputData(withView view: UIView) -> NSData {
@@ -134,5 +140,14 @@ class InvoiceViewController: BaseViewController<InvoiceViewModel> {
         bindingContext.legalMentionsText.bind(to: legalMentionLabel.reactive.text)
         bindingContext.bic.bind(to: BicValue.reactive.text)
         bindingContext.iban.bind(to: IbanValue.reactive.text)
+        invoiceNumberButton.reactive.Command(bindingContext.invoiceNumberCommand)
+        
+        self.bindingContext.canGeneratePdf.bind(to : generatePdfButton.reactive.isEnabled)
+        self.bindingContext.canGeneratePdf.map{ $0 ? UIColor.white : UIColor.gray }.bind(to: generatePdfButton.reactive.titleColor)
+    
+    }
+    
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return self
     }
 }

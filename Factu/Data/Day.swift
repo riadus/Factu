@@ -26,6 +26,9 @@ class Invoice : Queryable {
     @Persisted var amountIncludingVat : Float
     @Persisted var vat : Float
     @Persisted var quantity : Float
+    @Persisted var invoiceDate : Date
+    @Persisted var paymentDate : Date
+    @Persisted var invoiceNumber : String
 }
 
 class Project : Queryable {
@@ -42,6 +45,8 @@ class Company : Queryable {
     @Persisted var iban : String
     @Persisted var bic : String
     @Persisted var isClient : Bool
+    @Persisted var legalNumber : String
+    @Persisted var vatNumber : String
 }
 
 class Address : Queryable {

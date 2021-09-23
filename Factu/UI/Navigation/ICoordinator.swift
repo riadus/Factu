@@ -18,4 +18,6 @@ protocol  ICoordinator {
     func toEditCompany(company: Company?) -> Void
     func toEditProject(project: Project?) -> Void
     func toEditAssignment(assignment : Assignment?) -> Void
+    
+    func getCurrentViewController() -> UIViewController?
 }

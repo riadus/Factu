@@ -28,6 +28,7 @@ class InvoiceService : InvoiceServiceProtocol {
         let vat = amount * vatPercentage / 100
         invoice.vat = vat
         invoice.amountIncludingVat = amount + vat
+        setDates(invoice)
         invoice.timesheet = timesheet
         repository.save(object: invoice)
         return invoice
@@ -41,5 +42,18 @@ class InvoiceService : InvoiceServiceProtocol {
         for i in 0...existingInvoices.count - 1 {
             repository.delete(object: existingInvoices[i])
         }
+    }
+    
+    func setDates(_ invoice : Invoice) -> Void {
+        invoice.invoiceDate = Date()
+        
+        let currentDate = Date()
+        var dateComponent = DateComponents()
+        dateComponent.day = 30
+        invoice.paymentDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)!
+    }
+    
+    func updateInvoiceNumber(_ invoice : Invoice, _ number : String) -> Void {
+        repository.update(object: invoice, update : { i in i.invoiceNumber = number })
     }
 }

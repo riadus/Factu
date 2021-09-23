@@ -23,10 +23,14 @@ class EditCompanyViewModel : EditItemViewModel {
     var address : AddressViewModel
     var bic : Observable<String?>
     var iban : Observable<String?>
+    var vatNumber : Observable<String?>
+    var legalRegistrationNumber : Observable<String?>
    
     let namePlaceholder = "Company name"
     let bicPlaceholder = "BIC"
     let ibanPlaceholder = "IBAN"
+    let vatNumberPlaceholder = "VAT number"
+    let legalRegistrationPlaceholder = "Legal registration number"
     
     convenience init(navigationEditObject : NavigationEditObject){
         if(navigationEditObject.addNew){
@@ -42,6 +46,8 @@ class EditCompanyViewModel : EditItemViewModel {
         self.name = Observable(company.name)
         self.bic = Observable(company.bic)
         self.iban = Observable(company.iban)
+        self.vatNumber = Observable(company.vatNumber)
+        self.legalRegistrationNumber = Observable(company.legalNumber)
         self.company = company
         self.canDelete = Observable(true)
         self.saveCommand = Command(action: save)
@@ -53,6 +59,8 @@ class EditCompanyViewModel : EditItemViewModel {
         self.name = Observable("")
         self.bic = Observable("")
         self.iban = Observable("")
+        self.vatNumber = Observable("")
+        self.legalRegistrationNumber = Observable("")
         self.company = nil
         self.canDelete = Observable(false)
         self.saveCommand = Command(action: save)
@@ -73,6 +81,8 @@ class EditCompanyViewModel : EditItemViewModel {
         company.name = name.value ?? ""
         company.bic = bic.value ?? ""
         company.iban = iban.value ?? ""
+        company.vatNumber = vatNumber.value ?? ""
+        company.legalNumber = legalRegistrationNumber.value ?? ""
         company.isClient = true
         
         return company

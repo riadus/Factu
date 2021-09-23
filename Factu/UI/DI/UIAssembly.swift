@@ -10,7 +10,10 @@ import Foundation
 struct UIAssembly : DIPart {
     
     var body: some DIPart {
-        DIRegister<ICoordinator>(Coordinator.init)
-            .lifeCycle(.single)
+        DIGroup {
+            DIRegister<ICoordinator>(Coordinator.init)
+                .lifeCycle(.single)
+            DIRegister<AlertsProtocol>(Alerts.init)
+        }
     }
 }
