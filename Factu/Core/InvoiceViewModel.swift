@@ -12,6 +12,7 @@ class InvoiceViewModel : IBaseViewModel {
     
     @Inject var formatter : FormatterProtcol
     @Inject var alerts : AlertsProtocol
+    @Inject var invoiceService : InvoiceServiceProtocol
     
     let back = "Back"
     let title = Observable<String>("Invoice Preview")
@@ -71,6 +72,12 @@ class InvoiceViewModel : IBaseViewModel {
     }
     
     func loadData() -> Void {
+        if(self.invoice.invoiceNumber != "") {
+            self.invoiceNumber.value = self.invoice.invoiceNumber
+            self.canGeneratePdf.value = true
+            self.generateInvoiceText.value = "See generated PDF"
+        }
+        
         let timesheet = self.invoice.timesheet!
         self.consultant = timesheet.assignment!.consultant!
         let company = consultant.company!
@@ -117,6 +124,7 @@ class InvoiceViewModel : IBaseViewModel {
                                         if newNumber != nil {
                                             self.invoiceNumber.value = newNumber!
                                             self.canGeneratePdf.value = true
+                                            self.invoiceService.updateInvoiceNumber(self.invoice, newNumber!)
                                         }
                                     })
     }

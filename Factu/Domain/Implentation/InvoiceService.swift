@@ -34,6 +34,10 @@ class InvoiceService : InvoiceServiceProtocol {
         return invoice
     }
     
+    func getInvoices() -> [Invoice] {
+        repository.get(filter: { _ in true } ) as [Invoice]
+    }
+    
     private func deleteInvoiceForTimesheet(_ timesheet : Timesheet) -> Void {
         let existingInvoices = repository.get(filter: {invoice in invoice.timesheet?.id == timesheet.id }) as [Invoice]
         if (existingInvoices.count == 0) {

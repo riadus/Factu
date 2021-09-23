@@ -23,14 +23,12 @@ struct CoreAssembly : DIPart {
                             .lifeCycle(.prototype)
                 DIRegister(EditViewModel.init)
                             .lifeCycle(.prototype)
+                DIRegister(ArchiveViewModel.init)
+                            .lifeCycle(.prototype)
             
-                DIRegister(EditItemViewModelFactory.init)
-                    .as(EditItemViewModelFactoryProtocol.self)
-                DIRegister(SectionLoader.init)
-                    .as(SectionLoaderProtocol.self)
-                DIRegister(Formatter.init)
-                    .as(FormatterProtcol.self)
-                        
+                DIRegister<EditItemViewModelFactoryProtocol>(EditItemViewModelFactory.init)
+                DIRegister<SectionLoaderProtocol>(SectionLoader.init)
+                DIRegister<FormatterProtcol>(Formatter.init)
         }
     }
 }

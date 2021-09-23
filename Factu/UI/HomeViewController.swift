@@ -18,9 +18,6 @@ class HomeViewController: BaseViewController<HomeViewModel> {
         self.timesheetButton.titleLabel?.adjustsFontSizeToFitWidth = true
         self.settingsButton.titleLabel?.adjustsFontSizeToFitWidth = true
         self.archivedButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        self.archivedButton.isEnabled = false
-        self.archivedButton.setTitleColor(UIColor.gray, for: .normal)
     }
     
     override func bindViewModel() -> Void{
@@ -30,6 +27,7 @@ class HomeViewController: BaseViewController<HomeViewModel> {
         bindingContext.archivedText.bind(to: archivedButton.reactive.title)
         timesheetButton.reactive.Command(bindingContext.timesheetCommand!)
         settingsButton.reactive.Command(bindingContext.settingsCommand)
+        archivedButton.reactive.Command(bindingContext.archiveCommand)
     }
 }
 

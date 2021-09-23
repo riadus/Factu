@@ -11,6 +11,7 @@ import Foundation
 class SectionLoader : SectionLoaderProtocol {
     @Inject var settingsProvider : SettingsProviderProtocol
     @Inject var assignmentProvider : AssignmentProviderProtocol
+    @Inject var invoicesProvider : InvoiceService
     
     func loadAssignments<T : SubSectionProtocol>(addEmpty : Bool) -> [T] {
         let assignments = assignmentProvider.getAllAssignments()
@@ -50,6 +51,11 @@ class SectionLoader : SectionLoaderProtocol {
     func loadEndClients<T>(assignment: Assignment?) -> [T] where T : SubSectionProtocol {
         let clients = settingsProvider.getClients()
         return getSubsections(addEmpty: false, objects: clients, selectedObject: assignment?.endClient)
+    }
+    
+    func loadInvoices<T>() -> [T] where T : SubSectionProtocol {
+        let invoices = invoicesProvider.getInvoices()
+        return getSubsections(addEmpty: false, objects: invoices)
     }
     
     private func getSubsections<T : SubSectionProtocol> (addEmpty : Bool, objects : [QueryableProtocol], selectedObject : QueryableProtocol? = nil) -> [T] {

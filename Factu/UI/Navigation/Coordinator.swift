@@ -77,6 +77,11 @@ class Coordinator : ICoordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
+    func toArchives() -> Void {
+        navigationController.pushViewController(ArchiveViewController(), animated: true)
+    }
+    
+    
     func back() -> Void {
         navigationController.popViewController(animated: true)
     }
