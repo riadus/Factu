@@ -17,7 +17,7 @@ class TimesheetViewController : BaseViewController<TimesheetViewModel> {
 
     override func viewDidLoad() {
         tableView.register(UINib(nibName: "SettingSectionViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "Section")
-        tableView.register(UINib(nibName: "TimesheetAssignmentViewCell", bundle: nil), forCellReuseIdentifier: "Assignment")
+        tableView.register(UINib(nibName: "SettingItemViewCell", bundle: nil), forCellReuseIdentifier: "Assignment")
         tableView.register(UINib(nibName: "TimesheetCalendarViewCell", bundle: nil), forCellReuseIdentifier: "Calendar")
         bindingContext.loadSections()
         super.viewDidLoad()
@@ -30,9 +30,21 @@ class TimesheetViewController : BaseViewController<TimesheetViewModel> {
         saveButton.reactive.Command(bindingContext.saveCommand)
         generateInvoiceButton.reactive.Command(bindingContext.generateInvoiceCommand)
         
+        bindingContext.canSave.bind(to : saveButton.reactive.isEnabled)
+        bindingContext.canSave.map{ $0 ? UIColor.white : UIColor.gray }.bind(to: saveButton.reactive.titleColor)
+    
+        bindingContext.canGenerate.bind(to : generateInvoiceButton.reactive.isEnabled)
+        bindingContext.canGenerate.map{ $0 ? UIColor.white : UIColor.gray }.bind(to: generateInvoiceButton.reactive.titleColor)
+    
         let sectionBindingDatSource: SectionsBinder = SectionsBinder<TreeChangeset>{ (changeset, indexPath, tableView) -> UITableViewCell in
             if(indexPath.section == 0){
-                return tableView.dequeueReusableCell(withIdentifier: "Assignment", for: indexPath)
+                let itemCell = SettingItemViewCell.getSelectableCell(reuseIdentifier: "Assignment",
+                                                           tableView: tableView,
+                                                           changeset: changeset,
+                                                           indexPath: indexPath,
+                                                           selectionAction: { })
+                
+                return itemCell
             }
            
             let celendarCell = tableView.dequeueReusableCell(withIdentifier: "Calendar", for: indexPath) as! TimesheetCalendarViewCell

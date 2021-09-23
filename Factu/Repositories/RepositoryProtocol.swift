@@ -10,6 +10,7 @@ import RealmSwift
 
 protocol RepositoryProtocol {
     func save<T : Object>(object : T)
+    func update<T : Object>(object : T)
     func update<T : Object>(object : T, update : (T) -> Void)
     func update<T : Object>(object : inout T, update : (inout T) -> Void)
     func get<T : Object>() -> [T]
@@ -18,4 +19,5 @@ protocol RepositoryProtocol {
     func delete<T : Object>(objects : [T]) -> Void
     func delete<T : Object>(object : T) -> Void
     func delete<T : Object>(objects : List<T>) -> Void
+    func count<T : Object>(object : T, filter : (T) -> Bool) -> Int
 }

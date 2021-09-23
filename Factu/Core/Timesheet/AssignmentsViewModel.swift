@@ -6,10 +6,26 @@
 //
 
 import Foundation
+import Bond
 
 class AssignmentsViewModel {
     
-    @Inject var assignmentsProvider : AssignmentProviderProtocol
+    @Inject var sectionLoader : SectionLoaderProtocol
     
+    var sections : Sections = Sections()
+    var selectedAssignment : Observable<Assignment?>
+    init() {
+        selectedAssignment = Observable(nil)
+    }
     
+    func loadSections() -> (Section : HeadSection, SubSections : [SubSectionProtocol]) {
+        let assignmentSection = HeadSection(title: "Assignment")
+
+        let initData = (assignmentSection, self.sectionLoader.loadAssignments(addEmpty: false) as [SelectableAssignmentSubSection])
+
+        _ = assignmentSection.observeSelection.observeNext(with: {o in
+                                                            self.selectedAssignment.value = (assignmentSection.selectedSubSection as? SelectableAssignmentSubSection)?.assignment })
+        
+        return initData
+    }
 }

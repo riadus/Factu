@@ -13,6 +13,8 @@ class HeadSection {
     var isOpened : Observable<Bool>!
     let openCloseCommand : ICommand = Command()
     
+    var observeSelection : Observable<NSObject?> = Observable(nil)
+    
     init(title : String, isOpened : Bool = false) {
         self.title = Observable(title)
         self.isOpened = Observable(isOpened)
@@ -29,6 +31,9 @@ class HeadSection {
             selectedSubSection?.isSelected.value = false
             if sameSelection { return }
             newValue?.isSelected.value = true
+        }
+        didSet {
+            observeSelection.value = selectedSubSection?.isSelected.value as NSObject?
         }
     }
 }

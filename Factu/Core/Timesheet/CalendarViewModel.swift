@@ -20,8 +20,8 @@ class CalendarViewModel : ObservableObject {
     var days : MutableObservableArray<DayViewModel>
     var nextYearCommand : ICommand
     var previousYearCommand : ICommand
+    var currentAssignment : Assignment? = nil
     @Inject var timesheetService: TimesheetServiceProtocol
-    @Inject var assignmentProvider : AssignmentProviderProtocol
     
     let numberOfDaysText = Observable("Days : ")
     
@@ -48,6 +48,11 @@ class CalendarViewModel : ObservableObject {
         self.changeYear(baseYear: String(Date().getYear()))
     }
     
+    func setAssignment(_ assignment : Assignment?) -> Void {
+        currentAssignment = assignment
+        updateDays()
+    }
+    
     func getAllDays() -> [Date] {
         return Date().getAllDays(month: (month.value?.monthIndex ?? 0) + 1, year: year.value!)
     }
@@ -70,8 +75,7 @@ class CalendarViewModel : ObservableObject {
         var fillEmptyDays = 7
         var startedRepeating = false
         var actualDays = 0
-        let currentAssignment = assignmentProvider.getAllAssignments()[0]
-        let currentTimesheet = timesheetService.getTimesheet(assignment: currentAssignment, month: month.value?.monthIndex ?? 0, year: Int(year.value!) ?? 0)
+        let currentTimesheet = self.currentAssignment == nil ? nil : timesheetService.getTimesheet(assignment: self.currentAssignment!, month: month.value?.monthIndex ?? 0, year: Int(year.value!) ?? 0)
         
         for i in 0...dates.count - 1 {
             let date = dates[i]

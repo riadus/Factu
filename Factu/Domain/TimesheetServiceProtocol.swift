@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TimesheetServiceProtocol {
-    func createTimesheet(assignment : Assignment, days : [Day], month : Int, year : Int) -> Timesheet
-    func saveTimesheet(timesheet : Timesheet)
+    func createTimesheet(assignment : Assignment, month : Int, year : Int) -> Timesheet
+    func saveTimesheet(timesheet : Timesheet, assignment : Assignment, days : [Day])
     func getTimesheet(assignment : Assignment, month : Int, year : Int) -> Timesheet?
 }

@@ -17,6 +17,13 @@ class Repository : RepositoryProtocol {
         }
      }
     
+    func update<T : Object>(object : T) {
+       let realm = try! Realm()
+       try! realm.write {
+            realm.add(object, update: .modified)
+       }
+    }
+    
     func update<T : Object>(object : T, update : (T) -> Void) {
         let realm = try! Realm()
         try! realm.write {
@@ -68,5 +75,9 @@ class Repository : RepositoryProtocol {
         try! realm.write {
             realm.delete(objects)
         }
+    }
+    
+    func count<T : Object>(object : T, filter : (T) -> Bool) -> Int {
+        return get(filter: filter).count
     }
 }
