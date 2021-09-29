@@ -23,8 +23,10 @@ class AssignmentsViewModel {
 
         let initData = (assignmentSection, self.sectionLoader.loadAssignments(addEmpty: false) as [SelectableAssignmentSubSection])
 
-        _ = assignmentSection.observeSelection.observeNext(with: {o in
-                                                            self.selectedAssignment.value = (assignmentSection.selectedSubSection as? SelectableAssignmentSubSection)?.assignment })
+        _ = assignmentSection.observeSelection.observeNext(with: { _ in
+                                                            self.selectedAssignment.value = (assignmentSection.selectedSubSection as? SelectableAssignmentSubSection)?.assignment
+            
+        })
         
         return initData
     }

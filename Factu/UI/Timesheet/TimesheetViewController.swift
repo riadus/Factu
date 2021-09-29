@@ -45,8 +45,7 @@ class TimesheetViewController : BaseViewController<TimesheetViewModel> {
                 let itemCell = SettingItemViewCell.getSelectableCell(reuseIdentifier: "Assignment",
                                                            tableView: tableView,
                                                            changeset: changeset,
-                                                           indexPath: indexPath,
-                                                           selectionAction: { })
+                                                           indexPath: indexPath)
                 
                 return itemCell
             }

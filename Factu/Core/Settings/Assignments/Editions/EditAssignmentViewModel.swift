@@ -13,6 +13,13 @@ class EditAssignmentViewModel : EditItemViewModel {
     @Inject var coordinator : ICoordinator
     @Inject var sectionLoader : SectionLoaderProtocol
     
+    let consultantsHeader = HeadSection(title:"Consultants")
+    let projectsHeader = HeadSection(title:"Projects")
+    let clientsHeader = HeadSection(title:"Clients")
+    let endClientsHeader = HeadSection(title:"End clients")
+    
+    let mandatorySection : [HeadSection]
+    
     var assignment : Assignment?
     var saveCommand: ICommand!
     var deleteCommand: ICommand!
@@ -38,15 +45,19 @@ class EditAssignmentViewModel : EditItemViewModel {
     private init(assignment : Assignment) {
         self.assignment = assignment
         self.assignmentTitle = Observable(assignment.assignmentTitle)
+        self.mandatorySection = [consultantsHeader, projectsHeader, clientsHeader]
         
         self.canDelete = Observable(true)
         self.saveCommand = Command(action: save)
         self.deleteCommand = Command(action: delete)
+        
     }
     
     init() {
         self.assignment = nil
         self.assignmentTitle = Observable("")
+        
+        self.mandatorySection = [consultantsHeader, projectsHeader, clientsHeader]
         
         self.canDelete = Observable(false)
         self.saveCommand = Command(action: save)
@@ -94,11 +105,6 @@ class EditAssignmentViewModel : EditItemViewModel {
     }
    
     func loadData() {
-        let consultantsHeader = HeadSection(title:"Consultants")
-        let projectsHeader = HeadSection(title:"Projects")
-        let clientsHeader = HeadSection(title:"Clients")
-        let endClientsHeader = HeadSection(title:"End clients")
-        
         let data = SectionsArray2D(sectionsWithItems: [
             (consultantsHeader, sectionLoader.loadConsultants(addEmpty: false, assignment : self.assignment ) as [SelectableConsultantSubSection]),
             (projectsHeader, sectionLoader.loadProjects(addEmpty: false, assignment : self.assignment) as [SelectableProjectSubSection]),
@@ -111,17 +117,23 @@ class EditAssignmentViewModel : EditItemViewModel {
         for i in 0...sections.tree.sections.count - 1 {
             self.sections[sectionAt: i].metadata.selectedSubSection = sections[sectionAt: i].items.first(where: { s in (s as! SelectableSubSection).isSelected.value }) as? SelectableSubSectionProtocol
         }
+        
+       subscribeToSelectionUpdates()
     }
     
-    func editSelection(section : HeadSection, selection : SelectableSubSectionProtocol?){
-        if(selection?.isSelected.value == true){
-            selections[section] = selection
-        }
-        else{
-            selections.removeValue(forKey: section)
+    func selectionUpdated() -> Void {
+        var canSave = true
+        for i in 0...mandatorySection.count - 1 {
+            canSave = canSave && mandatorySection[i].selectedSubSection != nil
         }
         
-        self.canSave.value = selections.keys.count == sections.tree.sections.count
+        self.canSave.value = canSave
+    }
+    
+    func subscribeToSelectionUpdates() -> Void {
+        for i in 0...mandatorySection.count - 1 {
+            _ = mandatorySection[i].observeSelection.observeNext(with: { _ in self.selectionUpdated() })
+        }
     }
 }
 

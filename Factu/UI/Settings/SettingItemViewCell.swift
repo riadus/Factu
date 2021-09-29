@@ -51,8 +51,7 @@ class SettingItemViewCell: UITableViewCell {
     static func getSelectableCell(reuseIdentifier : String,
                                   tableView : UITableView,
                                   changeset : SectionsArray2D,
-                                  indexPath : IndexPath,
-                                  selectionAction : @escaping () -> Void) -> SettingItemViewCell {
+                                  indexPath : IndexPath) -> SettingItemViewCell {
         
         let itemCell = getCell(reuseIdentifier: reuseIdentifier, tableView: tableView, changeset: changeset, indexPath: indexPath)
         
@@ -67,7 +66,6 @@ class SettingItemViewCell: UITableViewCell {
             if(itemCell.itemTitle.text != subsection?.title){
                 return
             }
-            selectionAction()
             itemCell.checkmarkView.isHidden = !isSelected
         })
         

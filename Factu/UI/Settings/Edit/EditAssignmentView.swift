@@ -29,15 +29,11 @@ class EditAssignmentView : BaseSettingItemView {
     func bindViewModel(bindingContext : EditAssignmentViewModel) {
         bindingContext.loadData()
         let sectionBindingDatSource: SectionsBinder = SectionsBinder<TreeChangeset>{ (changeset, indexPath, tableView) -> UITableViewCell in
-            let subsection = changeset.sections[indexPath.section].items[indexPath.row] as? SelectableSubSectionProtocol
             
             let itemCell = SettingItemViewCell.getSelectableCell(reuseIdentifier: "Item",
                                                        tableView: tableView,
                                                        changeset: changeset,
-                                                       indexPath: indexPath,
-                                                       selectionAction: {
-                                                            bindingContext.editSelection(section: changeset.sections[indexPath.section].metadata, selection: subsection)
-                                                       })
+                                                       indexPath: indexPath)
             
             return itemCell
         }
