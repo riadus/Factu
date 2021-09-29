@@ -30,6 +30,6 @@ class InvoiceSubSection : SubSection {
     }
     
     override func edit() {
-        coordinator.toInvoice(invoice: invoice)
+        coordinator.toInvoice(invoice: invoice, isEditable: false)
     }
 }

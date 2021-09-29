@@ -13,9 +13,19 @@ class InvoiceService : InvoiceServiceProtocol {
     @Inject var repository : RepositoryProtocol
     
     func createInvoice(timesheet : Timesheet) -> Invoice {
-        deleteInvoiceForTimesheet(timesheet)
+        let existingInvoice = getInvoiceForTimesheet(timesheet)
+        var id = guidGenerator.getNewGuid()
+        var invoiceNumber = ""
+        if(existingInvoice != nil) {
+            id = existingInvoice!.id
+            invoiceNumber = existingInvoice!.invoiceNumber
+            deleteInvoice(invoice: existingInvoice!)
+        }
         let invoice = Invoice()
-        invoice.id = guidGenerator.getNewGuid()
+    
+        invoice.id = id
+        invoice.invoiceNumber = invoiceNumber
+    
         let fullDays = timesheet.dates.filter { !$0.isHalfDay }.count
         let halfDays = Float(timesheet.dates.count - fullDays)
         let number = Float(fullDays) + (halfDays /  2)
@@ -38,14 +48,16 @@ class InvoiceService : InvoiceServiceProtocol {
         repository.get(filter: { _ in true } ) as [Invoice]
     }
     
-    private func deleteInvoiceForTimesheet(_ timesheet : Timesheet) -> Void {
+    private func getInvoiceForTimesheet(_ timesheet : Timesheet) -> Invoice? {
         let existingInvoices = repository.get(filter: {invoice in invoice.timesheet?.id == timesheet.id }) as [Invoice]
         if (existingInvoices.count == 0) {
-            return
+            return nil
         }
-        for i in 0...existingInvoices.count - 1 {
-            repository.delete(object: existingInvoices[i])
-        }
+        return existingInvoices[0]
+    }
+    
+    func deleteInvoice(invoice : Invoice) -> Void {
+        repository.delete(object: invoice)
     }
     
     func setDates(_ invoice : Invoice) -> Void {

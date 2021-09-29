@@ -30,6 +30,7 @@ class TimesheetService : TimesheetServiceProtocol {
             repository.update(object: timesheet, update: { t in t.dates = days.toList() })
        }
        else {
+            timesheet.dates = days.toList()
             repository.save(object: timesheet)
        }
    }

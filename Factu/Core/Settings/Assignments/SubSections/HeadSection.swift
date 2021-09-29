@@ -11,14 +11,15 @@ import Bond
 class HeadSection {
     let title : Observable<String>!
     var isOpened : Observable<Bool>!
-    let openCloseCommand : ICommand = Command()
-    
     var observeSelection : Observable<NSObject?> = Observable(nil)
+    var itemsDeletable : Bool
+    var deleteAction : (IndexPath) -> ()
     
-    init(title : String, isOpened : Bool = false) {
+    init(title : String, isOpened : Bool = false, itemsDeletable : Bool = false) {
         self.title = Observable(title)
         self.isOpened = Observable(isOpened)
-        self.openCloseCommand.setAction(self.openClose)
+        self.itemsDeletable = false
+        self.deleteAction = { _ in }
     }
     
     func openClose() -> Void {
@@ -35,6 +36,10 @@ class HeadSection {
         didSet {
             observeSelection.value = selectedSubSection?.isSelected.value as NSObject?
         }
+    }
+    
+    func delete(indexPath : IndexPath) -> Void {
+        deleteAction(indexPath)
     }
 }
 

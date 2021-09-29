@@ -12,12 +12,15 @@ class Coordinator : ICoordinator {
     required init(){
         self.navigationController = UINavigationController()
         
-        self.navigationController.navigationBar.barTintColor = UIColor(named:"Pink")
-        self.navigationController.navigationBar.isTranslucent = false
-        self.navigationController.navigationBar.titleTextAttributes = [
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(named:"Pink")
+        appearance.titleTextAttributes = [
             .foregroundColor: UIColor.white,
             .font: UIFont.systemFont(ofSize: 19, weight: UIFont.Weight.bold)
         ]
+        self.navigationController.navigationBar.standardAppearance = appearance;
+        self.navigationController.navigationBar.scrollEdgeAppearance = self.navigationController.navigationBar.standardAppearance
         self.navigationController.navigationBar.tintColor = UIColor.white
         self.navigationController.navigationBar.shadowImage = UIImage()
     }
@@ -31,9 +34,9 @@ class Coordinator : ICoordinator {
         navigationController.pushViewController(TimesheetViewController(), animated: true)
     }
     
-    func toInvoice(invoice : Invoice) -> Void {
+    func toInvoice(invoice : Invoice, isEditable : Bool) -> Void {
         let viewController = InvoiceViewController()
-        viewController.bindingContext.prepare(invoice : invoice)
+        viewController.bindingContext.prepare(invoiceNavigationObject : InvoiceViewModel.InvoiceNavigationObject(invoice: invoice, isEditable: isEditable))
         navigationController.pushViewController(viewController, animated: true)
     }
     

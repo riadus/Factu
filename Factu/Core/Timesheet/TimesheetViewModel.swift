@@ -49,7 +49,7 @@ class TimesheetViewModel : IBaseViewModel{
         
         let timesheet = getTimesheet()
         let invoice = invoiceService.createInvoice(timesheet: timesheet)
-        coordinator.toInvoice(invoice: invoice)
+        coordinator.toInvoice(invoice: invoice, isEditable: true)
     }
     
     func getTimesheet() -> Timesheet {

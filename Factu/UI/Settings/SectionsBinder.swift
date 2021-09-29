@@ -17,7 +17,7 @@ class SectionsBinder<Changeset: SectionedDataSourceChangeset>: TableViewBinderDa
         cell.openCloseImage.transform = CGAffineTransform(rotationAngle: factor * CGFloat.pi / 4)
         self.changeset!.collection[sectionAt: section].metadata.title.bind(to : cell.sectionTitle)
         cell.setTapAction {
-            self.changeset!.collection[sectionAt: section].metadata.openCloseCommand.Execute()
+            self.changeset!.collection[sectionAt: section].metadata.openClose()
             let factor = CGFloat(!isOpen ? 0 : -1)
             UIView.animate(withDuration: 0.3, animations: {
                 cell.openCloseImage.transform = CGAffineTransform(rotationAngle: factor * CGFloat.pi / 4)
@@ -42,5 +42,18 @@ class SectionsBinder<Changeset: SectionedDataSourceChangeset>: TableViewBinderDa
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return .leastNonzeroMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let section = self.changeset!.collection[sectionAt: indexPath.section]
+        if(section.metadata.itemsDeletable) {
+            return UISwipeActionsConfiguration(actions : [
+                UIContextualAction(style: .destructive, title: "Delete", handler: { _,_,completion  in
+                    section.metadata.delete(indexPath : indexPath)
+                    completion(true)
+                } )
+            ])
+        }
+        return nil
     }
 }

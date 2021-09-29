@@ -43,6 +43,8 @@
                 <outlet property="rateLabel" destination="ykx-UD-xgu" id="WHu-5A-LYK"/>
                 <outlet property="rateValueLabel" destination="DZF-lN-Bk5" id="3yU-8q-Obr"/>
                 <outlet property="scrollView" destination="ap9-q3-CbR" id="y5P-FQ-6oT"/>
+                <outlet property="showPDFButtonLeadingConstraint" destination="46r-Rd-J6p" id="84t-2m-ZCG"/>
+                <outlet property="showPDFButtonWidthConstraint" destination="ckT-rl-DAP" id="aRJ-Eq-MS4"/>
                 <outlet property="totalExcludingLabel" destination="7tg-Hn-5sB" id="v07-uW-BpW"/>
                 <outlet property="totalExcludingValueLabel" destination="uDU-zN-GIf" id="Chj-LT-Iuk"/>
                 <outlet property="totalIncludingLabel" destination="80d-XI-LH7" id="S2P-Be-ESf"/>
@@ -492,6 +494,7 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="ysU-jw-B18" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" priority="999" id="46r-Rd-J6p"/>
                 <constraint firstItem="ap9-q3-CbR" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="9mT-RW-TqN"/>
                 <constraint firstItem="ysU-jw-B18" firstAttribute="height" secondItem="hjn-kX-p2T" secondAttribute="height" id="HAQ-nS-NxO"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ysU-jw-B18" secondAttribute="bottom" id="Q9i-fB-7R7"/>

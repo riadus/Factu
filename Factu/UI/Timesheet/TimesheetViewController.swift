@@ -16,6 +16,10 @@ class TimesheetViewController : BaseViewController<TimesheetViewModel> {
     @IBOutlet weak var generateInvoiceButton: UIButton!
 
     override func viewDidLoad() {
+        if #available(iOS 15, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        
         tableView.register(UINib(nibName: "SettingSectionViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "Section")
         tableView.register(UINib(nibName: "SettingItemViewCell", bundle: nil), forCellReuseIdentifier: "Assignment")
         tableView.register(UINib(nibName: "TimesheetCalendarViewCell", bundle: nil), forCellReuseIdentifier: "Calendar")

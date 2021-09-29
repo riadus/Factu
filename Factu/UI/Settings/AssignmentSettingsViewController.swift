@@ -8,9 +8,13 @@
 import UIKit
 import Bond
 
-class AssignmentSettingsViewController: BaseViewController<AssignmentSettingsViewModel>, UITableViewDelegate {
+class AssignmentSettingsViewController: BaseViewController<AssignmentSettingsViewModel>  {
     @IBOutlet weak var tableView: UITableView!
      override func viewDidLoad() {
+         if #available(iOS 15, *) {
+             tableView.sectionHeaderTopPadding = 0
+         }
+         
         tableView.register(UINib(nibName: "SettingSectionViewCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "Section")
         tableView.register(UINib(nibName: "SettingItemViewCell", bundle: nil), forCellReuseIdentifier: "Item")
         bindingContext.loadData()

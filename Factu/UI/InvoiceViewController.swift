@@ -50,6 +50,8 @@ class InvoiceViewController: BaseViewController<InvoiceViewModel>, UIDocumentInt
     @IBOutlet weak var legalMentionLabel: UILabel!
     @IBOutlet weak var invoiceNumberButton: UIButton!
     @IBOutlet weak var generatePdfButton: UIButton!
+    @IBOutlet weak var showPDFButtonWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var showPDFButtonLeadingConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var BicValue: UILabel!
     @IBOutlet weak var IbanValue: UILabel!
@@ -141,6 +143,9 @@ class InvoiceViewController: BaseViewController<InvoiceViewModel>, UIDocumentInt
         bindingContext.bic.bind(to: BicValue.reactive.text)
         bindingContext.iban.bind(to: IbanValue.reactive.text)
         invoiceNumberButton.reactive.Command(bindingContext.invoiceNumberCommand)
+        bindingContext.showInvoiceNumberButton.map { !$0 }.bind(to : invoiceNumberButton.reactive.isHidden)
+        bindingContext.showInvoiceNumberButton.map { $0 }.bind(to: showPDFButtonWidthConstraint.reactive.isActive)
+        bindingContext.showInvoiceNumberButton.map { !$0 }.bind(to: showPDFButtonLeadingConstraint.reactive.isActive)
         
         self.bindingContext.canGeneratePdf.bind(to : generatePdfButton.reactive.isEnabled)
         self.bindingContext.canGeneratePdf.map{ $0 ? UIColor.white : UIColor.gray }.bind(to: generatePdfButton.reactive.titleColor)

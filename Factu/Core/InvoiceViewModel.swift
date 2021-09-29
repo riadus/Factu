@@ -59,6 +59,7 @@ class InvoiceViewModel : IBaseViewModel {
     
     let invoiceNumberCommand : ICommand = Command()
     let canGeneratePdf = Observable(false)
+    let showInvoiceNumberButton = Observable(false)
     
     var invoice : Invoice!
     var consultant : Consultant!
@@ -66,15 +67,23 @@ class InvoiceViewModel : IBaseViewModel {
         invoiceNumberCommand.setAction(self.setInvoiceNumber)
     }
     
-    func prepare(invoice : Invoice) -> Void {
-        self.invoice = invoice 
-        loadData()
+    func prepare(invoiceNavigationObject : InvoiceNavigationObject) -> Void {
+        self.invoice = invoiceNavigationObject.invoice
+        loadData(isEditable : invoiceNavigationObject.isEditable)
     }
     
-    func loadData() -> Void {
-        if(self.invoice.invoiceNumber != "") {
+    func loadData(isEditable : Bool) -> Void {
+        if(self.invoice.timesheet?.assignment?.consultant == nil ||
+           self.invoice.timesheet?.assignment?.project == nil ||
+           self.invoice.timesheet?.assignment?.client == nil)
+        {
+            return
+        }
+        
+        self.showInvoiceNumberButton.value = isEditable
+        self.canGeneratePdf.value = self.invoice.invoiceNumber != ""
+        if(!isEditable) {
             self.invoiceNumber.value = self.invoice.invoiceNumber
-            self.canGeneratePdf.value = true
             self.generateInvoiceText.value = "See generated PDF"
         }
         
@@ -90,7 +99,7 @@ class InvoiceViewModel : IBaseViewModel {
         bic.value = company.bic
         iban.value = company.iban
         
-        guard let client = timesheet.assignment!.client else { return }
+        let client = timesheet.assignment!.client!
         clientName.value = client.name
         clientAddress.value = client.address?.street ?? ""
         clientPostalCode.value = client.address?.postalCode ?? "" + " " + (client.address?.city ?? "")
@@ -112,8 +121,10 @@ class InvoiceViewModel : IBaseViewModel {
     
         invoiceDate.value = formatter.formatShortDate(invoice.invoiceDate)
         paymentDate.value = formatter.formatShortDate(invoice.paymentDate)
-        
+        invoiceNumber.value = invoice.invoiceNumber
         legalMentionsText.value = "\(client.name) will make the tranfer of the invoice amount on the account"
+        
+        print("Invoice Number : \(invoice.invoiceNumber)")
     }
     
     func setInvoiceNumber() -> Void {
@@ -121,7 +132,7 @@ class InvoiceViewModel : IBaseViewModel {
         canGeneratePdf.value = false
         _ = userResponse.observeNext(with:
                                     { newNumber in
-                                        if newNumber != nil {
+                                        if newNumber != nil && newNumber != "" {
                                             self.invoiceNumber.value = newNumber!
                                             self.canGeneratePdf.value = true
                                             self.invoiceService.updateInvoiceNumber(self.invoice, newNumber!)
@@ -132,4 +143,17 @@ class InvoiceViewModel : IBaseViewModel {
     func getFileName() -> String {
         return "\(invoiceNumber.value) - \(self.consultant.name) \(self.consultant.lastName).pdf"
     }
+    
+    class InvoiceNavigationObject {
+        
+        init(invoice : Invoice, isEditable : Bool){
+            self.invoice = invoice
+            self.isEditable = isEditable
+        }
+        
+        var invoice : Invoice
+        var isEditable : Bool
+    }
 }
+
+

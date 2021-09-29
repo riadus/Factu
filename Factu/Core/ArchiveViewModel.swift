@@ -14,6 +14,7 @@ class ArchiveViewModel : IBaseViewModel {
     var sections : Sections
     
     @Inject var sectionLoader : SectionLoaderProtocol
+    @Inject var invoiceService : InvoiceServiceProtocol
     
     required init(){
         sections = Sections()
@@ -21,7 +22,8 @@ class ArchiveViewModel : IBaseViewModel {
     
     func loadSections() {
         let invoicesSection = HeadSection(title: "Invoices")
-        
+        invoicesSection.itemsDeletable = true
+        invoicesSection.deleteAction = delete
         let invoicesData = sectionLoader.loadInvoices() as [InvoiceSubSection]
         
         let initData = SectionsArray2D(sectionsWithItems: [
@@ -29,5 +31,11 @@ class ArchiveViewModel : IBaseViewModel {
         ])
         
         sections.loadDataOrReplace(data: initData)
+    }
+    
+    func delete(indexPath : IndexPath) -> Void {
+        let subsection = sections.removeItem(at: indexPath)
+        guard let invoiceSubsection = subsection as? InvoiceSubSection else { return }
+        invoiceService.deleteInvoice(invoice: invoiceSubsection.invoice)
     }
 }
